@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Brochure Técnico · Landing Web Corporativa · Hosting y Dominio
+    </title>
+    <style>
+      :root {
+        --navy: #0b2447;
+        --teal: #0b9fa8;
+        --white: #ffffff;
+        --light: #f8fafc;
+        --med: #475569;
+        --dark: #1e293b;
+        --ok: #10b981;
+        --warn: #f59e0b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        background: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 34px 21px 55px;
+      }
+      .hero {
+        background: linear-gradient(135deg, var(--navy), #123b74);
+        color: var(--white);
+        border-radius: 16px;
+        padding: 34px;
+      }
+      .hero h1 {
+        margin: 0 0 8px;
+        font-size: 34px;
+      }
+      .hero p {
+        margin: 0;
+        color: #dbeafe;
+      }
+      .chips {
+        margin-top: 13px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        font-size: 12px;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--white);
+        padding: 4px 10px;
+        border-radius: 999px;
+      }
+      .toc {
+        margin-top: 21px;
+        background: var(--white);
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 21px;
+      }
+      .toc h2 {
+        margin: 0 0 13px;
+        color: var(--navy);
+      }
+      .toc ol {
+        margin: 0;
+        padding-left: 20px;
+      }
+      .toc a {
+        color: var(--teal);
+        text-decoration: none;
+        font-weight: 700;
+      }
+      section {
+        margin-top: 21px;
+        background: var(--white);
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 21px;
+        scroll-margin-top: 12px;
+      }
+      h2 {
+        margin: 0 0 13px;
+        color: var(--navy);
+        font-size: 26px;
+      }
+      h3 {
+        margin: 13px 0 8px;
+        color: var(--navy);
+        font-size: 18px;
+      }
+      p,
+      li {
+        color: var(--med);
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 13px;
+        margin-top: 13px;
+      }
+      .box {
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 13px;
+        background: #fcfdff;
+      }
+      .box strong {
+        color: var(--dark);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 13px;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        overflow: hidden;
+        background: var(--white);
+      }
+      th,
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #e2e8f0;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #ecfeff;
+        color: var(--navy);
+        font-weight: 700;
+      }
+      .kpi {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 13px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 3px 9px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 6px;
+      }
+      .ok {
+        background: rgba(16, 185, 129, 0.15);
+        color: #065f46;
+      }
+      .warn {
+        background: rgba(245, 158, 11, 0.2);
+        color: #92400e;
+      }
+      .total {
+        margin-top: 13px;
+        font-size: 24px;
+        color: var(--teal);
+        font-weight: 800;
+      }
+      .note {
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        border-radius: 10px;
+        padding: 12px;
+        color: #9a3412;
+        margin-top: 13px;
+      }
+      .footer {
+        margin-top: 21px;
+        color: var(--med);
+        font-size: 14px;
+      }
+      @media print {
+        .toc a::after {
+          content: '';
+        }
+        body {
+          background: #fff;
+        }
+        section,
+        .toc,
+        .hero {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero" id="top">
+        <h1>BROCHURE TÉCNICO · LANDING WEB CORPORATIVA</h1>
+        <p>
+          AIM Seguridad Integral / AIM Asesorías Integrales de Gestión ·
+          Servicios de Hosting y Dominio
+        </p>
+        <div class="chips">
+          <span class="chip">Ingeniería de Software</span>
+          <span class="chip">Cloud Deployment Readiness</span>
+          <span class="chip">Documento único interactivo</span>
+          <span class="chip">24 Febrero 2026</span>
+        </div>
+      </header>
+
+      <nav class="toc" aria-label="Índice interactivo">
+        <h2>Índice interactivo</h2>
+        <ol>
+          <li>
+            <a href="#definicion-tecnica"
+              >Definición técnica correcta del producto</a
+            >
+          </li>
+          <li>
+            <a href="#comparativo-hosting"
+              >Comparativo oficial de hosting (Free vs Pago)</a
+            >
+          </li>
+          <li>
+            <a href="#proceso-compra-hosting"
+              >Proceso detallado de alta/compra de hosting</a
+            >
+          </li>
+          <li>
+            <a href="#comparativo-dominio"
+              >Comparativo oficial de dominio (registro y renovación)</a
+            >
+          </li>
+          <li>
+            <a href="#proceso-compra-dominio"
+              >Proceso detallado de compra de dominio</a
+            >
+          </li>
+          <li>
+            <a href="#flujo-integrado"
+              >Flujo integrado: dominio + hosting + DNS + SSL</a
+            >
+          </li>
+          <li>
+            <a href="#costos-12m">Costos exactos publicados (12 meses)</a>
+          </li>
+          <li>
+            <a href="#enlaces-directos">Enlaces directos de registro y pago</a>
+          </li>
+          <li>
+            <a href="#auditoria-cloud">Auditoría cloud y limpieza de basura</a>
+          </li>
+          <li>
+            <a href="#checklist-salida">Checklist final para subir al cloud</a>
+          </li>
+        </ol>
+      </nav>
+
+      <section id="definicion-tecnica">
+        <h2>1) Definición técnica correcta del producto</h2>
+        <div class="meta">
+          <div class="box">
+            <strong>Cliente:</strong> AIM Seguridad Integral
+          </div>
+          <div class="box"><strong>Dominio:</strong> www.aimasesorias.com</div>
+          <div class="box">
+            <strong>Nombre técnico:</strong> Landing Web Corporativa Estática
+            (SPA desplegada en CDN)
+          </div>
+          <div class="box"><strong>Stack:</strong> React 19 + Vite 7</div>
+          <div class="box">
+            <strong>Fecha de corte precios:</strong> 24/02/2026
+          </div>
+          <div class="box">
+            <strong>Alcance documento:</strong> Solo servicios de Hosting y
+            Dominio
+          </div>
+        </div>
+        <p>
+          Desde ingeniería de software, el término profesional recomendado para
+          este proyecto es <strong>Landing Web Corporativa Estática</strong>,
+          desplegada como artefacto estático en plataforma cloud con CDN global,
+          certificado SSL y DNS administrado.
+        </p>
+      </section>
+
+      <section id="comparativo-hosting">
+        <h2>2) Comparativo oficial de hosting (Free vs Pago)</h2>
+        <p>
+          Los siguientes valores son los publicados por proveedor en sus páginas
+          de pricing para 24/02/2026 (sin impuestos locales).
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Proveedor</th>
+              <th>Plan Free</th>
+              <th>Plan Pago</th>
+              <th>Precio exacto publicado</th>
+              <th>Uso recomendado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vercel</td>
+              <td>Hobby</td>
+              <td>Pro</td>
+              <td>Hobby: 0 USD · Pro: 20 USD/mes por miembro</td>
+              <td>React/Vite productivo con escalado</td>
+            </tr>
+            <tr>
+              <td>Netlify</td>
+              <td>Starter</td>
+              <td>Pro</td>
+              <td>Starter: 0 USD · Pro: 19 USD/mes por miembro</td>
+              <td>Sitio estático empresarial simple</td>
+            </tr>
+            <tr>
+              <td>Cloudflare Pages</td>
+              <td>Free</td>
+              <td>Pro (a nivel zona Cloudflare)</td>
+              <td>Pages Free: 0 USD · Pro: 25 USD/mes por dominio</td>
+              <td>CDN y seguridad perimetral</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="proceso-compra-hosting">
+        <h2>3) Proceso detallado de alta/compra de hosting</h2>
+        <h3>3.1 Ruta Free (sin pago inmediato)</h3>
+        <ul>
+          <li>
+            Ingresar al enlace de registro gratuito del proveedor (Vercel,
+            Netlify o Cloudflare).
+          </li>
+          <li>Crear cuenta con correo corporativo o Google/GitHub.</li>
+          <li>Confirmar email y activar autenticación en dos pasos.</li>
+          <li>Conectar repositorio GitHub/GitLab/Bitbucket del proyecto.</li>
+          <li>
+            Configurar comando de build: <strong>npm run build</strong> y
+            directorio de salida: <strong>dist</strong>.
+          </li>
+          <li>Publicar primer deploy y validar HTTPS automático.</li>
+        </ul>
+
+        <h3>3.2 Ruta Pago (compra en el acto)</h3>
+        <ul>
+          <li>
+            Desde la cuenta activa, abrir sección
+            <strong>Pricing/Billing</strong>.
+          </li>
+          <li>Seleccionar plan Pro del proveedor.</li>
+          <li>
+            Registrar método de pago (tarjeta internacional débito/crédito).
+          </li>
+          <li>
+            Confirmar moneda, ciclo mensual y cantidad de usuarios facturables.
+          </li>
+          <li>Validar emisión de factura y activar alertas de gasto.</li>
+          <li>
+            Revisar si aplica período de prueba o cobro inmediato según país.
+          </li>
+        </ul>
+
+        <div class="note">
+          Si el cliente inicia en Free, puede migrar a Pro sin cambiar dominio
+          ni arquitectura del sitio.
+        </div>
+      </section>
+
+      <section id="comparativo-dominio">
+        <h2>4) Comparativo oficial de dominio (registro y renovación)</h2>
+        <p>
+          Valores exactos publicados para consulta de
+          <strong>aimasesorias.com</strong> y/o páginas oficiales del
+          registrador al 24/02/2026.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Proveedor</th>
+              <th>Tipo</th>
+              <th>Registro (1er año)</th>
+              <th>Renovación</th>
+              <th>Observación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Namecheap</td>
+              <td>.com</td>
+              <td>11.28 USD</td>
+              <td>18.48 USD</td>
+              <td>
+                Precio público para búsqueda de dominio; puede variar por
+                promo/impuesto
+              </td>
+            </tr>
+            <tr>
+              <td>Cloudflare Registrar</td>
+              <td>.com (transferencia)</td>
+              <td>No vende registros iniciales en todos los casos</td>
+              <td>Precio de costo del registry + ICANN</td>
+              <td>
+                Útil para bajar costo de renovación si se transfiere desde otro
+                registrador
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="proceso-compra-dominio">
+        <h2>5) Proceso detallado de compra de dominio</h2>
+        <h3>5.1 Compra inmediata (pago en acto)</h3>
+        <ul>
+          <li>
+            Abrir buscador del registrador y validar disponibilidad de
+            <strong>aimasesorias.com</strong>.
+          </li>
+          <li>
+            Agregar al carrito únicamente el dominio (evitar upsells no
+            requeridos).
+          </li>
+          <li>Definir años de registro (1 año recomendado para inicio).</li>
+          <li>
+            Activar <strong>Whois Privacy</strong> si está incluido o
+            contratarlo.
+          </li>
+          <li>
+            Ingresar datos de titularidad correctos (empresa/representante
+            legal).
+          </li>
+          <li>
+            Pagar con tarjeta y guardar factura + comprobante de titularidad.
+          </li>
+        </ul>
+
+        <h3>5.2 Opción "free" para dominio</h3>
+        <p>
+          Dominio <strong>NO</strong> tiene modalidad free confiable para marca
+          corporativa .com. La ruta profesional es pago directo de registro y
+          renovación anual.
+        </p>
+        <div class="note">
+          Conclusión técnica: hosting sí puede iniciar en free; dominio
+          corporativo debe pagarse.
+        </div>
+      </section>
+
+      <section id="flujo-integrado">
+        <h2>6) Flujo integrado: dominio + hosting + DNS + SSL</h2>
+        <ol>
+          <li>Comprar dominio en registrador (Namecheap).</li>
+          <li>Crear proyecto en hosting (Vercel o Netlify).</li>
+          <li>Agregar dominio personalizado en el hosting.</li>
+          <li>Copiar registros DNS (A/CNAME/TXT) indicados por hosting.</li>
+          <li>Configurar DNS en registrador o migrar zona a Cloudflare.</li>
+          <li>Esperar propagación DNS (5 min a 24 h).</li>
+          <li>Verificar certificado SSL activo y redirección HTTPS.</li>
+          <li>Probar URL final: https://www.aimasesorias.com</li>
+        </ol>
+      </section>
+
+      <section id="costos-12m">
+        <h2>7) Costos exactos publicados (12 meses)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Escenario Free</th>
+              <th>Escenario Pago</th>
+              <th>Total anual estimado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hosting Vercel</td>
+              <td>0 USD (Hobby)</td>
+              <td>20 USD x 12 = 240 USD (Pro, 1 miembro)</td>
+              <td>0 USD o 240 USD</td>
+            </tr>
+            <tr>
+              <td>Hosting Netlify</td>
+              <td>0 USD (Starter)</td>
+              <td>19 USD x 12 = 228 USD (Pro, 1 miembro)</td>
+              <td>0 USD o 228 USD</td>
+            </tr>
+            <tr>
+              <td>Dominio .com Namecheap</td>
+              <td>No aplica</td>
+              <td>11.28 USD primer año</td>
+              <td>11.28 USD</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="total">
+          Escenario mínimo profesional (Año 1): 11.28 USD + hosting free
+        </p>
+        <p class="total">Escenario pago con Vercel Pro (Año 1): 251.28 USD</p>
+        <p class="total">Escenario pago con Netlify Pro (Año 1): 239.28 USD</p>
+      </section>
+
+      <section id="enlaces-directos">
+        <h2>8) Enlaces directos de registro y pago</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Registro Free</th>
+              <th>Compra / Pricing Pago</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vercel</td>
+              <td>
+                <a
+                  href="https://vercel.com/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://vercel.com/signup</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://vercel.com/pricing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://vercel.com/pricing</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>Netlify</td>
+              <td>
+                <a
+                  href="https://app.netlify.com/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://app.netlify.com/signup</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://www.netlify.com/pricing/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://www.netlify.com/pricing/</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>Cloudflare</td>
+              <td>
+                <a
+                  href="https://dash.cloudflare.com/sign-up"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://dash.cloudflare.com/sign-up</a
+                >
+              </td>
+              <td>
+                <a
+                  href="https://www.cloudflare.com/plans/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://www.cloudflare.com/plans/</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>Namecheap Dominio</td>
+              <td>No aplica (dominio .com no es free)</td>
+              <td>
+                <a
+                  href="https://www.namecheap.com/domains/registration/results/?domain=aimasesorias.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://www.namecheap.com/domains/registration/results/?domain=aimasesorias.com</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note">
+          Para pago inmediato, el cliente entra al enlace de pricing y completa
+          checkout desde su cuenta autenticada.
+        </div>
+      </section>
+
+      <section id="auditoria-cloud">
+        <h2>9) Auditoría cloud y limpieza de basura</h2>
+        <div class="kpi">
+          <div class="box">
+            <strong>Estructura de código</strong><br /><span class="tag ok"
+              >LIMPIA</span
+            >
+            <p>
+              Sin archivos duplicados en src y sin docs fragmentados
+              redundantes.
+            </p>
+          </div>
+          <div class="box">
+            <strong>Errores de proyecto</strong><br /><span class="tag ok"
+              >0 ERRORES</span
+            >
+            <p>Validación en editor sin problemas reportados.</p>
+          </div>
+          <div class="box">
+            <strong>Readiness Cloud</strong><br /><span class="tag ok"
+              >LISTA</span
+            >
+            <p>
+              Configuración presente para Vercel/Netlify y build productivo.
+            </p>
+          </div>
+          <div class="box">
+            <strong>Riesgo residual</strong><br /><span class="tag warn"
+              >BAJO</span
+            >
+            <p>
+              Revisar precios en checkout final porque los proveedores cambian
+              tarifas/promos.
+            </p>
+          </div>
+        </div>
+        <ul>
+          <li>Eliminada basura documental previa y carpeta vacía residual.</li>
+          <li>Estructura docs simplificada a un único brochure técnico.</li>
+          <li>Preparado para despliegue en cloud con dominio propio.</li>
+        </ul>
+      </section>
+
+      <section id="checklist-salida">
+        <h2>10) Checklist final para subir al cloud</h2>
+        <h3>Pre-lanzamiento</h3>
+        <ul>
+          <li>Definir VITE_CONTACT_ENDPOINT y VITE_ALLOWED_ENDPOINT_HOSTS.</li>
+          <li>Ejecutar lint y build con resultado limpio.</li>
+          <li>
+            Seleccionar hosting (Free o Pro) y crear cuenta operativa del
+            cliente.
+          </li>
+          <li>Comprar dominio .com y guardar titularidad/factura.</li>
+        </ul>
+        <h3>Día de salida</h3>
+        <ul>
+          <li>Conectar dominio al hosting y validar DNS.</li>
+          <li>Verificar HTTPS activo y redirección http→https.</li>
+          <li>Confirmar que el sitio carga en www y raíz.</li>
+        </ul>
+        <h3>Operación mensual</h3>
+        <ul>
+          <li>
+            Monitorear costo de plan cloud y fecha de renovación de dominio.
+          </li>
+          <li>Revisar alertas de facturación y uso de ancho de banda.</li>
+          <li>Actualizar dependencias y mantener política de seguridad.</li>
+        </ul>
+      </section>
+
+      <p class="footer">
+        Fuentes oficiales de precios y alta: Vercel Pricing, Netlify Pricing,
+        Cloudflare Plans y Namecheap Domain Search. Nota: el valor final en
+        checkout puede cambiar por impuestos, promociones, TRM y país de
+        facturación.
+      </p>
+    </main>
+  </body>
+</html>
