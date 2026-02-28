@@ -1,6 +1,0 @@
-Contact: mailto:contacto@aimasesorias.com
-Contact: https://www.aimasesorias.com
-Preferred-Languages: es, en
-Canonical: https://www.aimasesorias.com/.well-known/security.txt
-Policy: https://www.aimasesorias.com
-Expires: 2027-12-31T23:59:59.000Z
