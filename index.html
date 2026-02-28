@@ -2,22 +2,1993 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b1220'/%3E%3Crect x='9' y='9' width='46' height='46' rx='10' fill='none' stroke='%236ea8fe' stroke-width='2.6'/%3E%3Cpath d='M18 40c-4 0-7-3-7-7s3-7 7-7c2-6 7-10 14-10 6 0 11 4 13 9 4 0 7 3 7 7s-3 8-8 8H18z' fill='none' stroke='%238ef0c5' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='33' r='2.2' fill='%238ef0c5'/%3E%3Ccircle cx='32' cy='29' r='2.2' fill='%23d8e7ff'/%3E%3Ccircle cx='40' cy='33' r='2.2' fill='%238ef0c5'/%3E%3Cpath d='M24 33l8-4 8 4' fill='none' stroke='%236ea8fe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M24 40h16' stroke='%236ea8fe' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
     <meta
       name="description"
-      content="AIM Asesorías Integrales de Gestión. Consultoría multinacional en SST, Calidad, Sostenibilidad, Electricidad y Ciberseguridad."
+      content="Portafolio profesional de pan_dev, Desarrollador Fullstack con enfoque en producto, automatización IA y diseño multimedia."
     />
-    <title>AIM | Asesorías Integrales de Gestión</title>
+    <title>pan_dev | Portafolio Desarrollador Fullstack</title>
+    <style>
+      :root {
+        --bg: #0b1220;
+        --panel: #121a2b;
+        --panel-2: #19243b;
+        --text: #e6ebf5;
+        --muted: #b6c4de;
+        --primary: #6ea8fe;
+        --accent: #8ef0c5;
+        --danger: #ff8a8a;
+        --border: #2a3550;
+        --glow: rgba(110, 168, 254, 0.25);
+        --radius: 14px;
+        --shadow: 0 10px 30px rgba(5, 10, 20, 0.35);
+        --space-1: 0.5rem;
+        --space-2: 0.75rem;
+        --space-3: 1rem;
+        --space-4: 1.5rem;
+        --space-5: 2rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          'Segoe UI',
+          'Inter',
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background:
+          radial-gradient(
+            circle at 20% 0%,
+            rgba(110, 168, 254, 0.12),
+            transparent 40%
+          ),
+          linear-gradient(180deg, #0b1220 0%, #0f1728 100%);
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: auto;
+      }
+
+      .skip-link:focus {
+        left: var(--space-3);
+        top: var(--space-3);
+        z-index: 1000;
+        background: #fff;
+        color: #000;
+        padding: var(--space-2) var(--space-3);
+        border-radius: 8px;
+      }
+
+      .container {
+        width: min(1100px, 92vw);
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid var(--border);
+        background: rgba(11, 18, 32, 0.9);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+      }
+
+      .header-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+        padding: 0.9rem 0;
+      }
+
+      .profile_name {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        font-weight: 700;
+      }
+
+      .brand-home {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        min-height: 56px;
+        padding: 0;
+        border-radius: 12px;
+        border: 1px solid #4d6996;
+        background: #0f1b31;
+        text-decoration: none;
+        color: #d8e7ff;
+        transition:
+          box-shadow 0.25s ease,
+          border-color 0.25s ease,
+          transform 0.2s ease;
+      }
+
+      .brand-home svg {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-home:hover,
+      .brand-home:focus-visible {
+        border-color: #8ef0c5;
+        box-shadow:
+          0 0 0 2px rgba(142, 240, 197, 0.25),
+          0 0 20px rgba(110, 168, 254, 0.45);
+        transform: translateY(-1px);
+      }
+
+      .profile-copy {
+        display: grid;
+      }
+
+      .availability-layout {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .alias {
+        color: var(--accent);
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0.95;
+      }
+
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .topmenu {
+        display: inline-block;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 0.95rem;
+        padding: 0.55rem 0.85rem;
+        border-radius: 10px;
+      }
+
+      .topmenu:hover,
+      .topmenu:focus-visible {
+        background: var(--panel-2);
+        color: #ffffff;
+      }
+
+      section {
+        padding: 3.2rem 0;
+        scroll-margin-top: 88px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-top: 0;
+      }
+
+      h2 {
+        font-size: clamp(1.35rem, 3vw, 2rem);
+      }
+
+      .hero {
+        display: grid;
+        gap: var(--space-4);
+        align-items: start;
+      }
+
+      .hero .panel {
+        height: 100%;
+      }
+
+      .panel {
+        background: linear-gradient(180deg, var(--panel) 0%, #141d31 100%);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: var(--space-4);
+      }
+
+      .panel,
+      .project-card,
+      .skill,
+      .recommendation {
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease,
+          border-color 0.28s ease;
+      }
+
+      .panel:hover,
+      .project-card:hover,
+      .skill:hover,
+      .recommendation:hover {
+        transform: translateY(-3px);
+        border-color: #4f6287;
+        box-shadow: 0 16px 36px rgba(5, 10, 20, 0.42);
+      }
+
+      .name-reveal {
+        display: inline-block;
+        font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: #d8e7ff;
+      }
+
+      .headline-sub {
+        margin-top: 0.35rem;
+        font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+        display: block;
+      }
+
+      .lead {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: var(--muted);
+      }
+
+      .metrics {
+        display: grid;
+        gap: var(--space-3);
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        margin-top: var(--space-4);
+      }
+
+      .metric {
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.9rem;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.2rem;
+        color: var(--accent);
+      }
+
+      .skills-grid,
+      .projects-grid,
+      .recommendations-grid {
+        display: grid;
+        gap: var(--space-3);
+      }
+
+      .skill,
+      .project-card,
+      .recommendation {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1rem;
+      }
+
+      .skills-note {
+        color: var(--muted);
+        margin-bottom: 0.8rem;
+      }
+
+      .skill-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .vote-btn {
+        width: auto;
+        min-width: 86px;
+        min-height: 36px;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid #5e7fb4;
+        background: #173054;
+        color: #dcebff;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .vote-btn:hover,
+      .vote-btn:focus-visible {
+        background: #214171;
+      }
+
+      .skill-votes {
+        margin: 0;
+        color: #c8d8f3;
+        font-size: 0.92rem;
+      }
+
+      .project-card h3 {
+        margin-bottom: 0.4rem;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .lab-grid {
+        display: grid;
+        gap: var(--space-4);
+      }
+
+      .lab-controls {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .puzzle-list {
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .puzzle-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.7rem;
+        align-items: start;
+        padding: 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #101a2f;
+      }
+
+      .puzzle-item small {
+        color: var(--muted);
+      }
+
+      .kpi-chip {
+        display: inline-block;
+        margin-top: 0.35rem;
+        margin-right: 0.35rem;
+        padding: 0.16rem 0.42rem;
+        border: 1px solid #3b4f72;
+        border-radius: 999px;
+        font-size: 0.76rem;
+        color: #c8d8f3;
+      }
+
+      form {
+        display: grid;
+        gap: var(--space-3);
+      }
+
+      label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.35rem;
+      }
+
+      select,
+      textarea,
+      button,
+      input {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #0f1829;
+        color: var(--text);
+        font-size: 1rem;
+        padding: 0.8rem;
+      }
+
+      textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      #recommendation-input {
+        background: #0c1526;
+        border: 1px solid #4f6287;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      }
+
+      #recommendation-input:focus-visible {
+        border-color: #7aa6f7;
+        box-shadow: 0 0 0 3px rgba(110, 168, 254, 0.28);
+      }
+
+      button {
+        min-height: 44px;
+        cursor: pointer;
+        font-weight: 700;
+        background: linear-gradient(180deg, #6ea8fe, #4a82dd);
+        border: none;
+      }
+
+      button:hover,
+      button:focus-visible {
+        filter: brightness(1.05);
+      }
+
+      :focus-visible {
+        outline: 3px solid #ffd36d;
+        outline-offset: 2px;
+      }
+
+      .result {
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: var(--space-3);
+      }
+
+      .result p {
+        margin: 0.35rem 0;
+      }
+
+      .result strong {
+        color: #d8e7ff;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .contact-list a {
+        color: var(--primary);
+      }
+
+      .site-footer {
+        margin: 2.5rem 0 1rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      h1:hover,
+      h2:hover,
+      h3:hover,
+      p:hover,
+      span:hover,
+      strong:hover,
+      small:hover,
+      blockquote:hover,
+      label:hover {
+        color: #ffffff;
+        text-decoration: underline;
+        text-decoration-color: #ffffff;
+        text-underline-offset: 3px;
+      }
+
+      .recommend-form-panel {
+        margin-top: 1rem;
+        width: 100%;
+      }
+
+      #recommend-form {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+
+      #recommendation-input {
+        width: 100%;
+        max-width: 100%;
+        font-size: 0.98rem;
+      }
+
+      .recommendation {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .reveal-up {
+        opacity: 1;
+        transform: none;
+      }
+
+      .profile-photo {
+        width: 130px;
+        height: 160px;
+        max-width: 100%;
+        border-radius: 14px;
+        border: 1px solid #4d6996;
+        box-shadow: var(--shadow);
+        object-fit: cover;
+        object-position: center top;
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease,
+          border-color 0.35s ease,
+          filter 0.35s ease;
+      }
+
+      .profile-media {
+        display: grid;
+        justify-items: center;
+        margin: 0;
+        perspective: 900px;
+        position: relative;
+      }
+
+      .profile-media::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        background: transparent;
+      }
+
+      .profile-media:hover .profile-photo,
+      .profile-media:focus-within .profile-photo {
+        transform: translateY(-4px) scale(1.04) rotateY(-7deg);
+        border-color: #8ef0c5;
+        box-shadow:
+          0 18px 34px rgba(5, 10, 20, 0.5),
+          0 0 0 2px rgba(142, 240, 197, 0.22);
+        filter: saturate(1.06);
+      }
+
+      #recommendations-list {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      #popup .dialog {
+        width: min(92vw, 420px);
+      }
+
+      .home-fab {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        text-decoration: none;
+        background: var(--accent);
+        color: #041220;
+        font-weight: 900;
+        border: 2px solid #d2ffe9;
+      }
+
+      .whatsapp-fab {
+        position: fixed;
+        right: 1rem;
+        bottom: 4.8rem;
+        z-index: 24;
+        min-height: 44px;
+        padding: 0.6rem 0.9rem;
+        border-radius: 999px;
+        text-decoration: none;
+        background: var(--panel-2);
+        color: var(--accent);
+        border: 1px solid #4f6287;
+        box-shadow: var(--shadow);
+        font-weight: 700;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .whatsapp-fab:hover,
+      .whatsapp-fab:focus-visible {
+        transform: translateY(-2px);
+        border-color: #8ef0c5;
+        box-shadow:
+          0 0 0 2px rgba(142, 240, 197, 0.22),
+          0 12px 24px rgba(5, 10, 20, 0.45);
+      }
+
+      .assistant-widget {
+        position: fixed;
+        left: 1rem;
+        bottom: 1rem;
+        z-index: 24;
+      }
+
+      .assistant-toggle {
+        width: auto;
+        min-width: 130px;
+        min-height: 44px;
+        padding: 0.6rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid #5e7fb4;
+        background: #173054;
+        color: #dcebff;
+        font-weight: 700;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease,
+          border-color 0.25s ease,
+          background 0.25s ease;
+      }
+
+      .assistant-toggle:hover,
+      .assistant-toggle:focus-visible {
+        transform: translateY(-3px) scale(1.04);
+        border-color: #8ef0c5;
+        background: #214171;
+        box-shadow:
+          0 0 0 2px rgba(142, 240, 197, 0.22),
+          0 14px 28px rgba(5, 10, 20, 0.5);
+      }
+
+      .assistant-panel {
+        width: min(360px, 92vw);
+        margin-top: 0.55rem;
+        background: linear-gradient(180deg, var(--panel) 0%, #141d31 100%);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 0.85rem;
+      }
+
+      .assistant-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .assistant-title {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .assistant-close {
+        width: 36px;
+        min-height: 36px;
+        padding: 0;
+        border-radius: 999px;
+        border: 1px solid #4f6287;
+        background: #10203a;
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .assistant-feed {
+        display: grid;
+        gap: 0.55rem;
+        max-height: 220px;
+        overflow-y: auto;
+        padding-right: 0.2rem;
+      }
+
+      .assistant-msg {
+        margin: 0;
+        padding: 0.5rem 0.65rem;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        font-size: 0.92rem;
+      }
+
+      .assistant-msg.bot {
+        background: #101a2f;
+        color: #d8e7ff;
+      }
+
+      .assistant-msg.user {
+        background: #173054;
+        color: #eaf3ff;
+        border-color: #5e7fb4;
+      }
+
+      .assistant-quick {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin: 0.6rem 0;
+      }
+
+      .assistant-chip {
+        width: auto;
+        min-height: 32px;
+        padding: 0.3rem 0.55rem;
+        border-radius: 999px;
+        border: 1px solid #4f6287;
+        background: #10203a;
+        color: #d8e7ff;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .assistant-form {
+        display: grid;
+        gap: 0.45rem;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+
+      #assistant-input {
+        min-height: 40px;
+        padding: 0.6rem 0.7rem;
+        font-size: 0.92rem;
+      }
+
+      .assistant-form button {
+        width: auto;
+        min-height: 40px;
+        padding: 0.55rem 0.8rem;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      #popup {
+        position: fixed;
+        inset: 0;
+        display: none;
+        place-items: center;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 30;
+      }
+
+      #popup.active {
+        display: grid;
+      }
+
+      #popup .dialog {
+        width: min(460px, 92vw);
+        background: #0f1829;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: var(--space-4);
+      }
+
+      @media (min-width: 768px) {
+        .hero {
+          grid-template-columns: 1.2fr 0.8fr;
+        }
+
+        .skills-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .recommendations-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .lab-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .header-inner {
+          justify-content: center;
+        }
+
+        nav ul {
+          justify-content: center;
+        }
+
+        .topmenu {
+          padding: 0.45rem 0.65rem;
+          font-size: 0.9rem;
+        }
+
+        .profile_name {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .availability-layout {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          text-align: center;
+        }
+
+        .recommendations-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .recommend-form-panel {
+          padding: 1rem;
+        }
+
+        #recommendation-input {
+          min-height: 120px;
+          font-size: 0.95rem;
+        }
+
+        #popup .dialog {
+          padding: 1rem;
+        }
+
+        .assistant-widget {
+          left: 0.75rem;
+          bottom: 0.75rem;
+        }
+
+        .assistant-panel {
+          width: min(94vw, 360px);
+          max-height: 72vh;
+        }
+
+        .assistant-feed {
+          max-height: 190px;
+        }
+
+        .whatsapp-fab {
+          right: 0.75rem;
+          bottom: 4.4rem;
+        }
+
+        .assistant-toggle {
+          min-width: 124px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .skills-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .recommendations-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div id="home" aria-hidden="true"></div>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+    <header aria-label="Encabezado principal">
+      <div class="container header-inner">
+        <div class="profile_name" aria-label="Nombre profesional">
+          <a class="brand-home home-link" href="#home" aria-label="Ir al Home">
+            <svg
+              viewBox="0 0 120 120"
+              role="img"
+              aria-label="Logo pan_dev cloud node"
+            >
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#6ea8fe" />
+                  <stop offset="100%" stop-color="#8ef0c5" />
+                </linearGradient>
+                <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#b8d8ff" />
+                  <stop offset="100%" stop-color="#6ea8fe" />
+                </linearGradient>
+              </defs>
+              <rect
+                x="10"
+                y="10"
+                width="100"
+                height="100"
+                rx="20"
+                fill="#0b1220"
+                stroke="url(#g1)"
+                stroke-width="5"
+              />
+              <path
+                d="M30 78c-9 0-15-6-15-14 0-8 6-14 14-14 2-11 11-19 25-19 11 0 21 7 24 17 8 0 14 6 14 14 0 9-6 16-16 16H30z"
+                fill="none"
+                stroke="url(#g1)"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="43" cy="62" r="4" fill="#8ef0c5" />
+              <circle cx="60" cy="54" r="4.2" fill="#d8e7ff" />
+              <circle cx="77" cy="62" r="4" fill="#8ef0c5" />
+              <path
+                d="M43 62l17-8 17 8"
+                fill="none"
+                stroke="url(#g2)"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M43 72h34"
+                fill="none"
+                stroke="url(#g1)"
+                stroke-width="2.6"
+                stroke-linecap="round"
+              />
+              <path
+                d="M24 92h72"
+                stroke="url(#g2)"
+                stroke-width="2"
+                opacity="0.6"
+              />
+            </svg>
+          </a>
+          <div class="profile-copy">
+            <span>pan_dev</span>
+            <span class="alias" aria-label="Rol profesional"
+              >Desarrollador Fullstack</span
+            >
+          </div>
+        </div>
+        <nav aria-label="Navegación principal">
+          <ul>
+            <li><a class="topmenu home-link" href="#home">Inicio</a></li>
+            <li><a class="topmenu" href="#aboutme">Sobre mí</a></li>
+            <li><a class="topmenu" href="#skills">Skills</a></li>
+            <li><a class="topmenu" href="#projects">Proyectos</a></li>
+            <li><a class="topmenu" href="#business-lab">Business Lab</a></li>
+            <li>
+              <a class="topmenu" href="#recommendations">Recomendaciones</a>
+            </li>
+            <li><a class="topmenu" href="#contact">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="container">
+      <section class="hero" aria-labelledby="home-title">
+        <div class="panel reveal-up">
+          <h1 id="home-title">
+            <span class="headline-sub"
+              >Desarrollador Fullstack con enfoque en producto y diseño
+              multimedia</span
+            >
+          </h1>
+          <p class="lead">
+            Diseño y desarrollo soluciones web orientadas a negocio, accesibles
+            y mantenibles. Integro criterio técnico y comunicación visual para
+            ejecutar entregas claras, medibles y escalables.
+          </p>
+          <div class="metrics" aria-label="Indicadores de experiencia">
+            <div class="metric">
+              <strong>+5K</strong> Alcance en iniciativa educativa
+            </div>
+            <div class="metric">
+              <strong>3+</strong> Proyectos con impacto documentado
+            </div>
+            <div class="metric">
+              <strong>Desarrollador</strong> Base técnica fullstack aplicada
+            </div>
+          </div>
+        </div>
+        <aside class="panel reveal-up" aria-label="Disponibilidad profesional">
+          <div class="availability-layout">
+            <figure class="profile-media">
+              <img
+                id="profile-photo"
+                class="profile-photo"
+                src="assets/foto.png"
+                alt="Foto de perfil de pan_dev"
+                width="876"
+                height="1113"
+                loading="eager"
+                decoding="async"
+                draggable="false"
+                referrerpolicy="no-referrer"
+              />
+            </figure>
+            <div>
+              <h2>Disponibilidad</h2>
+              <p class="muted">Bogotá, Colombia · Remoto/Híbrido</p>
+              <p class="muted">
+                Disponible para proyectos y roles de desarrollo fullstack con
+                foco en frontend productivo, backend API y calidad de entrega.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="aboutme" aria-labelledby="aboutme-title">
+        <h2 id="aboutme-title">Sobre mí</h2>
+        <div class="panel reveal-up">
+          <p>
+            Soy pan_dev, Desarrollador Fullstack orientado a producto.
+            Participo en iniciativas educativas, gubernamentales e
+            infraestructura tecnológica, alineando alcance, ejecución técnica y
+            calidad para cumplir objetivos de negocio.
+          </p>
+          <p class="muted">
+            Intereses: automatización IA, prompt engineer, frontend
+            productivo y backend API.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills</h2>
+        <p class="skills-note">
+          Vota la skill que más valoras para un rol de desarrollador fullstack.
+        </p>
+        <div class="skills-grid">
+          <article class="skill reveal-up" data-skill="JavaScript">
+            <div class="skill-head">
+              <strong>JavaScript</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por JavaScript"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+          <article class="skill reveal-up" data-skill="Python">
+            <div class="skill-head">
+              <strong>Python</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por Python"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+          <article class="skill reveal-up" data-skill="React">
+            <div class="skill-head">
+              <strong>React</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por React"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+          <article class="skill reveal-up" data-skill="Git/GitHub">
+            <div class="skill-head">
+              <strong>Git/GitHub</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por Git y GitHub"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+          <article class="skill reveal-up" data-skill="APIs REST">
+            <div class="skill-head">
+              <strong>APIs REST</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por APIs REST"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+          <article class="skill reveal-up" data-skill="Prompt Engineer">
+            <div class="skill-head">
+              <strong>Prompt Engineer</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por Prompt Engineer"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+          <article class="skill reveal-up" data-skill="SQL básico">
+            <div class="skill-head">
+              <strong>SQL básico</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por SQL básico"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+          <article class="skill reveal-up" data-skill="UX/UI">
+            <div class="skill-head">
+              <strong>UX/UI</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por UX/UI"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+          <article class="skill reveal-up" data-skill="Diseño Multimedia">
+            <div class="skill-head">
+              <strong>Diseño Multimedia</strong>
+              <button
+                class="vote-btn"
+                type="button"
+                aria-label="Votar por Diseño Multimedia"
+              >
+                Votar
+              </button>
+            </div>
+            <p class="skill-votes">
+              Votos: <span class="vote-count" aria-live="polite">0</span>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Proyectos</h2>
+        <div class="projects-grid">
+          <article class="project-card reveal-up">
+            <h3>Plataforma Digital Gubernamental</h3>
+            <p class="muted">
+              Contexto: modernización de servicios para Alcaldía de Sogamoso.
+            </p>
+            <p>
+              <strong>Rol:</strong> desarrollo de componentes web y flujos de
+              información.
+            </p>
+            <p>
+              <strong>Stack:</strong> JavaScript, HTML5, CSS3, integración de
+              contenidos.
+            </p>
+            <p>
+              <strong>Resultado:</strong> iniciativa reconocida con sello
+              MinTIC.
+            </p>
+          </article>
+          <article class="project-card reveal-up">
+            <h3>Infraestructura Data Center</h3>
+            <p class="muted">
+              Contexto: soporte a operación crítica en ASIGMA/Telefónica.
+            </p>
+            <p>
+              <strong>Rol:</strong> documentación técnica, seguimiento operativo
+              y mejora de procesos.
+            </p>
+            <p>
+              <strong>Stack:</strong> herramientas TI, gestión operativa,
+              reportes estructurados.
+            </p>
+            <p>
+              <strong>Resultado:</strong> mayor continuidad y trazabilidad de
+              servicio.
+            </p>
+          </article>
+          <article class="project-card reveal-up">
+            <h3>Estrategia Digital Educativa</h3>
+            <p class="muted">
+              Contexto: posicionamiento y alcance para Colegio Superior
+              Americano.
+            </p>
+            <p>
+              <strong>Rol:</strong> diseño multimedia, contenidos y ejecución
+              digital.
+            </p>
+            <p>
+              <strong>Stack:</strong> social media, diseño visual, analítica
+              básica.
+            </p>
+            <p>
+              <strong>Resultado:</strong> alcance superior a 5.000 personas.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="business-lab" aria-labelledby="lab-title">
+        <h2 id="lab-title">
+          Business Lab · Simulador de Sprint Fullstack
+        </h2>
+        <p class="muted">
+          Simula la planificación de un sprint con capacidad limitada para
+          priorizar valor, complejidad y dependencias en un contexto real de
+          producto.
+        </p>
+        <div class="lab-grid">
+          <div class="panel reveal-up">
+            <!-- Simulador de sprint: selección de iniciativas con capacidad limitada -->
+            <form
+              id="lab-form"
+              aria-label="Formulario de simulación de sprint fullstack"
+            >
+              <div class="lab-controls">
+                <div>
+                  <label for="risk-profile">Estrategia de entrega</label>
+                  <select id="risk-profile" name="risk-profile" required>
+                    <option value="conservador">Estabilidad</option>
+                    <option value="balanceado" selected>Balance</option>
+                    <option value="agresivo">Aceleración</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="sprint-budget">Capacidad del sprint (h)</label>
+                  <select id="sprint-budget" name="sprint-budget" required>
+                    <option value="40">40 h</option>
+                    <option value="60">60 h</option>
+                    <option value="80">80 h</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="puzzle-list" aria-label="Activos disponibles">
+                <label class="puzzle-item" for="task-auth">
+                  <input
+                    id="task-auth"
+                    type="checkbox"
+                    name="initiative"
+                    value="auth"
+                  />
+                  <span>
+                    Autenticación segura
+                    <small
+                      >Esfuerzo: 18h · Valor estimado: 9/10 · Dependencia:
+                      Backend</small
+                    >
+                  </span>
+                </label>
+                <label class="puzzle-item" for="task-dashboard">
+                  <input
+                    id="task-dashboard"
+                    type="checkbox"
+                    name="initiative"
+                    value="dashboard"
+                  />
+                  <span>
+                    Dashboard de métricas
+                    <small
+                      >Esfuerzo: 14h · Valor estimado: 8/10 · Dependencia:
+                      Analytics API</small
+                    >
+                  </span>
+                </label>
+                <label class="puzzle-item" for="task-api">
+                  <input
+                    id="task-api"
+                    type="checkbox"
+                    name="initiative"
+                    value="api"
+                  />
+                  <span>
+                    API de órdenes
+                    <small
+                      >Esfuerzo: 20h · Valor estimado: 9/10 · Dependencia:
+                      Base de datos</small
+                    >
+                  </span>
+                </label>
+                <label class="puzzle-item" for="task-a11y">
+                  <input
+                    id="task-a11y"
+                    type="checkbox"
+                    name="initiative"
+                    value="a11y"
+                  />
+                  <span>
+                    Accesibilidad y QA UI
+                    <small
+                      >Esfuerzo: 10h · Valor estimado: 7/10 · Dependencia:
+                      Frontend</small
+                    >
+                  </span>
+                </label>
+                <label class="puzzle-item" for="task-seo">
+                  <input
+                    id="task-seo"
+                    type="checkbox"
+                    name="initiative"
+                    value="seo"
+                  />
+                  <span>
+                    SEO técnico y performance
+                    <small
+                      >Esfuerzo: 8h · Valor estimado: 6/10 · Dependencia:
+                      Frontend</small
+                    >
+                  </span>
+                </label>
+              </div>
+
+              <button type="submit" id="evaluate-btn">
+                Evaluar sprint
+              </button>
+            </form>
+          </div>
+
+          <aside
+            class="panel result reveal-up"
+            aria-live="polite"
+            aria-atomic="true"
+            aria-label="Resultado del laboratorio"
+          >
+            <h3>Resultado</h3>
+            <p>
+              <strong>Capacidad comprometida:</strong>
+              <span id="result-capacity">Pendiente</span>
+            </p>
+            <p>
+              <strong>Valor potencial:</strong>
+              <span id="result-impact">Pendiente</span>
+            </p>
+            <p>
+              <strong>Riesgo de entrega:</strong>
+              <span id="result-risk">Pendiente</span>
+            </p>
+            <p>
+              <strong>Lectura técnica:</strong>
+              <span id="result-recruiter"
+                >Completa la simulación para evaluar.</span
+              >
+            </p>
+            <div>
+              <span class="kpi-chip" id="chip-focus">Estrategia: —</span>
+              <span class="kpi-chip" id="chip-balance">Diversificación: —</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="recommendations" aria-labelledby="recommendations-title">
+        <h2 id="recommendations-title">Recomendaciones</h2>
+        <div
+          class="recommendations-grid"
+          id="recommendations-list"
+          aria-label="Lista de recomendaciones"
+        >
+          <blockquote class="recommendation">
+            pan_dev destaca por su capacidad de transformar requerimientos
+            ambiguos en entregas claras, con foco en experiencia de usuario y
+            objetivos medibles para el equipo de producto.
+          </blockquote>
+          <blockquote class="recommendation">
+            Su aporte combina criterio visual y disciplina técnica. Entrega
+            interfaces limpias, bien estructuradas y fáciles de mantener para
+            equipos en crecimiento.
+          </blockquote>
+          <blockquote class="recommendation">
+            Tiene una actitud proactiva para aprender rápido, documentar
+            decisiones y colaborar con perfiles técnicos y no técnicos en
+            contextos reales.
+          </blockquote>
+        </div>
+        <div class="panel recommend-form-panel">
+          <!-- Seguridad: input sanitizado y render solo con textContent -->
+          <form id="recommend-form" aria-label="Agregar recomendación">
+            <label for="recommendation-input">Agregar recomendación</label>
+            <textarea
+              id="recommendation-input"
+              name="recommendation"
+              maxlength="100"
+              placeholder="Escribe una recomendación (máx 100 caracteres)."
+              required
+            ></textarea>
+            <button type="submit" id="recommend_btn">
+              Enviar recomendación
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contacto</h2>
+        <div class="panel contact-list">
+          <span><strong>Nombre:</strong> pan_dev</span>
+          <span><strong>Ubicación:</strong> Bogotá, Colombia</span>
+          <a href="mailto:palosuarez@gmail.com">palosuarez@gmail.com</a>
+        </div>
+      </section>
+
+      <footer class="site-footer" aria-label="Créditos">
+        © 2026 pan_dev
+      </footer>
+    </main>
+
+    <a
+      class="whatsapp-fab"
+      href="https://wa.me/573222061362?text=Hola%20pan_dev%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20tu%20perfil%20profesional."
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+      >WhatsApp</a
+    >
+
+    <div class="assistant-widget" aria-label="Asistente virtual">
+      <button
+        type="button"
+        id="assistant-toggle"
+        class="assistant-toggle"
+        aria-expanded="false"
+        aria-controls="assistant-panel"
+      >
+        Asistente
+      </button>
+      <section
+        id="assistant-panel"
+        class="assistant-panel"
+        aria-label="Panel del asistente"
+        hidden
+      >
+        <div class="assistant-head">
+          <h3 class="assistant-title">Asistente pan_dev</h3>
+          <button
+            type="button"
+            id="assistant-close"
+            class="assistant-close"
+            aria-label="Cerrar asistente"
+          >
+            ×
+          </button>
+        </div>
+        <div id="assistant-feed" class="assistant-feed" aria-live="polite">
+          <p class="assistant-msg bot">
+            Hola, soy tu asistente. Puedo resumirte perfil, skills,
+            proyectos, Business Lab y contacto.
+          </p>
+        </div>
+        <div class="assistant-quick" aria-label="Preguntas rápidas">
+          <button type="button" class="assistant-chip" data-question="perfil">
+            Perfil
+          </button>
+          <button type="button" class="assistant-chip" data-question="skills">
+            Skills
+          </button>
+          <button
+            type="button"
+            class="assistant-chip"
+            data-question="proyectos"
+          >
+            Proyectos
+          </button>
+          <button type="button" class="assistant-chip" data-question="contacto">
+            Contacto
+          </button>
+        </div>
+        <form id="assistant-form" class="assistant-form" aria-label="Chat">
+          <label class="visually-hidden" for="assistant-input"
+            >Mensaje para el asistente</label
+          >
+          <input
+            id="assistant-input"
+            name="assistant-input"
+            type="text"
+            maxlength="120"
+            placeholder="Pregunta algo del portafolio"
+            autocomplete="off"
+          />
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+    </div>
+
+    <a class="home-fab home-link" href="#home" aria-label="Volver al inicio"
+      >↑</a
+    >
+
+    <div
+      id="popup"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="popup-title"
+      aria-hidden="true"
+    >
+      <div class="dialog">
+        <h3 id="popup-title">Recomendación enviada</h3>
+        <p>Gracias. La recomendación se agregó correctamente.</p>
+        <button type="button" id="popup-close">Cerrar</button>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        'use strict';
+
+        // =========================
+        // Domain model
+        // =========================
+
+        const initiativeCatalog = {
+          auth: { capital: 18, returnPct: 0.9, risk: 3, tag: 'Backend' },
+          dashboard: { capital: 14, returnPct: 0.8, risk: 2, tag: 'Frontend' },
+          api: { capital: 20, returnPct: 0.9, risk: 3, tag: 'Backend' },
+          a11y: { capital: 10, returnPct: 0.7, risk: 1, tag: 'Calidad' },
+          seo: { capital: 8, returnPct: 0.6, risk: 1, tag: 'Frontend' },
+        };
+
+        const profileConfig = {
+          conservador: {
+            returnFactor: 0.85,
+            riskAdjust: -0.35,
+            label: 'Estabilidad',
+          },
+          balanceado: { returnFactor: 1, riskAdjust: 0, label: 'Balance' },
+          agresivo: {
+            returnFactor: 1.2,
+            riskAdjust: 0.35,
+            label: 'Aceleración',
+          },
+        };
+
+        const storageKeys = {
+          skillVoteCounts: 'pan_dev_skill_vote_counts_v1',
+          skillUserVotes: 'pan_dev_skill_user_votes_v1',
+        };
+
+        // =========================
+        // UI references
+        // =========================
+
+        const dom = {
+          labForm: document.getElementById('lab-form'),
+          sprintBudget: document.getElementById('sprint-budget'),
+          riskProfile: document.getElementById('risk-profile'),
+          resultCapacity: document.getElementById('result-capacity'),
+          resultImpact: document.getElementById('result-impact'),
+          resultRisk: document.getElementById('result-risk'),
+          resultRecruiter: document.getElementById('result-recruiter'),
+          chipFocus: document.getElementById('chip-focus'),
+          chipBalance: document.getElementById('chip-balance'),
+          popup: document.getElementById('popup'),
+          popupClose: document.getElementById('popup-close'),
+          recommendationForm: document.getElementById('recommend-form'),
+          recommendationInput: document.getElementById('recommendation-input'),
+          recommendationsList: document.getElementById('recommendations-list'),
+          assistantFeed: document.getElementById('assistant-feed'),
+          assistantPanel: document.getElementById('assistant-panel'),
+          assistantToggle: document.getElementById('assistant-toggle'),
+          assistantClose: document.getElementById('assistant-close'),
+          assistantForm: document.getElementById('assistant-form'),
+          assistantInput: document.getElementById('assistant-input'),
+          assistantChips: document.querySelectorAll('.assistant-chip[data-question]'),
+          homeLinks: document.querySelectorAll('.home-link'),
+          skillCards: document.querySelectorAll('.skill[data-skill]'),
+          profilePhoto: document.getElementById('profile-photo'),
+          profileMedia: document.querySelector('.profile-media'),
+        };
+
+        const voteCounts = safeJsonParse(
+          localStorage.getItem(storageKeys.skillVoteCounts),
+          {}
+        );
+        const userVotes = safeJsonParse(
+          localStorage.getItem(storageKeys.skillUserVotes),
+          {}
+        );
+
+        /**
+         * Normaliza y sanitiza texto de entrada para evitar caracteres peligrosos
+         * y mantener longitud de mensajes bajo control.
+         */
+        function sanitizeInput(input) {
+          const text = String(input || '')
+            .replace(/[<>`"']/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+          return text.slice(0, 100);
+        }
+
+        function safeJsonParse(value, fallback) {
+          try {
+            const parsed = JSON.parse(value);
+            return parsed && typeof parsed === 'object' ? parsed : fallback;
+          } catch {
+            return fallback;
+          }
+        }
+
+        function evaluateSprintPlan(selectedKeys, capacity, profileKey) {
+          const profile = profileConfig[profileKey] || profileConfig.balanceado;
+          const totals = selectedKeys.reduce(
+            (accumulator, key) => {
+              const item = initiativeCatalog[key];
+              if (!item) {
+                return accumulator;
+              }
+
+              accumulator.capital += item.capital;
+              accumulator.expectedUsd +=
+                item.capital * item.returnPct * profile.returnFactor;
+              accumulator.weightedRisk += item.risk * item.capital;
+              accumulator.tags.add(item.tag);
+              return accumulator;
+            },
+            { capital: 0, expectedUsd: 0, weightedRisk: 0, tags: new Set() }
+          );
+
+          const overflow = totals.capital - capacity;
+          const weightedRisk = totals.capital
+            ? totals.weightedRisk / totals.capital + profile.riskAdjust
+            : 0;
+          const weightedReturnPct = totals.capital
+            ? totals.expectedUsd / totals.capital
+            : 0;
+
+          let risk = 'Bajo';
+          if (weightedRisk >= 2.2 || overflow > capacity * 0.2) {
+            risk = 'Alto';
+          } else if (weightedRisk >= 1.5 || overflow > 0) {
+            risk = 'Medio';
+          }
+
+          const balance =
+            totals.tags.size >= 3 ? 'Cobertura amplia' : 'Foco puntual';
+          const focus = weightedReturnPct >= 0.75 ? profile.label : 'Estabilidad';
+
+          let recruiter =
+            'Plan equilibrado con buena relación entre capacidad y valor.';
+          if (overflow > 0) {
+            recruiter =
+              'Sobrecarga detectada: reduce alcance o amplía capacidad del sprint.';
+          }
+          if (!selectedKeys.length) {
+            recruiter = 'Selecciona al menos una iniciativa para evaluar estrategia.';
+          }
+          if (risk === 'Alto' && profileKey === 'conservador') {
+            recruiter =
+              'La estrategia y la selección no están alineadas; reduce complejidad.';
+          }
+
+          return {
+            capacityText: `${totals.capital.toLocaleString()}h / ${Number(capacity).toLocaleString()}h`,
+            impactText: `${totals.expectedUsd.toFixed(1)} pts (~${(weightedReturnPct * 10).toFixed(1)}/10)`,
+            risk,
+            recruiter,
+            focus,
+            balance,
+          };
+        }
+
+        function renderStrategyResult(result) {
+          if (
+            !dom.resultCapacity ||
+            !dom.resultImpact ||
+            !dom.resultRisk ||
+            !dom.resultRecruiter ||
+            !dom.chipFocus ||
+            !dom.chipBalance
+          ) {
+            return;
+          }
+
+          dom.resultCapacity.textContent = result.capacityText;
+          dom.resultImpact.textContent = result.impactText;
+          dom.resultRisk.textContent = result.risk;
+          dom.resultRecruiter.textContent = result.recruiter;
+          dom.chipFocus.textContent = `Estrategia: ${result.focus}`;
+          dom.chipBalance.textContent = `Diversificación: ${result.balance}`;
+        }
+
+        function showPopup(show) {
+          if (!dom.popup) {
+            return;
+          }
+          dom.popup.classList.toggle('active', Boolean(show));
+          dom.popup.setAttribute('aria-hidden', String(!show));
+        }
+
+        /**
+         * Motor de respuestas rápidas del asistente.
+         * Regla: respuestas breves, concretas y orientadas a negocio.
+         */
+        function getAssistantReply(question) {
+          const text = String(question || '').toLowerCase();
+
+          if (/hola|buenas|hello/.test(text)) {
+            return 'Hola. Te puedo contar perfil, skills, proyectos, Business Lab y vías de contacto.';
+          }
+          if (/perfil|sobre|quien|experiencia/.test(text)) {
+            return 'pan_dev es Desarrollador Fullstack orientado a producto, con experiencia en iniciativas educativas, gubernamentales e infraestructura tecnológica.';
+          }
+          if (/skill|stack|tecnolog|prompt|ia/.test(text)) {
+            return 'Stack destacado: JavaScript, Python, React, APIs REST, SQL básico, UX/UI, Git/GitHub y Prompt Engineer con foco en automatización IA.';
+          }
+          if (/proyecto|caso|trabajo|business lab|sprint/.test(text)) {
+            return 'Proyectos clave: plataforma gubernamental, operación de infraestructura y estrategia digital educativa. En Business Lab puedes simular un sprint fullstack por capacidad, valor y riesgo.';
+          }
+          if (/contacto|whatsapp|correo|email/.test(text)) {
+            return 'Puedes contactar por correo desde la sección Contacto o por el botón de WhatsApp disponible en pantalla.';
+          }
+          if (/disponibilidad|remoto|bogota|ubicacion/.test(text)) {
+            return 'Disponibilidad actual: Bogotá, Colombia, con modalidad remota o híbrida.';
+          }
+
+          return 'Puedo ayudarte con perfil, skills, proyectos, Business Lab, disponibilidad y contacto.';
+        }
+
+        function appendAssistantMessage(role, message) {
+          if (!dom.assistantFeed) {
+            return;
+          }
+          const item = document.createElement('p');
+          item.className = `assistant-msg ${role}`;
+          item.textContent = message;
+          dom.assistantFeed.appendChild(item);
+          dom.assistantFeed.scrollTop = dom.assistantFeed.scrollHeight;
+        }
+
+        function setAssistantOpen(open) {
+          if (!dom.assistantPanel || !dom.assistantToggle) {
+            return;
+          }
+          dom.assistantPanel.hidden = !open;
+          dom.assistantToggle.setAttribute('aria-expanded', String(open));
+        }
+
+        /**
+         * Punto único para procesar preguntas y renderizar diálogo.
+         */
+        function handleAssistantQuestion(rawQuestion) {
+          const question = sanitizeInput(rawQuestion);
+          if (!question.length) {
+            return;
+          }
+          appendAssistantMessage('user', question);
+          appendAssistantMessage('bot', getAssistantReply(question));
+        }
+
+        // Protección visual básica de la foto (disuasiva, no criptográfica).
+        function hardenProfileMedia() {
+          if (!dom.profilePhoto || !dom.profileMedia) {
+            return;
+          }
+
+          let lastProtectedNotice = 0;
+          const blockAction = (event) => {
+            event.preventDefault();
+            const now = Date.now();
+            if (now - lastProtectedNotice > 1200) {
+              alert('La imagen de perfil está protegida.');
+              lastProtectedNotice = now;
+            }
+          };
+
+          dom.profilePhoto.addEventListener('contextmenu', blockAction);
+          dom.profilePhoto.addEventListener('dragstart', blockAction);
+          dom.profileMedia.addEventListener('contextmenu', blockAction);
+          dom.profileMedia.addEventListener('dragstart', blockAction);
+
+          try {
+            if (window.top !== window.self) {
+              window.top.location = window.self.location;
+            }
+          } catch {
+            window.self.location = window.location.href;
+          }
+        }
+
+        function addRecommendation() {
+          if (!dom.recommendationInput || !dom.recommendationsList) {
+            return;
+          }
+
+          const sanitized = sanitizeInput(dom.recommendationInput.value);
+          if (!sanitized.length) {
+            dom.recommendationInput.setCustomValidity(
+              'Escribe una recomendación antes de enviar.'
+            );
+            dom.recommendationInput.reportValidity();
+            return;
+          }
+
+          if (sanitized.length > 100) {
+            dom.recommendationInput.setCustomValidity('Máximo 100 caracteres.');
+            dom.recommendationInput.reportValidity();
+            return;
+          }
+
+          dom.recommendationInput.setCustomValidity('');
+          const item = document.createElement('blockquote');
+          item.className = 'recommendation';
+          item.textContent = sanitized;
+          dom.recommendationsList.appendChild(item);
+
+          dom.recommendationInput.value = '';
+          showPopup(true);
+        }
+
+        // =========================
+        // Feature initializers
+        // =========================
+        function initLabForm() {
+          if (!dom.labForm || !dom.sprintBudget || !dom.riskProfile) {
+            return;
+          }
+
+          dom.labForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const capacity = Number(dom.sprintBudget.value);
+            const profile = dom.riskProfile.value;
+            const selected = Array.from(
+              document.querySelectorAll('input[name="initiative"]:checked')
+            ).map((item) => item.value);
+            const result = evaluateSprintPlan(selected, capacity, profile);
+            renderStrategyResult(result);
+          });
+        }
+
+        function initSkillVoting() {
+          dom.skillCards.forEach((card) => {
+            const skillName = card.dataset.skill;
+            const voteBtn = card.querySelector('.vote-btn');
+            const countEl = card.querySelector('.vote-count');
+            if (!skillName || !voteBtn || !countEl) {
+              return;
+            }
+
+            countEl.textContent = String(Number(voteCounts[skillName] || 0));
+
+            voteBtn.addEventListener('click', () => {
+              if (userVotes[skillName]) {
+                alert('Solo puedes votar una vez por esta skill.');
+                return;
+              }
+
+              const nextCount = Number(voteCounts[skillName] || 0) + 1;
+              voteCounts[skillName] = nextCount;
+              userVotes[skillName] = true;
+              countEl.textContent = String(nextCount);
+
+              localStorage.setItem(
+                storageKeys.skillVoteCounts,
+                JSON.stringify(voteCounts)
+              );
+              localStorage.setItem(
+                storageKeys.skillUserVotes,
+                JSON.stringify(userVotes)
+              );
+            });
+          });
+        }
+
+        function initRecommendationForm() {
+          if (dom.recommendationForm) {
+            dom.recommendationForm.addEventListener('submit', (event) => {
+              event.preventDefault();
+              addRecommendation();
+            });
+          }
+
+          if (dom.popupClose) {
+            dom.popupClose.addEventListener('click', () => {
+              showPopup(false);
+            });
+          }
+        }
+
+        function initAssistant() {
+          if (
+            !dom.assistantToggle ||
+            !dom.assistantPanel ||
+            !dom.assistantClose ||
+            !dom.assistantForm ||
+            !dom.assistantInput
+          ) {
+            return;
+          }
+
+          dom.assistantToggle.addEventListener('click', () => {
+            const willOpen = dom.assistantPanel.hidden;
+            setAssistantOpen(willOpen);
+            if (willOpen) {
+              dom.assistantInput.focus();
+            }
+          });
+
+          dom.assistantClose.addEventListener('click', () => {
+            setAssistantOpen(false);
+          });
+
+          dom.assistantChips.forEach((chip) => {
+            chip.addEventListener('click', () => {
+              const quickMap = {
+                perfil: 'perfil',
+                skills: 'skills',
+                proyectos: 'proyectos',
+                contacto: 'contacto',
+              };
+              const question = quickMap[chip.dataset.question] || 'perfil';
+              handleAssistantQuestion(question);
+              setAssistantOpen(true);
+            });
+          });
+
+          dom.assistantForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            handleAssistantQuestion(dom.assistantInput.value);
+            dom.assistantInput.value = '';
+          });
+        }
+
+        function initHomeLinks() {
+          dom.homeLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              history.replaceState(null, '', '#home');
+            });
+          });
+        }
+
+        // Orquestación de arranque de la app.
+        function init() {
+          initLabForm();
+          initSkillVoting();
+          initRecommendationForm();
+          initAssistant();
+          initHomeLinks();
+          hardenProfileMedia();
+        }
+
+        init();
+      })();
+    </script>
   </body>
 </html>
