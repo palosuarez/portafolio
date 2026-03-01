@@ -142,7 +142,20 @@
       }
 
       .profile-copy {
-        display: grid;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        line-height: 1.15;
+      }
+
+      .profile-copy > span:first-child {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .profile-copy span:hover {
+        text-decoration: none !important;
       }
 
       .availability-layout {
@@ -170,18 +183,31 @@
 
       .topmenu {
         display: inline-block;
+        position: relative;
         text-decoration: none;
         color: var(--text);
         font-size: 0.95rem;
         padding: 0.55rem 0.85rem;
         border-radius: 10px;
         font-weight: 500;
-        text-underline-offset: 3px;
         transition:
           background 0.2s ease,
           color 0.2s ease,
-          text-decoration-color 0.2s ease,
           font-weight 0.2s ease;
+      }
+
+      .topmenu::after {
+        content: '';
+        position: absolute;
+        left: 0.85rem;
+        right: 0.85rem;
+        bottom: 0.38rem;
+        height: 2px;
+        border-radius: 999px;
+        background: #d8e7ff;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.2s ease;
       }
 
       .topmenu:hover,
@@ -189,9 +215,11 @@
         background: var(--panel-2);
         color: #ffffff;
         font-weight: 700;
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-decoration-color: #d8e7ff;
+      }
+
+      .topmenu:hover::after,
+      .topmenu:focus-visible::after {
+        transform: scaleX(1);
       }
 
       section {
@@ -324,13 +352,14 @@
         content: var(--skill-glyph, '•');
         display: inline-grid;
         place-items: center;
-        width: 24px;
+        min-width: 26px;
+        padding: 0 0.34rem;
         height: 24px;
         border-radius: 7px;
         border: 1px solid #4f6287;
         background: var(--skill-bg, #10203a);
         color: var(--skill-fg, #d8e7ff);
-        font-size: 0.68rem;
+        font-size: 0.62rem;
         font-weight: 800;
         letter-spacing: 0.02em;
       }
@@ -554,12 +583,7 @@
       h1:hover,
       h2:hover,
       h3:hover,
-      p:hover,
-      span:hover,
-      strong:hover,
-      small:hover,
-      blockquote:hover,
-      label:hover {
+      strong:hover {
         color: #ffffff;
         text-decoration: underline;
         text-decoration-color: #ffffff;
@@ -1116,7 +1140,7 @@
         <div class="panel reveal-up">
           <p>
             Soy Pablo Suárez, Junior Developer orientado a producto.
-            Participo en iniciativas educativas, gubernamentales e
+            He contribuido en iniciativas educativas, gubernamentales e
             infraestructura tecnológica, alineando alcance, ejecución técnica y
             calidad para cumplir objetivos de negocio.
           </p>
@@ -1534,7 +1558,7 @@
       </section>
 
       <footer class="site-footer" aria-label="Créditos">
-        © 2026 pan_dev
+        © 2026 palosuarez
       </footer>
     </main>
 
@@ -1567,7 +1591,7 @@
         hidden
       >
         <div class="assistant-head">
-          <h3 class="assistant-title">Asistente Pablo Suárez</h3>
+          <h3 class="assistant-title">Asistente</h3>
           <button
             type="button"
             id="assistant-close"
@@ -1830,27 +1854,61 @@
          */
         function getAssistantReply(question) {
           const text = String(question || '').toLowerCase();
+          const compact = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-          if (/hola|buenas|hello/.test(text)) {
-            return 'Hola. Te puedo contar perfil, skills, proyectos, Business Lab y vías de contacto.';
-          }
-          if (/perfil|sobre|quien|experiencia/.test(text)) {
-            return 'Pablo Suárez es Junior Developer orientado a producto, con experiencia en iniciativas educativas, gubernamentales e infraestructura tecnológica.';
-          }
-          if (/skill|stack|tecnolog|prompt|ia/.test(text)) {
-            return 'Stack destacado: JavaScript, Python, React, CSS, HTML, SQL básico, UX/UI, Git/GitHub y Prompt Engineer con foco en automatización IA.';
-          }
-          if (/proyecto|caso|trabajo|business lab|sprint/.test(text)) {
-            return 'Proyectos clave: plataforma gubernamental, operación de infraestructura y estrategia digital educativa. En Business Lab puedes simular un sprint fullstack por capacidad, valor y riesgo.';
-          }
-          if (/contacto|whatsapp|correo|email/.test(text)) {
-            return 'Puedes contactar por correo desde la sección Contacto o por el botón de WhatsApp disponible en pantalla.';
-          }
-          if (/disponibilidad|remoto|bogota|ubicacion/.test(text)) {
-            return 'Disponibilidad actual: Bogotá, Colombia, con modalidad remota o híbrida.';
+          const intents = [
+            {
+              key: 'saludo',
+              patterns: [/hola|buenas|hello|que tal|hey/],
+              reply:
+                '¡Hola! 👋 Te ayudo con perfil, skills, proyectos, Business Lab, disponibilidad y contacto.',
+            },
+            {
+              key: 'agradecimiento',
+              patterns: [/gracias|thanks|perfecto|genial/],
+              reply: 'Con gusto. Si quieres, te resumo perfil, skills o proyectos en 2 líneas.',
+            },
+            {
+              key: 'perfil',
+              patterns: [/perfil|sobre|quien|experiencia|resumen/],
+              reply:
+                'Pablo Suárez es Junior Developer orientado a producto, con experiencia en iniciativas educativas, gubernamentales e infraestructura tecnológica.',
+            },
+            {
+              key: 'skills',
+              patterns: [/skill|stack|tecnolog|prompt|ia|css|html|javascript|python|react/],
+              reply:
+                'Stack destacado: JavaScript, Python, React, CSS, HTML, SQL básico, UX/UI, Git/GitHub y Prompt Engineer con foco en automatización IA.',
+            },
+            {
+              key: 'proyectos',
+              patterns: [/proyecto|caso|trabajo|business lab|sprint|portafolio/],
+              reply:
+                'Proyectos clave: plataforma gubernamental, operación de infraestructura y estrategia digital educativa. Además, el Business Lab simula priorización por capacidad, valor y riesgo.',
+            },
+            {
+              key: 'contacto',
+              patterns: [/contacto|whatsapp|correo|email|hablar|escribir/],
+              reply:
+                'Puedes contactarlo por correo en la sección Contacto o por el botón de WhatsApp visible en pantalla.',
+            },
+            {
+              key: 'disponibilidad',
+              patterns: [/disponibilidad|remoto|bogota|ubicacion|hibrido/],
+              reply:
+                'Disponibilidad actual: Bogotá, Colombia, con modalidad remota o híbrida.',
+            },
+          ];
+
+          const matched = intents.find((intent) =>
+            intent.patterns.some((pattern) => pattern.test(compact))
+          );
+
+          if (matched) {
+            return matched.reply;
           }
 
-          return 'Puedo ayudarte con perfil, skills, proyectos, Business Lab, disponibilidad y contacto.';
+          return 'Puedo ayudarte mejor si me escribes: perfil, skills, proyectos, disponibilidad o contacto.';
         }
 
         function appendAssistantMessage(role, message) {
