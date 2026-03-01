@@ -175,7 +175,7 @@
       nav ul {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--space-2);
+        gap: 0.45rem 0.65rem;
         padding: 0;
         margin: 0;
         list-style: none;
@@ -187,7 +187,7 @@
         text-decoration: none;
         color: var(--text);
         font-size: 0.95rem;
-        padding: 0.55rem 0.85rem;
+        padding: 0.5rem 0.75rem;
         border-radius: 10px;
         font-weight: 500;
         transition:
@@ -666,22 +666,6 @@
         width: min(92vw, 420px);
       }
 
-      .home-fab {
-        position: fixed;
-        right: 1rem;
-        bottom: 1rem;
-        width: 52px;
-        height: 52px;
-        display: grid;
-        place-items: center;
-        border-radius: 999px;
-        text-decoration: none;
-        background: var(--accent);
-        color: #041220;
-        font-weight: 900;
-        border: 2px solid #d2ffe9;
-      }
-
       .whatsapp-fab {
         position: fixed;
         right: 1rem;
@@ -713,7 +697,7 @@
 
       .assistant-widget {
         position: fixed;
-        left: 1rem;
+        right: 1rem;
         bottom: 1rem;
         z-index: 24;
       }
@@ -909,7 +893,7 @@
         }
 
         .topmenu {
-          padding: 0.45rem 0.65rem;
+          padding: 0.42rem 0.6rem;
           font-size: 0.9rem;
         }
 
@@ -942,7 +926,7 @@
         }
 
         .assistant-widget {
-          left: 0.75rem;
+          right: 0.75rem;
           bottom: 0.75rem;
         }
 
@@ -998,7 +982,7 @@
     <header aria-label="Encabezado principal">
       <div class="container header-inner">
         <div class="profile_name" aria-label="Nombre profesional">
-          <a class="brand-home home-link" href="#home" aria-label="Ir al Home">
+          <a class="brand-home" href="#home" aria-label="Ir al Home">
             <svg
               viewBox="0 0 120 120"
               role="img"
@@ -1067,7 +1051,6 @@
         </div>
         <nav aria-label="Navegación principal">
           <ul>
-            <li><a class="topmenu home-link" href="#home">Inicio</a></li>
             <li><a class="topmenu" href="#aboutme">Sobre mí</a></li>
             <li><a class="topmenu" href="#skills">Skills</a></li>
             <li><a class="topmenu" href="#projects">Proyectos</a></li>
@@ -1642,10 +1625,6 @@
       </section>
     </div>
 
-    <a class="home-fab home-link" href="#home" aria-label="Volver al inicio"
-      >↑</a
-    >
-
     <div
       id="popup"
       role="dialog"
@@ -1721,7 +1700,6 @@
           assistantForm: document.getElementById('assistant-form'),
           assistantInput: document.getElementById('assistant-input'),
           assistantChips: document.querySelectorAll('.assistant-chip[data-question]'),
-          homeLinks: document.querySelectorAll('.home-link'),
           skillCards: document.querySelectorAll('.skill[data-skill]'),
           profilePhoto: document.getElementById('profile-photo'),
           profileMedia: document.querySelector('.profile-media'),
@@ -2115,16 +2093,6 @@
           });
         }
 
-        function initHomeLinks() {
-          dom.homeLinks.forEach((link) => {
-            link.addEventListener('click', (event) => {
-              event.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-              history.replaceState(null, '', '#home');
-            });
-          });
-        }
-
         function initWhatsAppLink() {
           if (!dom.whatsappLink) {
             return;
@@ -2146,7 +2114,6 @@
           initSkillVoting();
           initRecommendationForm();
           initAssistant();
-          initHomeLinks();
           initWhatsAppLink();
           hardenProfileMedia();
         }
