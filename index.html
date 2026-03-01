@@ -6,7 +6,7 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b1220'/%3E%3Crect x='9' y='9' width='46' height='46' rx='10' fill='none' stroke='%236ea8fe' stroke-width='2.6'/%3E%3Cpath d='M18 40c-4 0-7-3-7-7s3-7 7-7c2-6 7-10 14-10 6 0 11 4 13 9 4 0 7 3 7 7s-3 8-8 8H18z' fill='none' stroke='%238ef0c5' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='33' r='2.2' fill='%238ef0c5'/%3E%3Ccircle cx='32' cy='29' r='2.2' fill='%23d8e7ff'/%3E%3Ccircle cx='40' cy='33' r='2.2' fill='%238ef0c5'/%3E%3Cpath d='M24 33l8-4 8 4' fill='none' stroke='%236ea8fe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M24 40h16' stroke='%236ea8fe' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"
+      href="assets/favicon.svg"
     />
     <meta
       name="description"
@@ -1453,8 +1453,11 @@
     </main>
 
     <a
+      id="whatsapp-link"
       class="whatsapp-fab"
-      href="https://wa.me/573222061362?text=Hola%20Pablo%20Su%C3%A1rez%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20tu%20perfil%20profesional."
+      href="https://wa.me/573222061362"
+      data-phone="573222061362"
+      data-message="Hola Pablo Suárez, quiero conocer más sobre tu perfil profesional."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"
@@ -1612,6 +1615,7 @@
           skillCards: document.querySelectorAll('.skill[data-skill]'),
           profilePhoto: document.getElementById('profile-photo'),
           profileMedia: document.querySelector('.profile-media'),
+          whatsappLink: document.getElementById('whatsapp-link'),
         };
 
         const voteCounts = safeJsonParse(
@@ -1977,6 +1981,21 @@
           });
         }
 
+        function initWhatsAppLink() {
+          if (!dom.whatsappLink) {
+            return;
+          }
+
+          const phone = dom.whatsappLink.dataset.phone;
+          const message = dom.whatsappLink.dataset.message || '';
+          if (!phone) {
+            return;
+          }
+
+          const encodedMessage = encodeURIComponent(message);
+          dom.whatsappLink.href = `https://wa.me/${phone}?text=${encodedMessage}`;
+        }
+
         // Orquestación de arranque de la app.
         function init() {
           initLabForm();
@@ -1984,6 +2003,7 @@
           initRecommendationForm();
           initAssistant();
           initHomeLinks();
+          initWhatsAppLink();
           hardenProfileMedia();
         }
 
