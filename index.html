@@ -175,12 +175,23 @@
         font-size: 0.95rem;
         padding: 0.55rem 0.85rem;
         border-radius: 10px;
+        font-weight: 500;
+        text-underline-offset: 3px;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease,
+          text-decoration-color 0.2s ease,
+          font-weight 0.2s ease;
       }
 
       .topmenu:hover,
       .topmenu:focus-visible {
         background: var(--panel-2);
         color: #ffffff;
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-decoration-color: #d8e7ff;
       }
 
       section {
@@ -301,6 +312,81 @@
         align-items: center;
         gap: 0.6rem;
         margin-bottom: 0.6rem;
+      }
+
+      .skill[data-skill] .skill-head strong {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .skill[data-skill] .skill-head strong::before {
+        content: var(--skill-glyph, '•');
+        display: inline-grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 7px;
+        border: 1px solid #4f6287;
+        background: var(--skill-bg, #10203a);
+        color: var(--skill-fg, #d8e7ff);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
+      .skill[data-skill='JavaScript'] {
+        --skill-glyph: 'JS';
+        --skill-bg: #f7df1e;
+        --skill-fg: #111111;
+      }
+
+      .skill[data-skill='Python'] {
+        --skill-glyph: 'PY';
+        --skill-bg: #306998;
+        --skill-fg: #ffd43b;
+      }
+
+      .skill[data-skill='React'] {
+        --skill-glyph: 'RE';
+        --skill-bg: #20232a;
+        --skill-fg: #61dafb;
+      }
+
+      .skill[data-skill='Git/GitHub'] {
+        --skill-glyph: 'GH';
+        --skill-bg: #24292e;
+        --skill-fg: #ffffff;
+      }
+
+      .skill[data-skill='CSS'] {
+        --skill-glyph: 'CSS';
+        --skill-bg: #264de4;
+        --skill-fg: #ffffff;
+      }
+
+      .skill[data-skill='Prompt Engineer'] {
+        --skill-glyph: 'AI';
+        --skill-bg: #5a36bf;
+        --skill-fg: #ffffff;
+      }
+
+      .skill[data-skill='SQL básico'] {
+        --skill-glyph: 'SQL';
+        --skill-bg: #0f766e;
+        --skill-fg: #e6fffb;
+      }
+
+      .skill[data-skill='UX/UI'] {
+        --skill-glyph: 'UX';
+        --skill-bg: #d946ef;
+        --skill-fg: #ffffff;
+      }
+
+      .skill[data-skill='HTML'] {
+        --skill-glyph: 'HTML';
+        --skill-bg: #e34f26;
+        --skill-fg: #ffffff;
       }
 
       .vote-btn {
@@ -1448,7 +1534,7 @@
       </section>
 
       <footer class="site-footer" aria-label="Créditos">
-        © 2026 Pablo Suárez
+        © 2026 pan_dev
       </footer>
     </main>
 
