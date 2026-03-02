@@ -6,25 +6,50 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="assets/favicon.svg"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b1220'/%3E%3Crect x='9' y='9' width='46' height='46' rx='10' fill='none' stroke='%236ea8fe' stroke-width='2.6'/%3E%3Cpath d='M18 40c-4 0-7-3-7-7s3-7 7-7c2-6 7-10 14-10 6 0 11 4 13 9 4 0 7 3 7 7s-3 8-8 8H18z' fill='none' stroke='%238ef0c5' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='33' r='2.2' fill='%238ef0c5'/%3E%3Ccircle cx='32' cy='29' r='2.2' fill='%23d8e7ff'/%3E%3Ccircle cx='40' cy='33' r='2.2' fill='%238ef0c5'/%3E%3Cpath d='M24 33l8-4 8 4' fill='none' stroke='%236ea8fe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M24 40h16' stroke='%236ea8fe' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"
     />
     <meta
       name="description"
-      content="Portafolio profesional de Pablo Suárez, Junior Developer con enfoque en producto, automatización IA y diseño multimedia."
+      content="Portafolio de Pablo Andrés Suárez (pan_dev), Developer Fullstack orientado a producto, arquitectura web, cloud híbrida y automatización de procesos."
     />
-    <title>Pablo Suárez | Portafolio Junior Developer</title>
+    <meta
+      name="keywords"
+      content="Pablo Andrés Suárez, pan_dev, developer fullstack, portafolio, cloud híbrida, microservicios, APIs, automatización"
+    />
+    <meta name="author" content="Pablo Andrés Suárez" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://palosuarez.github.io/portafolio/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Portafolio pan_dev" />
+    <meta property="og:title" content="Portafolio pan_dev | Developer Fullstack" />
+    <meta
+      property="og:description"
+      content="Perfil profesional de Pablo Andrés Suárez: developer fullstack con enfoque en producto, arquitectura web y automatización."
+    />
+    <meta property="og:url" content="https://palosuarez.github.io/portafolio/" />
+    <meta property="og:image" content="https://palosuarez.github.io/portafolio/assets/foto.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portafolio pan_dev | Developer Fullstack" />
+    <meta
+      name="twitter:description"
+      content="Developer Fullstack orientado a producto, calidad de entrega y evolución continua de arquitectura."
+    />
+    <meta name="twitter:image" content="https://palosuarez.github.io/portafolio/assets/foto.png" />
+    <title>Portafolio pan_dev</title>
     <style>
       :root {
-        --bg: #0b1220;
-        --panel: #121a2b;
-        --panel-2: #19243b;
-        --text: #e6ebf5;
-        --muted: #b6c4de;
-        --primary: #6ea8fe;
-        --accent: #8ef0c5;
-        --danger: #ff8a8a;
-        --border: #2a3550;
-        --glow: rgba(110, 168, 254, 0.25);
+        --bg: #162536;
+        --panel: #22344b;
+        --panel-2: #2d4460;
+        --text: #f0f5ff;
+        --muted: #d2dceb;
+        --primary: #a0c3ff;
+        --accent: #8debd4;
+        --danger: #ff9f9f;
+        --border: #4c668a;
+        --glow: rgba(160, 195, 255, 0.32);
+        --geom-line: rgba(157, 190, 236, 0.17);
         --radius: 14px;
         --shadow: 0 10px 30px rgba(5, 10, 20, 0.35);
         --space-1: 0.5rem;
@@ -52,13 +77,44 @@
           sans-serif;
         background:
           radial-gradient(
-            circle at 20% 0%,
-            rgba(110, 168, 254, 0.12),
-            transparent 40%
+            circle at 18% 0%,
+            rgba(141, 235, 212, 0.2),
+            transparent 38%
           ),
-          linear-gradient(180deg, #0b1220 0%, #0f1728 100%);
+          linear-gradient(180deg, #162536 0%, #22344b 100%);
         color: var(--text);
         line-height: 1.5;
+        position: relative;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(var(--geom-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--geom-line) 1px, transparent 1px),
+          repeating-linear-gradient(
+            35deg,
+            transparent,
+            transparent 110px,
+            rgba(99, 219, 196, 0.05) 110px,
+            rgba(99, 219, 196, 0.05) 112px
+          );
+        background-size:
+          56px 56px,
+          56px 56px,
+          100% 100%;
+        opacity: 0.16;
+        z-index: 0;
+      }
+
+      header,
+      main,
+      .assistant-widget {
+        position: relative;
+        z-index: 1;
       }
 
       .skip-link {
@@ -78,7 +134,7 @@
       }
 
       .container {
-        width: min(1100px, 92vw);
+        width: min(1140px, 93vw);
         margin: 0 auto;
       }
 
@@ -87,18 +143,47 @@
         top: 0;
         z-index: 20;
         border-bottom: 1px solid var(--border);
-        background: rgba(11, 18, 32, 0.9);
+        background:
+          linear-gradient(180deg, rgba(35, 52, 75, 0.94), rgba(29, 44, 64, 0.92));
         -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
+        box-shadow: 0 8px 20px rgba(10, 18, 30, 0.3);
+        overflow: hidden;
+      }
+
+      header::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent), var(--primary), transparent);
+        opacity: 0.8;
+      }
+
+      header::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 48px,
+            rgba(141, 235, 212, 0.06) 48px,
+            rgba(141, 235, 212, 0.06) 49px
+          );
+        opacity: 0.45;
       }
 
       .header-inner {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr auto;
         align-items: center;
-        justify-content: space-between;
-        gap: var(--space-3);
-        padding: 0.9rem 0;
+        gap: 0.95rem 1.4rem;
+        padding: 1rem 0;
       }
 
       .profile_name {
@@ -106,6 +191,7 @@
         align-items: center;
         gap: var(--space-2);
         font-weight: 700;
+        min-width: 0;
       }
 
       .brand-home {
@@ -117,10 +203,10 @@
         min-height: 56px;
         padding: 0;
         border-radius: 12px;
-        border: 1px solid #4d6996;
-        background: #0f1b31;
+        border: 1px solid var(--border);
+        background: var(--panel-2);
         text-decoration: none;
-        color: #d8e7ff;
+        color: var(--text);
         transition:
           box-shadow 0.25s ease,
           border-color 0.25s ease,
@@ -134,28 +220,29 @@
 
       .brand-home:hover,
       .brand-home:focus-visible {
-        border-color: #8ef0c5;
+        border-color: var(--accent);
         box-shadow:
-          0 0 0 2px rgba(142, 240, 197, 0.25),
-          0 0 20px rgba(110, 168, 254, 0.45);
+          0 0 0 2px rgba(120, 224, 201, 0.2),
+          0 0 20px rgba(139, 180, 255, 0.28);
         transform: translateY(-1px);
       }
 
       .profile-copy {
-        display: flex;
-        flex-direction: column;
-        gap: 0.1rem;
-        line-height: 1.15;
+        display: grid;
+        gap: 0.12rem;
+      }
+
+      .profile-copy > span:first-child,
+      .alias {
+        animation: dataCenterGlow 6.5s ease-in-out infinite;
+        text-shadow:
+          0 0 10px rgba(160, 195, 255, 0.24),
+          0 0 18px rgba(141, 235, 212, 0.16);
       }
 
       .profile-copy > span:first-child {
-        font-size: 1rem;
-        font-weight: 700;
-        letter-spacing: 0.01em;
-      }
-
-      .profile-copy span:hover {
-        text-decoration: none !important;
+        font-size: 1.06rem;
+        letter-spacing: 0.03em;
       }
 
       .availability-layout {
@@ -172,28 +259,81 @@
         opacity: 0.95;
       }
 
+      @keyframes dataCenterGlow {
+        0% {
+          color: #cfe3ff;
+          text-shadow:
+            0 0 8px rgba(139, 180, 255, 0.22),
+            0 0 14px rgba(120, 224, 201, 0.1);
+        }
+        35% {
+          color: #9fd2ff;
+          text-shadow:
+            0 0 10px rgba(123, 203, 255, 0.3),
+            0 0 20px rgba(120, 224, 201, 0.2);
+        }
+        70% {
+          color: #8be7cf;
+          text-shadow:
+            0 0 9px rgba(120, 224, 201, 0.3),
+            0 0 18px rgba(139, 180, 255, 0.2);
+        }
+        100% {
+          color: #cfe3ff;
+          text-shadow:
+            0 0 8px rgba(139, 180, 255, 0.22),
+            0 0 14px rgba(120, 224, 201, 0.1);
+        }
+      }
+
       nav ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.45rem 0.65rem;
-        padding: 0;
+        gap: 0;
+        padding: 0.28rem 0.32rem;
         margin: 0;
         list-style: none;
+        border: 1px solid rgba(141, 235, 212, 0.28);
+        border-radius: 12px;
+        background:
+          linear-gradient(180deg, rgba(22, 36, 52, 0.94), rgba(18, 30, 44, 0.92));
+        box-shadow:
+          inset 0 0 0 1px rgba(160, 195, 255, 0.09),
+          0 6px 14px rgba(8, 15, 25, 0.2);
+      }
+
+      nav li {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      nav li + li::before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 60%;
+        border-radius: 999px;
+        background: linear-gradient(180deg, transparent, var(--accent), transparent);
+        box-shadow: 0 0 10px rgba(141, 235, 212, 0.55);
       }
 
       .topmenu {
         display: inline-block;
-        position: relative;
         text-decoration: none;
         color: var(--text);
-        font-size: 0.95rem;
-        padding: 0.5rem 0.75rem;
-        border-radius: 10px;
-        font-weight: 500;
-        transition:
-          background 0.2s ease,
-          color 0.2s ease,
-          font-weight 0.2s ease;
+        font-size: 0.9rem;
+        letter-spacing: 0.015em;
+        padding: 0.62rem 0.95rem;
+        border-radius: 9px;
+        position: relative;
+        background: transparent;
+        border: 1px solid transparent;
+        box-shadow: none;
+        font-family: inherit;
       }
 
       .topmenu::after {
@@ -201,20 +341,23 @@
         position: absolute;
         left: 0.85rem;
         right: 0.85rem;
-        bottom: 0.38rem;
+        bottom: 0.32rem;
         height: 2px;
         border-radius: 999px;
-        background: #d8e7ff;
+        background: var(--accent);
         transform: scaleX(0);
         transform-origin: center;
-        transition: transform 0.2s ease;
+        transition: transform 0.22s ease;
       }
 
       .topmenu:hover,
       .topmenu:focus-visible {
-        background: var(--panel-2);
+        background: rgba(160, 195, 255, 0.16);
         color: #ffffff;
-        font-weight: 700;
+        border-color: rgba(141, 235, 212, 0.5);
+        box-shadow:
+          inset 0 0 0 1px rgba(141, 235, 212, 0.22),
+          0 0 12px rgba(141, 235, 212, 0.18);
       }
 
       .topmenu:hover::after,
@@ -223,7 +366,7 @@
       }
 
       section {
-        padding: 3.2rem 0;
+        padding: 3rem 0;
         scroll-margin-top: 88px;
       }
 
@@ -238,21 +381,23 @@
       }
 
       .hero {
-        display: grid;
-        gap: var(--space-4);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.15rem;
         align-items: start;
       }
 
       .hero .panel {
         height: 100%;
+        flex: 1 1 320px;
       }
 
       .panel {
-        background: linear-gradient(180deg, var(--panel) 0%, #141d31 100%);
+        background: linear-gradient(180deg, var(--panel) 0%, #2a3f5b 100%);
         border: 1px solid var(--border);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
-        padding: var(--space-4);
+        padding: 1.5rem;
       }
 
       .panel,
@@ -270,7 +415,7 @@
       .skill:hover,
       .recommendation:hover {
         transform: translateY(-3px);
-        border-color: #4f6287;
+        border-color: #5f7ba8;
         box-shadow: 0 16px 36px rgba(5, 10, 20, 0.42);
       }
 
@@ -283,28 +428,35 @@
       }
 
       .headline-sub {
-        margin-top: 0.35rem;
+        margin-top: 0.15rem;
         font-size: clamp(1.05rem, 2.2vw, 1.45rem);
         display: block;
+        line-height: 1.35;
       }
 
       .lead {
         font-size: clamp(1rem, 2vw, 1.2rem);
         color: var(--muted);
+        margin: 0.95rem 0 0;
+        line-height: 1.7;
+      }
+
+      p {
+        margin: 0.65rem 0;
       }
 
       .metrics {
         display: grid;
-        gap: var(--space-3);
+        gap: 0.75rem;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        margin-top: var(--space-4);
+        margin-top: 1rem;
       }
 
       .metric {
         background: var(--panel-2);
         border: 1px solid var(--border);
         border-radius: 12px;
-        padding: 0.9rem;
+        padding: 0.78rem;
       }
 
       .metric strong {
@@ -316,13 +468,15 @@
       .skills-grid,
       .projects-grid,
       .recommendations-grid {
-        display: grid;
+        display: flex;
+        flex-wrap: wrap;
         gap: var(--space-3);
       }
 
       .skill,
       .project-card,
       .recommendation {
+        flex: 1 1 280px;
         background: var(--panel);
         border: 1px solid var(--border);
         border-radius: 12px;
@@ -331,7 +485,7 @@
 
       .skills-note {
         color: var(--muted);
-        margin-bottom: 0.8rem;
+        margin-bottom: 1rem;
       }
 
       .skill-head {
@@ -342,80 +496,23 @@
         margin-bottom: 0.6rem;
       }
 
-      .skill[data-skill] .skill-head strong {
+      .skill-label {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.55rem;
       }
 
-      .skill[data-skill] .skill-head strong::before {
-        content: var(--skill-glyph, '•');
-        display: inline-grid;
-        place-items: center;
-        min-width: 26px;
-        padding: 0 0.34rem;
-        height: 24px;
-        border-radius: 7px;
-        border: 1px solid #4f6287;
-        background: var(--skill-bg, #10203a);
-        color: var(--skill-fg, #d8e7ff);
-        font-size: 0.62rem;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-      }
-
-      .skill[data-skill='JavaScript'] {
-        --skill-glyph: 'JS';
-        --skill-bg: #f7df1e;
-        --skill-fg: #111111;
-      }
-
-      .skill[data-skill='Python'] {
-        --skill-glyph: 'PY';
-        --skill-bg: #306998;
-        --skill-fg: #ffd43b;
-      }
-
-      .skill[data-skill='React'] {
-        --skill-glyph: 'RE';
-        --skill-bg: #20232a;
-        --skill-fg: #61dafb;
-      }
-
-      .skill[data-skill='Git/GitHub'] {
-        --skill-glyph: 'GH';
-        --skill-bg: #24292e;
-        --skill-fg: #ffffff;
-      }
-
-      .skill[data-skill='CSS'] {
-        --skill-glyph: 'CSS';
-        --skill-bg: #264de4;
-        --skill-fg: #ffffff;
-      }
-
-      .skill[data-skill='Prompt Engineer'] {
-        --skill-glyph: 'AI';
-        --skill-bg: #5a36bf;
-        --skill-fg: #ffffff;
-      }
-
-      .skill[data-skill='SQL básico'] {
-        --skill-glyph: 'SQL';
-        --skill-bg: #0f766e;
-        --skill-fg: #e6fffb;
-      }
-
-      .skill[data-skill='UX/UI'] {
-        --skill-glyph: 'UX';
-        --skill-bg: #d946ef;
-        --skill-fg: #ffffff;
-      }
-
-      .skill[data-skill='HTML'] {
-        --skill-glyph: 'HTML';
-        --skill-bg: #e34f26;
-        --skill-fg: #ffffff;
+      .skill-logo {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: #12243b;
+        font-size: 0.88rem;
       }
 
       .vote-btn {
@@ -424,16 +521,16 @@
         min-height: 36px;
         padding: 0.35rem 0.7rem;
         border-radius: 999px;
-        border: 1px solid #5e7fb4;
-        background: #173054;
-        color: #dcebff;
+        border: 1px solid #6888ba;
+        background: #1f3658;
+        color: var(--text);
         font-weight: 600;
         cursor: pointer;
       }
 
       .vote-btn:hover,
       .vote-btn:focus-visible {
-        background: #214171;
+        background: #2a4776;
       }
 
       .skill-votes {
@@ -451,8 +548,13 @@
       }
 
       .lab-grid {
-        display: grid;
-        gap: var(--space-4);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .lab-grid > * {
+        flex: 1 1 320px;
       }
 
       .lab-controls {
@@ -466,10 +568,9 @@
       }
 
       .puzzle-item {
-        display: grid;
-        grid-template-columns: auto 1fr;
+        display: flex;
+        align-items: flex-start;
         gap: 0.7rem;
-        align-items: start;
         padding: 0.8rem;
         border: 1px solid var(--border);
         border-radius: 10px;
@@ -520,22 +621,11 @@
         resize: vertical;
       }
 
-      #recommendation-input {
-        background: #0c1526;
-        border: 1px solid #4f6287;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-      }
-
-      #recommendation-input:focus-visible {
-        border-color: #7aa6f7;
-        box-shadow: 0 0 0 3px rgba(110, 168, 254, 0.28);
-      }
-
       button {
         min-height: 44px;
         cursor: pointer;
         font-weight: 700;
-        background: linear-gradient(180deg, #6ea8fe, #4a82dd);
+        background: linear-gradient(180deg, #8bb4ff, #698fd8);
         border: none;
       }
 
@@ -566,11 +656,31 @@
 
       .contact-list {
         display: grid;
-        gap: var(--space-2);
+        gap: 0.55rem;
       }
 
       .contact-list a {
         color: var(--primary);
+      }
+
+      .contact-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        text-decoration: none;
+        color: #041220;
+        background: var(--accent);
+        border: 1px solid #9ff2df;
+        border-radius: 999px;
+        padding: 0.7rem 1rem;
+        font-weight: 700;
+      }
+
+      .contact-cta.linkedin {
+        color: #eaf4ff;
+        background: rgba(160, 195, 255, 0.2);
+        border-color: rgba(160, 195, 255, 0.5);
       }
 
       .site-footer {
@@ -578,32 +688,6 @@
         text-align: center;
         color: var(--muted);
         font-size: 0.92rem;
-      }
-
-      h1:hover,
-      h2:hover,
-      h3:hover,
-      strong:hover {
-        color: #ffffff;
-        text-decoration: underline;
-        text-decoration-color: #ffffff;
-        text-underline-offset: 3px;
-      }
-
-      .recommend-form-panel {
-        margin-top: 1rem;
-        width: 100%;
-      }
-
-      #recommend-form {
-        width: 100%;
-        grid-template-columns: 1fr;
-      }
-
-      #recommendation-input {
-        width: 100%;
-        max-width: 100%;
-        font-size: 0.98rem;
       }
 
       .recommendation {
@@ -658,46 +742,9 @@
         filter: saturate(1.06);
       }
 
-      #recommendations-list {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      }
-
-      #popup .dialog {
-        width: min(92vw, 420px);
-      }
-
-      .whatsapp-fab {
-        position: fixed;
-        right: 1rem;
-        bottom: 4.8rem;
-        z-index: 24;
-        min-height: 44px;
-        padding: 0.6rem 0.9rem;
-        border-radius: 999px;
-        text-decoration: none;
-        background: var(--panel-2);
-        color: var(--accent);
-        border: 1px solid #4f6287;
-        box-shadow: var(--shadow);
-        font-weight: 700;
-        transition:
-          transform 0.25s ease,
-          box-shadow 0.25s ease,
-          border-color 0.25s ease;
-      }
-
-      .whatsapp-fab:hover,
-      .whatsapp-fab:focus-visible {
-        transform: translateY(-2px);
-        border-color: #8ef0c5;
-        box-shadow:
-          0 0 0 2px rgba(142, 240, 197, 0.22),
-          0 12px 24px rgba(5, 10, 20, 0.45);
-      }
-
       .assistant-widget {
         position: fixed;
-        right: 1rem;
+        left: 1rem;
         bottom: 1rem;
         z-index: 24;
       }
@@ -708,9 +755,9 @@
         min-height: 44px;
         padding: 0.6rem 0.9rem;
         border-radius: 999px;
-        border: 1px solid #5e7fb4;
-        background: #173054;
-        color: #dcebff;
+        border: 1px solid #6787b8;
+        background: #1f3658;
+        color: var(--text);
         font-weight: 700;
         transition:
           transform 0.25s ease,
@@ -722,10 +769,10 @@
       .assistant-toggle:hover,
       .assistant-toggle:focus-visible {
         transform: translateY(-3px) scale(1.04);
-        border-color: #8ef0c5;
-        background: #214171;
+        border-color: var(--accent);
+        background: #2a4776;
         box-shadow:
-          0 0 0 2px rgba(142, 240, 197, 0.22),
+          0 0 0 2px rgba(120, 224, 201, 0.22),
           0 14px 28px rgba(5, 10, 20, 0.5);
       }
 
@@ -840,61 +887,46 @@
         border: 0;
       }
 
-      #popup {
-        position: fixed;
-        inset: 0;
-        display: none;
-        place-items: center;
-        background: rgba(0, 0, 0, 0.55);
-        z-index: 30;
-      }
-
-      #popup.active {
-        display: grid;
-      }
-
-      #popup .dialog {
-        width: min(460px, 92vw);
-        background: #0f1829;
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: var(--space-4);
-      }
-
       @media (min-width: 768px) {
-        .hero {
-          grid-template-columns: 1.2fr 0.8fr;
+        .hero > :first-child {
+          flex: 1.2 1 420px;
         }
 
-        .skills-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+        .hero > :last-child {
+          flex: 0.8 1 300px;
         }
 
-        .projects-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .recommendations-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .lab-grid {
-          grid-template-columns: 1fr 1fr;
+        .skill,
+        .project-card,
+        .recommendation {
+          flex: 1 1 calc(50% - 1rem);
         }
       }
 
       @media (max-width: 640px) {
         .header-inner {
-          justify-content: center;
+          grid-template-columns: 1fr;
+          justify-items: center;
+          padding: 0.8rem 0;
+        }
+
+        nav {
+          width: 100%;
         }
 
         nav ul {
           justify-content: center;
+          gap: 0.15rem;
+          padding: 0.24rem;
+        }
+
+        nav li + li::before {
+          display: none;
         }
 
         .topmenu {
-          padding: 0.42rem 0.6rem;
-          font-size: 0.9rem;
+          padding: 0.46rem 0.62rem;
+          font-size: 0.82rem;
         }
 
         .profile_name {
@@ -908,25 +940,8 @@
           text-align: center;
         }
 
-        .recommendations-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .recommend-form-panel {
-          padding: 1rem;
-        }
-
-        #recommendation-input {
-          min-height: 120px;
-          font-size: 0.95rem;
-        }
-
-        #popup .dialog {
-          padding: 1rem;
-        }
-
         .assistant-widget {
-          right: 0.75rem;
+          left: 0.75rem;
           bottom: 0.75rem;
         }
 
@@ -939,27 +954,19 @@
           max-height: 190px;
         }
 
-        .whatsapp-fab {
-          right: 0.75rem;
-          bottom: 4.4rem;
-        }
-
         .assistant-toggle {
           min-width: 124px;
         }
       }
 
       @media (min-width: 1024px) {
-        .skills-grid {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
+        .skill {
+          flex: 1 1 calc(33.33% - 1rem);
         }
 
-        .projects-grid {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .recommendations-grid {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+        .project-card,
+        .recommendation {
+          flex: 1 1 calc(33.33% - 1rem);
         }
       }
 
@@ -982,11 +989,11 @@
     <header aria-label="Encabezado principal">
       <div class="container header-inner">
         <div class="profile_name" aria-label="Nombre profesional">
-          <a class="brand-home" href="#home" aria-label="Ir al Home">
+          <a class="brand-home home-link" href="#home" aria-label="Ir al Home">
             <svg
               viewBox="0 0 120 120"
               role="img"
-              aria-label="Logo Pablo Suárez cloud node"
+              aria-label="Logo Pablo Andrés Suárez cloud node"
             >
               <defs>
                 <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
@@ -1043,21 +1050,17 @@
             </svg>
           </a>
           <div class="profile-copy">
-            <span>Pablo Suárez</span>
+            <span>Pablo Andrés Suárez</span>
             <span class="alias" aria-label="Rol profesional"
-              >Junior Developer</span
+              >Developer Fullstack</span
             >
           </div>
         </div>
         <nav aria-label="Navegación principal">
           <ul>
             <li><a class="topmenu" href="#aboutme">Sobre mí</a></li>
-            <li><a class="topmenu" href="#skills">Skills</a></li>
             <li><a class="topmenu" href="#projects">Proyectos</a></li>
             <li><a class="topmenu" href="#business-lab">Business Lab</a></li>
-            <li>
-              <a class="topmenu" href="#recommendations">Recomendaciones</a>
-            </li>
             <li><a class="topmenu" href="#contact">Contacto</a></li>
           </ul>
         </nav>
@@ -1069,14 +1072,13 @@
         <div class="panel reveal-up">
           <h1 id="home-title">
             <span class="headline-sub"
-              >Junior Developer con enfoque en producto y diseño
-              multimedia</span
+              >Developer Fullstack orientado a producto, cloud híbrida y automatización</span
             >
           </h1>
           <p class="lead">
-            Diseño y desarrollo soluciones web orientadas a negocio, accesibles
-            y mantenibles. Integro criterio técnico y comunicación visual para
-            ejecutar entregas claras, medibles y escalables.
+            Diseño e implemento soluciones digitales de punta a punta,
+            priorizando claridad funcional, rendimiento y sostenibilidad
+            operativa para cumplir objetivos de negocio medibles.
           </p>
           <div class="metrics" aria-label="Indicadores de experiencia">
             <div class="metric">
@@ -1086,7 +1088,7 @@
               <strong>3+</strong> Proyectos con impacto documentado
             </div>
             <div class="metric">
-              <strong>Junior Developer</strong> Base técnica fullstack aplicada
+              <strong>End-to-End</strong> Entrega técnica con foco en impacto
             </div>
           </div>
         </div>
@@ -1097,7 +1099,7 @@
                 id="profile-photo"
                 class="profile-photo"
                 src="assets/foto.png"
-                alt="Foto de perfil de Pablo Suárez"
+                alt="Foto de perfil de pan_dev"
                 width="876"
                 height="1113"
                 loading="eager"
@@ -1110,8 +1112,9 @@
               <h2>Disponibilidad</h2>
               <p class="muted">Bogotá, Colombia · Remoto/Híbrido</p>
               <p class="muted">
-                Disponible para proyectos y roles de Junior Developer con
-                foco en frontend productivo, backend API y calidad de entrega.
+                Disponible para proyectos y roles de developer fullstack,
+                articulando alcance funcional, implementación técnica y mejora
+                continua de producto.
               </p>
             </div>
           </div>
@@ -1122,27 +1125,27 @@
         <h2 id="aboutme-title">Sobre mí</h2>
         <div class="panel reveal-up">
           <p>
-            Soy Pablo Suárez, Junior Developer orientado a producto.
-            He contribuido en iniciativas educativas, gubernamentales e
-            infraestructura tecnológica, alineando alcance, ejecución técnica y
-            calidad para cumplir objetivos de negocio.
+            Soy Pablo Andrés Suárez (pan_dev), developer fullstack orientado a
+            producto. Transformo necesidades del negocio en soluciones web
+            implementables, priorizadas y medibles.
           </p>
           <p class="muted">
-            Intereses: automatización IA, prompt engineer, frontend
-            productivo y backend API.
+            Objetivo profesional: liderar entregas digitales con foco en
+            impacto, calidad operativa, automatización y evolución continua de
+            arquitectura.
           </p>
-        </div>
-      </section>
-
-      <section id="skills" aria-labelledby="skills-title">
-        <h2 id="skills-title">Skills</h2>
-        <p class="skills-note">
-          Vota la skill que más valoras para un rol de Junior Developer.
-        </p>
-        <div class="skills-grid">
+          <h3 id="skills-title">Skills clave</h3>
+          <p class="skills-note">
+            Capacidades priorizadas para construir, operar y escalar productos
+            digitales con criterio técnico y enfoque de negocio.
+          </p>
+          <div id="skills" class="skills-grid" aria-labelledby="skills-title">
           <article class="skill reveal-up" data-skill="JavaScript">
             <div class="skill-head">
-              <strong>JavaScript</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">JS</span
+                ><strong>JavaScript</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
@@ -1157,7 +1160,10 @@
           </article>
           <article class="skill reveal-up" data-skill="Python">
             <div class="skill-head">
-              <strong>Python</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">PY</span
+                ><strong>Python</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
@@ -1172,7 +1178,10 @@
           </article>
           <article class="skill reveal-up" data-skill="React">
             <div class="skill-head">
-              <strong>React</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">⚛</span
+                ><strong>React</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
@@ -1187,7 +1196,10 @@
           </article>
           <article class="skill reveal-up" data-skill="Git/GitHub">
             <div class="skill-head">
-              <strong>Git/GitHub</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">GH</span
+                ><strong>Git/GitHub</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
@@ -1200,13 +1212,16 @@
               Votos: <span class="vote-count" aria-live="polite">0</span>
             </p>
           </article>
-          <article class="skill reveal-up" data-skill="CSS">
+          <article class="skill reveal-up" data-skill="Arquitectura de APIs">
             <div class="skill-head">
-              <strong>CSS</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">API</span
+                ><strong>Arquitectura de APIs</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
-                aria-label="Votar por CSS"
+                aria-label="Votar por Arquitectura de APIs"
               >
                 Votar
               </button>
@@ -1215,13 +1230,16 @@
               Votos: <span class="vote-count" aria-live="polite">0</span>
             </p>
           </article>
-          <article class="skill reveal-up" data-skill="Prompt Engineer">
+          <article class="skill reveal-up" data-skill="Integración de Agentes IA">
             <div class="skill-head">
-              <strong>Prompt Engineer</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">AI</span
+                ><strong>Integración de Agentes IA</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
-                aria-label="Votar por Prompt Engineer"
+                aria-label="Votar por Integración de Agentes IA"
               >
                 Votar
               </button>
@@ -1230,13 +1248,16 @@
               Votos: <span class="vote-count" aria-live="polite">0</span>
             </p>
           </article>
-          <article class="skill reveal-up" data-skill="SQL básico">
+          <article class="skill reveal-up" data-skill="Automatización de Flujos">
             <div class="skill-head">
-              <strong>SQL básico</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">⚙</span
+                ><strong>Automatización de Flujos</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
-                aria-label="Votar por SQL básico"
+                aria-label="Votar por Automatización de Flujos"
               >
                 Votar
               </button>
@@ -1245,13 +1266,16 @@
               Votos: <span class="vote-count" aria-live="polite">0</span>
             </p>
           </article>
-          <article class="skill reveal-up" data-skill="UX/UI">
+          <article class="skill reveal-up" data-skill="Cloud Híbrida">
             <div class="skill-head">
-              <strong>UX/UI</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">☁</span
+                ><strong>Cloud Híbrida</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
-                aria-label="Votar por UX/UI"
+                aria-label="Votar por Cloud Híbrida"
               >
                 Votar
               </button>
@@ -1260,13 +1284,16 @@
               Votos: <span class="vote-count" aria-live="polite">0</span>
             </p>
           </article>
-          <article class="skill reveal-up" data-skill="HTML">
+          <article class="skill reveal-up" data-skill="Observabilidad y QA">
             <div class="skill-head">
-              <strong>HTML</strong>
+              <span class="skill-label"
+                ><span class="skill-logo" aria-hidden="true">QA</span
+                ><strong>Observabilidad y QA</strong></span
+              >
               <button
                 class="vote-btn"
                 type="button"
-                aria-label="Votar por HTML"
+                aria-label="Votar por Observabilidad y QA"
               >
                 Votar
               </button>
@@ -1275,6 +1302,7 @@
               Votos: <span class="vote-count" aria-live="polite">0</span>
             </p>
           </article>
+          </div>
         </div>
       </section>
 
@@ -1287,12 +1315,12 @@
               Contexto: modernización de servicios para Alcaldía de Sogamoso.
             </p>
             <p>
-              <strong>Rol:</strong> desarrollo de componentes web y flujos de
-              información.
+              <strong>Rol:</strong> diseño de flujo digital, implementación
+              frontend y coordinación técnica con actores de negocio.
             </p>
             <p>
-              <strong>Stack:</strong> JavaScript, HTML5, CSS3, integración de
-              contenidos.
+              <strong>Stack:</strong> JavaScript, APIs, analítica operativa y
+              automatización de tareas repetitivas.
             </p>
             <p>
               <strong>Resultado:</strong> iniciativa reconocida con sello
@@ -1305,12 +1333,12 @@
               Contexto: soporte a operación crítica en ASIGMA/Telefónica.
             </p>
             <p>
-              <strong>Rol:</strong> documentación técnica, seguimiento operativo
-              y mejora de procesos.
+              <strong>Rol:</strong> gestión técnica de operación, seguimiento de
+              incidentes y mejora continua orientada a SLA.
             </p>
             <p>
-              <strong>Stack:</strong> herramientas TI, gestión operativa,
-              reportes estructurados.
+              <strong>Stack:</strong> monitoreo, documentación estructurada,
+              flujos de soporte y coordinación transversal.
             </p>
             <p>
               <strong>Resultado:</strong> mayor continuidad y trazabilidad de
@@ -1324,12 +1352,12 @@
               Americano.
             </p>
             <p>
-              <strong>Rol:</strong> diseño multimedia, contenidos y ejecución
-              digital.
+              <strong>Rol:</strong> planificación de embudos, ejecución
+              de contenidos y optimización por métricas.
             </p>
             <p>
-              <strong>Stack:</strong> social media, diseño visual, analítica
-              básica.
+              <strong>Stack:</strong> diseño de producto, automatización de
+              campañas y análisis de desempeño.
             </p>
             <p>
               <strong>Resultado:</strong> alcance superior a 5.000 personas.
@@ -1340,35 +1368,35 @@
 
       <section id="business-lab" aria-labelledby="lab-title">
         <h2 id="lab-title">
-          Business Lab · Simulador de Sprint Fullstack
+          Business Lab · Portafolio de Microservicios en Cloud Híbrida
         </h2>
         <p class="muted">
-          Simula la planificación de un sprint con capacidad limitada para
-          priorizar valor, complejidad y dependencias en un contexto real de
-          producto.
+          Simula decisiones de arquitectura y priorización en un entorno de
+          negocio con capacidad limitada, servicios distribuidos y objetivos de
+          continuidad operativa.
         </p>
         <div class="lab-grid">
           <div class="panel reveal-up">
-            <!-- Simulador de sprint: selección de iniciativas con capacidad limitada -->
+            <!-- Simulador cloud híbrida: selección de iniciativas con capacidad limitada -->
             <form
               id="lab-form"
-              aria-label="Formulario de simulación de sprint fullstack"
+              aria-label="Formulario de simulación de microservicios cloud híbrida"
             >
               <div class="lab-controls">
                 <div>
-                  <label for="risk-profile">Estrategia de entrega</label>
+                  <label for="risk-profile">Estrategia de arquitectura</label>
                   <select id="risk-profile" name="risk-profile" required>
-                    <option value="conservador">Estabilidad</option>
-                    <option value="balanceado" selected>Balance</option>
-                    <option value="agresivo">Aceleración</option>
+                    <option value="conservador">Resiliencia</option>
+                    <option value="balanceado" selected>Balance costo-rendimiento</option>
+                    <option value="agresivo">Escalado acelerado</option>
                   </select>
                 </div>
                 <div>
-                  <label for="sprint-budget">Capacidad del sprint (h)</label>
+                  <label for="sprint-budget">Capacidad operativa mensual (h)</label>
                   <select id="sprint-budget" name="sprint-budget" required>
-                    <option value="40">40 h</option>
                     <option value="60">60 h</option>
-                    <option value="80">80 h</option>
+                    <option value="90">90 h</option>
+                    <option value="120">120 h</option>
                   </select>
                 </div>
               </div>
@@ -1382,10 +1410,10 @@
                     value="auth"
                   />
                   <span>
-                    Autenticación segura
+                    API Gateway + IAM
                     <small
-                      >Esfuerzo: 18h · Valor estimado: 9/10 · Dependencia:
-                      Backend</small
+                      >Esfuerzo: 22h · Valor estimado: 9/10 · Dependencia:
+                      Seguridad Cloud</small
                     >
                   </span>
                 </label>
@@ -1397,10 +1425,10 @@
                     value="dashboard"
                   />
                   <span>
-                    Dashboard de métricas
+                    Observabilidad centralizada
                     <small
-                      >Esfuerzo: 14h · Valor estimado: 8/10 · Dependencia:
-                      Analytics API</small
+                      >Esfuerzo: 16h · Valor estimado: 8/10 · Dependencia:
+                      Telemetría y Logs</small
                     >
                   </span>
                 </label>
@@ -1412,10 +1440,10 @@
                     value="api"
                   />
                   <span>
-                    API de órdenes
+                    Microservicio de operaciones
                     <small
-                      >Esfuerzo: 20h · Valor estimado: 9/10 · Dependencia:
-                      Base de datos</small
+                      >Esfuerzo: 24h · Valor estimado: 9/10 · Dependencia:
+                      Base de datos distribuida</small
                     >
                   </span>
                 </label>
@@ -1427,10 +1455,10 @@
                     value="a11y"
                   />
                   <span>
-                    Accesibilidad y QA UI
+                    Motor de automatización con agentes IA
                     <small
-                      >Esfuerzo: 10h · Valor estimado: 7/10 · Dependencia:
-                      Frontend</small
+                      >Esfuerzo: 18h · Valor estimado: 8/10 · Dependencia:
+                      Orquestación de tareas</small
                     >
                   </span>
                 </label>
@@ -1442,17 +1470,17 @@
                     value="seo"
                   />
                   <span>
-                    SEO técnico y performance
+                    Recuperación ante fallos multi-zona
                     <small
-                      >Esfuerzo: 8h · Valor estimado: 6/10 · Dependencia:
-                      Frontend</small
+                      >Esfuerzo: 14h · Valor estimado: 7/10 · Dependencia:
+                      Infraestructura híbrida</small
                     >
                   </span>
                 </label>
               </div>
 
               <button type="submit" id="evaluate-btn">
-                Evaluar sprint
+                Evaluar estrategia
               </button>
             </form>
           </div>
@@ -1465,97 +1493,82 @@
           >
             <h3>Resultado</h3>
             <p>
-              <strong>Capacidad comprometida:</strong>
+              <strong>Capacidad utilizada:</strong>
               <span id="result-capacity">Pendiente</span>
             </p>
             <p>
-              <strong>Valor potencial:</strong>
+              <strong>Valor de negocio esperado:</strong>
               <span id="result-impact">Pendiente</span>
             </p>
             <p>
-              <strong>Riesgo de entrega:</strong>
+              <strong>Riesgo operativo:</strong>
               <span id="result-risk">Pendiente</span>
             </p>
             <p>
-              <strong>Lectura técnica:</strong>
+              <strong>Lectura ejecutiva:</strong>
               <span id="result-recruiter"
                 >Completa la simulación para evaluar.</span
               >
             </p>
             <div>
               <span class="kpi-chip" id="chip-focus">Estrategia: —</span>
-              <span class="kpi-chip" id="chip-balance">Diversificación: —</span>
+              <span class="kpi-chip" id="chip-balance">Arquitectura: —</span>
             </div>
           </aside>
         </div>
       </section>
 
       <section id="recommendations" aria-labelledby="recommendations-title">
-        <h2 id="recommendations-title">Recomendaciones</h2>
+        <h2 id="recommendations-title">Resultados y referencias</h2>
         <div
           class="recommendations-grid"
           id="recommendations-list"
           aria-label="Lista de recomendaciones"
         >
           <blockquote class="recommendation">
-            Pablo Suárez destaca por su capacidad de transformar requerimientos
-            ambiguos en entregas claras, con foco en experiencia de usuario y
-            objetivos medibles para el equipo de producto.
+            Convierte requerimientos complejos en planes de ejecución claros,
+            medibles y orientados a impacto de negocio.
           </blockquote>
           <blockquote class="recommendation">
-            Su aporte combina criterio visual y disciplina técnica. Entrega
-            interfaces limpias, bien estructuradas y fáciles de mantener para
-            equipos en crecimiento.
+            Integra frontend, backend y automatización IA con criterio técnico,
+            documentación y foco en continuidad operativa.
           </blockquote>
           <blockquote class="recommendation">
-            Tiene una actitud proactiva para aprender rápido, documentar
-            decisiones y colaborar con perfiles técnicos y no técnicos en
-            contextos reales.
+            Lidera colaboración entre negocio y tecnología para acelerar
+            decisiones sin perder calidad de entrega.
           </blockquote>
-        </div>
-        <div class="panel recommend-form-panel">
-          <!-- Seguridad: input sanitizado y render solo con textContent -->
-          <form id="recommend-form" aria-label="Agregar recomendación">
-            <label for="recommendation-input">Agregar recomendación</label>
-            <textarea
-              id="recommendation-input"
-              name="recommendation"
-              maxlength="100"
-              placeholder="Escribe una recomendación (máx 100 caracteres)."
-              required
-            ></textarea>
-            <button type="submit" id="recommend_btn">
-              Enviar recomendación
-            </button>
-          </form>
         </div>
       </section>
 
       <section id="contact" aria-labelledby="contact-title">
         <h2 id="contact-title">Contacto</h2>
         <div class="panel contact-list">
-          <span><strong>Nombre:</strong> Pablo Suárez</span>
+          <span><strong>Nombre:</strong> pan_dev</span>
           <span><strong>Ubicación:</strong> Bogotá, Colombia</span>
           <a href="mailto:palosuarez@gmail.com">palosuarez@gmail.com</a>
+          <a
+            class="contact-cta"
+            href="https://wa.me/573222061362?text=Hola%20pan_dev%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20tu%20perfil%20profesional."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contactar por WhatsApp"
+            >Contacto directo</a
+          >
+          <a
+            class="contact-cta linkedin"
+            href="https://www.linkedin.com/in/pablo-andr%C3%A9s-su%C3%A1rez-2b71793b1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perfil de LinkedIn de Pablo Andrés Suárez"
+            >LinkedIn profesional</a
+          >
         </div>
       </section>
 
       <footer class="site-footer" aria-label="Créditos">
-        © 2026 palosuarez
+        © 2026 pan_dev
       </footer>
     </main>
-
-    <a
-      id="whatsapp-link"
-      class="whatsapp-fab"
-      href="https://wa.me/573222061362"
-      data-phone="573222061362"
-      data-message="Hola Pablo Suárez, quiero conocer más sobre tu perfil profesional."
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Contactar por WhatsApp"
-      >WhatsApp</a
-    >
 
     <div class="assistant-widget" aria-label="Asistente virtual">
       <button
@@ -1574,7 +1587,7 @@
         hidden
       >
         <div class="assistant-head">
-          <h3 class="assistant-title">Asistente</h3>
+          <h3 class="assistant-title">Asistente pan_dev</h3>
           <button
             type="button"
             id="assistant-close"
@@ -1586,8 +1599,8 @@
         </div>
         <div id="assistant-feed" class="assistant-feed" aria-live="polite">
           <p class="assistant-msg bot">
-            Hola, soy tu asistente. Puedo resumirte perfil, skills,
-            proyectos, Business Lab y contacto.
+            Hola, soy tu asistente. Te resumo perfil, skills, proyectos,
+            estrategia cloud híbrida y contacto.
           </p>
         </div>
         <div class="assistant-quick" aria-label="Preguntas rápidas">
@@ -1625,20 +1638,6 @@
       </section>
     </div>
 
-    <div
-      id="popup"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="popup-title"
-      aria-hidden="true"
-    >
-      <div class="dialog">
-        <h3 id="popup-title">Recomendación enviada</h3>
-        <p>Gracias. La recomendación se agregó correctamente.</p>
-        <button type="button" id="popup-close">Cerrar</button>
-      </div>
-    </div>
-
     <script>
       (() => {
         'use strict';
@@ -1648,30 +1647,30 @@
         // =========================
 
         const initiativeCatalog = {
-          auth: { capital: 18, returnPct: 0.9, risk: 3, tag: 'Backend' },
-          dashboard: { capital: 14, returnPct: 0.8, risk: 2, tag: 'Frontend' },
-          api: { capital: 20, returnPct: 0.9, risk: 3, tag: 'Backend' },
-          a11y: { capital: 10, returnPct: 0.7, risk: 1, tag: 'Calidad' },
-          seo: { capital: 8, returnPct: 0.6, risk: 1, tag: 'Frontend' },
+          auth: { capital: 22, returnPct: 0.9, risk: 3, tag: 'Seguridad' },
+          dashboard: { capital: 16, returnPct: 0.8, risk: 2, tag: 'Observabilidad' },
+          api: { capital: 24, returnPct: 0.9, risk: 3, tag: 'Backend' },
+          a11y: { capital: 18, returnPct: 0.8, risk: 2, tag: 'Automatización IA' },
+          seo: { capital: 14, returnPct: 0.7, risk: 2, tag: 'Infraestructura' },
         };
 
         const profileConfig = {
           conservador: {
             returnFactor: 0.85,
             riskAdjust: -0.35,
-            label: 'Estabilidad',
+            label: 'Resiliencia',
           },
-          balanceado: { returnFactor: 1, riskAdjust: 0, label: 'Balance' },
+          balanceado: { returnFactor: 1, riskAdjust: 0, label: 'Balance costo-rendimiento' },
           agresivo: {
             returnFactor: 1.2,
             riskAdjust: 0.35,
-            label: 'Aceleración',
+            label: 'Escalado acelerado',
           },
         };
 
         const storageKeys = {
-          skillVoteCounts: 'pablo_suarez_skill_vote_counts_v1',
-          skillUserVotes: 'pablo_suarez_skill_user_votes_v1',
+          skillVoteCounts: 'pan_dev_skill_vote_counts_v1',
+          skillUserVotes: 'pan_dev_skill_user_votes_v1',
         };
 
         // =========================
@@ -1688,10 +1687,6 @@
           resultRecruiter: document.getElementById('result-recruiter'),
           chipFocus: document.getElementById('chip-focus'),
           chipBalance: document.getElementById('chip-balance'),
-          popup: document.getElementById('popup'),
-          popupClose: document.getElementById('popup-close'),
-          recommendationForm: document.getElementById('recommend-form'),
-          recommendationInput: document.getElementById('recommendation-input'),
           recommendationsList: document.getElementById('recommendations-list'),
           assistantFeed: document.getElementById('assistant-feed'),
           assistantPanel: document.getElementById('assistant-panel'),
@@ -1700,10 +1695,10 @@
           assistantForm: document.getElementById('assistant-form'),
           assistantInput: document.getElementById('assistant-input'),
           assistantChips: document.querySelectorAll('.assistant-chip[data-question]'),
+          homeLinks: document.querySelectorAll('.home-link'),
           skillCards: document.querySelectorAll('.skill[data-skill]'),
           profilePhoto: document.getElementById('profile-photo'),
           profileMedia: document.querySelector('.profile-media'),
-          whatsappLink: document.getElementById('whatsapp-link'),
         };
 
         const voteCounts = safeJsonParse(
@@ -1771,21 +1766,21 @@
           }
 
           const balance =
-            totals.tags.size >= 3 ? 'Cobertura amplia' : 'Foco puntual';
-          const focus = weightedReturnPct >= 0.75 ? profile.label : 'Estabilidad';
+            totals.tags.size >= 3 ? 'Servicios distribuidos' : 'Foco en núcleo';
+          const focus = weightedReturnPct >= 0.75 ? profile.label : 'Resiliencia';
 
           let recruiter =
-            'Plan equilibrado con buena relación entre capacidad y valor.';
+            'Plan equilibrado entre valor técnico, continuidad y costo operativo.';
           if (overflow > 0) {
             recruiter =
-              'Sobrecarga detectada: reduce alcance o amplía capacidad del sprint.';
+              'Sobrecarga detectada: reduce alcance o amplía capacidad operativa.';
           }
           if (!selectedKeys.length) {
-            recruiter = 'Selecciona al menos una iniciativa para evaluar estrategia.';
+            recruiter = 'Selecciona al menos una iniciativa para evaluar la arquitectura.';
           }
           if (risk === 'Alto' && profileKey === 'conservador') {
             recruiter =
-              'La estrategia y la selección no están alineadas; reduce complejidad.';
+              'La estrategia y la selección no están alineadas; reduce complejidad de servicios.';
           }
 
           return {
@@ -1815,15 +1810,7 @@
           dom.resultRisk.textContent = result.risk;
           dom.resultRecruiter.textContent = result.recruiter;
           dom.chipFocus.textContent = `Estrategia: ${result.focus}`;
-          dom.chipBalance.textContent = `Diversificación: ${result.balance}`;
-        }
-
-        function showPopup(show) {
-          if (!dom.popup) {
-            return;
-          }
-          dom.popup.classList.toggle('active', Boolean(show));
-          dom.popup.setAttribute('aria-hidden', String(!show));
+          dom.chipBalance.textContent = `Arquitectura: ${result.balance}`;
         }
 
         /**
@@ -1832,61 +1819,27 @@
          */
         function getAssistantReply(question) {
           const text = String(question || '').toLowerCase();
-          const compact = text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-          const intents = [
-            {
-              key: 'saludo',
-              patterns: [/hola|buenas|hello|que tal|hey/],
-              reply:
-                '¡Hola! 👋 Te ayudo con perfil, skills, proyectos, Business Lab, disponibilidad y contacto.',
-            },
-            {
-              key: 'agradecimiento',
-              patterns: [/gracias|thanks|perfecto|genial/],
-              reply: 'Con gusto. Si quieres, te resumo perfil, skills o proyectos en 2 líneas.',
-            },
-            {
-              key: 'perfil',
-              patterns: [/perfil|sobre|quien|experiencia|resumen/],
-              reply:
-                'Pablo Suárez es Junior Developer orientado a producto, con experiencia en iniciativas educativas, gubernamentales e infraestructura tecnológica.',
-            },
-            {
-              key: 'skills',
-              patterns: [/skill|stack|tecnolog|prompt|ia|css|html|javascript|python|react/],
-              reply:
-                'Stack destacado: JavaScript, Python, React, CSS, HTML, SQL básico, UX/UI, Git/GitHub y Prompt Engineer con foco en automatización IA.',
-            },
-            {
-              key: 'proyectos',
-              patterns: [/proyecto|caso|trabajo|business lab|sprint|portafolio/],
-              reply:
-                'Proyectos clave: plataforma gubernamental, operación de infraestructura y estrategia digital educativa. Además, el Business Lab simula priorización por capacidad, valor y riesgo.',
-            },
-            {
-              key: 'contacto',
-              patterns: [/contacto|whatsapp|correo|email|hablar|escribir/],
-              reply:
-                'Puedes contactarlo por correo en la sección Contacto o por el botón de WhatsApp visible en pantalla.',
-            },
-            {
-              key: 'disponibilidad',
-              patterns: [/disponibilidad|remoto|bogota|ubicacion|hibrido/],
-              reply:
-                'Disponibilidad actual: Bogotá, Colombia, con modalidad remota o híbrida.',
-            },
-          ];
-
-          const matched = intents.find((intent) =>
-            intent.patterns.some((pattern) => pattern.test(compact))
-          );
-
-          if (matched) {
-            return matched.reply;
+          if (/hola|buenas|hello/.test(text)) {
+            return 'Hola. Te puedo contar perfil, skills, proyectos, arquitectura cloud híbrida y contacto.';
+          }
+          if (/perfil|sobre|quien|experiencia/.test(text)) {
+            return 'pan_dev es Developer Fullstack orientado a negocio, con integración de IA, automatización y ejecución técnica end-to-end.';
+          }
+          if (/skill|stack|tecnolog|prompt|ia/.test(text)) {
+            return 'Stack destacado: JavaScript, Python, React, APIs, integración de agentes IA, cloud híbrida, automatización de flujos y observabilidad.';
+          }
+          if (/proyecto|caso|trabajo|business lab|sprint/.test(text)) {
+            return 'Proyectos clave: plataforma gubernamental, operación de infraestructura y estrategia digital. En Business Lab evalúas microservicios en cloud híbrida con foco en riesgo y valor.';
+          }
+          if (/contacto|whatsapp|correo|email/.test(text)) {
+            return 'Puedes contactar por correo o por el botón de Contacto directo en la sección Contacto.';
+          }
+          if (/disponibilidad|remoto|bogota|ubicacion/.test(text)) {
+            return 'Disponibilidad actual: Bogotá, Colombia, con modalidad remota o híbrida.';
           }
 
-          return 'Puedo ayudarte mejor si me escribes: perfil, skills, proyectos, disponibilidad o contacto.';
+          return 'Puedo ayudarte con perfil, skills, proyectos, arquitectura cloud híbrida, disponibilidad y contacto.';
         }
 
         function appendAssistantMessage(role, message) {
@@ -1950,36 +1903,6 @@
           }
         }
 
-        function addRecommendation() {
-          if (!dom.recommendationInput || !dom.recommendationsList) {
-            return;
-          }
-
-          const sanitized = sanitizeInput(dom.recommendationInput.value);
-          if (!sanitized.length) {
-            dom.recommendationInput.setCustomValidity(
-              'Escribe una recomendación antes de enviar.'
-            );
-            dom.recommendationInput.reportValidity();
-            return;
-          }
-
-          if (sanitized.length > 100) {
-            dom.recommendationInput.setCustomValidity('Máximo 100 caracteres.');
-            dom.recommendationInput.reportValidity();
-            return;
-          }
-
-          dom.recommendationInput.setCustomValidity('');
-          const item = document.createElement('blockquote');
-          item.className = 'recommendation';
-          item.textContent = sanitized;
-          dom.recommendationsList.appendChild(item);
-
-          dom.recommendationInput.value = '';
-          showPopup(true);
-        }
-
         // =========================
         // Feature initializers
         // =========================
@@ -2034,21 +1957,6 @@
           });
         }
 
-        function initRecommendationForm() {
-          if (dom.recommendationForm) {
-            dom.recommendationForm.addEventListener('submit', (event) => {
-              event.preventDefault();
-              addRecommendation();
-            });
-          }
-
-          if (dom.popupClose) {
-            dom.popupClose.addEventListener('click', () => {
-              showPopup(false);
-            });
-          }
-        }
-
         function initAssistant() {
           if (
             !dom.assistantToggle ||
@@ -2093,28 +2001,22 @@
           });
         }
 
-        function initWhatsAppLink() {
-          if (!dom.whatsappLink) {
-            return;
-          }
-
-          const phone = dom.whatsappLink.dataset.phone;
-          const message = dom.whatsappLink.dataset.message || '';
-          if (!phone) {
-            return;
-          }
-
-          const encodedMessage = encodeURIComponent(message);
-          dom.whatsappLink.href = `https://wa.me/${phone}?text=${encodedMessage}`;
+        function initHomeLinks() {
+          dom.homeLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              history.replaceState(null, '', '#home');
+            });
+          });
         }
 
         // Orquestación de arranque de la app.
         function init() {
           initLabForm();
           initSkillVoting();
-          initRecommendationForm();
           initAssistant();
-          initWhatsAppLink();
+          initHomeLinks();
           hardenProfileMedia();
         }
 
