@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1f3147" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https://palosuarez.github.io; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+    />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -29,6 +41,7 @@
     />
     <meta property="og:url" content="https://palosuarez.github.io/portafolio/" />
     <meta property="og:image" content="https://palosuarez.github.io/portafolio/assets/foto.png" />
+    <meta property="og:image:alt" content="Foto de perfil profesional de Pablo Andrés Suárez" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Portafolio pan_dev | Developer Fullstack" />
     <meta
@@ -36,20 +49,59 @@
       content="Developer Fullstack orientado a producto, calidad de entrega y evolución continua de arquitectura."
     />
     <meta name="twitter:image" content="https://palosuarez.github.io/portafolio/assets/foto.png" />
+    <meta name="twitter:image:alt" content="Foto de perfil profesional de Pablo Andrés Suárez" />
     <title>Portafolio pan_dev</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Pablo Andrés Suárez",
+            "alternateName": "pan_dev",
+            "jobTitle": "Developer Fullstack",
+            "email": "mailto:palosuarez@gmail.com",
+            "url": "https://palosuarez.github.io/portafolio/",
+            "image": "https://palosuarez.github.io/portafolio/assets/foto.png",
+            "sameAs": [
+              "https://www.linkedin.com/in/pablo-andr%C3%A9s-su%C3%A1rez-2b71793b1/"
+            ],
+            "knowsAbout": [
+              "JavaScript",
+              "Python",
+              "React",
+              "Arquitectura de APIs",
+              "Automatización de flujos",
+              "Cloud híbrida"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Bogotá",
+              "addressCountry": "CO"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "name": "Portafolio pan_dev",
+            "url": "https://palosuarez.github.io/portafolio/",
+            "inLanguage": "es-CO"
+          }
+        ]
+      }
+    </script>
     <style>
       :root {
-        --bg: #162536;
-        --panel: #22344b;
-        --panel-2: #2d4460;
-        --text: #f0f5ff;
-        --muted: #d2dceb;
-        --primary: #a0c3ff;
-        --accent: #8debd4;
+        --bg: #1f3147;
+        --panel: #2b4260;
+        --panel-2: #355274;
+        --text: #f6f9ff;
+        --muted: #dce5f3;
+        --primary: #b5d2ff;
+        --accent: #a4f2de;
         --danger: #ff9f9f;
-        --border: #4c668a;
-        --glow: rgba(160, 195, 255, 0.32);
-        --geom-line: rgba(157, 190, 236, 0.17);
+        --border: #6788b1;
+        --glow: rgba(181, 210, 255, 0.36);
+        --geom-line: rgba(180, 210, 252, 0.2);
         --radius: 14px;
         --shadow: 0 10px 30px rgba(5, 10, 20, 0.35);
         --space-1: 0.5rem;
@@ -78,10 +130,10 @@
         background:
           radial-gradient(
             circle at 18% 0%,
-            rgba(141, 235, 212, 0.2),
+            rgba(164, 242, 222, 0.24),
             transparent 38%
           ),
-          linear-gradient(180deg, #162536 0%, #22344b 100%);
+          linear-gradient(180deg, #1f3147 0%, #2e4766 100%);
         color: var(--text);
         line-height: 1.5;
         position: relative;
@@ -222,9 +274,14 @@
       .brand-home:focus-visible {
         border-color: var(--accent);
         box-shadow:
-          0 0 0 2px rgba(120, 224, 201, 0.2),
-          0 0 20px rgba(139, 180, 255, 0.28);
+          0 0 0 2px rgba(164, 242, 222, 0.24),
+          0 0 20px rgba(181, 210, 255, 0.34);
         transform: translateY(-1px);
+      }
+
+      .profile-home {
+        text-decoration: none;
+        display: inline-grid;
       }
 
       .profile-copy {
@@ -232,17 +289,33 @@
         gap: 0.12rem;
       }
 
-      .profile-copy > span:first-child,
+      .profile-home > span:first-child,
       .alias {
-        animation: dataCenterGlow 6.5s ease-in-out infinite;
-        text-shadow:
-          0 0 10px rgba(160, 195, 255, 0.24),
-          0 0 18px rgba(141, 235, 212, 0.16);
+        display: inline-block;
+        text-shadow: none;
+        transition:
+          transform 0.2s ease,
+          font-size 0.2s ease,
+          font-weight 0.2s ease;
       }
 
-      .profile-copy > span:first-child {
+      .profile-home > span:first-child {
+        color: var(--text);
         font-size: 1.06rem;
         letter-spacing: 0.03em;
+      }
+
+      .profile-home:hover > span:first-child,
+      .profile-home:focus-visible > span:first-child,
+      .profile-home:hover .alias,
+      .profile-home:focus-visible .alias {
+        transform: translateY(-1px);
+        font-weight: 700;
+      }
+
+      .profile-home:hover > span:first-child,
+      .profile-home:focus-visible > span:first-child {
+        font-size: 1.1rem;
       }
 
       .availability-layout {
@@ -255,35 +328,9 @@
       .alias {
         color: var(--accent);
         font-weight: 600;
+        font-size: 0.96rem;
         white-space: nowrap;
         opacity: 0.95;
-      }
-
-      @keyframes dataCenterGlow {
-        0% {
-          color: #cfe3ff;
-          text-shadow:
-            0 0 8px rgba(139, 180, 255, 0.22),
-            0 0 14px rgba(120, 224, 201, 0.1);
-        }
-        35% {
-          color: #9fd2ff;
-          text-shadow:
-            0 0 10px rgba(123, 203, 255, 0.3),
-            0 0 20px rgba(120, 224, 201, 0.2);
-        }
-        70% {
-          color: #8be7cf;
-          text-shadow:
-            0 0 9px rgba(120, 224, 201, 0.3),
-            0 0 18px rgba(139, 180, 255, 0.2);
-        }
-        100% {
-          color: #cfe3ff;
-          text-shadow:
-            0 0 8px rgba(139, 180, 255, 0.22),
-            0 0 14px rgba(120, 224, 201, 0.1);
-        }
       }
 
       nav ul {
@@ -417,14 +464,6 @@
         transform: translateY(-3px);
         border-color: #5f7ba8;
         box-shadow: 0 16px 36px rgba(5, 10, 20, 0.42);
-      }
-
-      .name-reveal {
-        display: inline-block;
-        font-size: clamp(1.1rem, 2.2vw, 1.35rem);
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        color: #d8e7ff;
       }
 
       .headline-sub {
@@ -659,48 +698,45 @@
         gap: 0.55rem;
       }
 
-      .contact-list a {
-        color: var(--primary);
-      }
-
-      .contact-actions {
+      .contact-social {
         display: flex;
         align-items: center;
         gap: 0.6rem;
-        margin-top: 0.35rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-list a {
+        color: var(--primary);
       }
 
       .contact-cta {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: auto;
+        gap: 0;
+        width: 2.75rem;
+        height: 2.75rem;
         text-decoration: none;
         color: #041220;
         background: var(--accent);
         border: 1px solid #9ff2df;
         border-radius: 999px;
-        padding: 0.7rem 1rem;
+        padding: 0;
         font-weight: 700;
       }
 
-      .contact-icon-btn {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        padding: 0;
-        border-radius: 12px;
+      .contact-cta-icon {
+        width: 1.12rem;
+        height: 1.12rem;
+        display: inline-flex;
+        flex: 0 0 auto;
       }
 
-      .contact-icon-btn svg {
-        width: 21px;
-        height: 21px;
-      }
-
-      .contact-cta.whatsapp {
-        color: #052a20;
-        background: var(--accent);
-        border-color: rgba(141, 235, 212, 0.65);
+      .contact-cta-icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        fill: currentColor;
       }
 
       .contact-cta.linkedin {
@@ -983,6 +1019,20 @@
         .assistant-toggle {
           min-width: 124px;
         }
+
+        .contact-social {
+          justify-content: center;
+        }
+
+        .contact-cta {
+          width: 3rem;
+          height: 3rem;
+        }
+
+        .contact-cta-icon {
+          width: 1.22rem;
+          height: 1.22rem;
+        }
       }
 
       @media (min-width: 1024px) {
@@ -1075,18 +1125,18 @@
               />
             </svg>
           </a>
-          <div class="profile-copy">
+          <a class="profile-home home-link profile-copy" href="#home" aria-label="Ir al inicio de Pablo Andrés Suárez">
             <span>Pablo Andrés Suárez</span>
             <span class="alias" aria-label="Rol profesional"
               >Developer Fullstack</span
             >
-          </div>
+          </a>
         </div>
         <nav aria-label="Navegación principal">
           <ul>
             <li><a class="topmenu" href="#aboutme">Sobre mí</a></li>
             <li><a class="topmenu" href="#projects">Proyectos</a></li>
-            <li><a class="topmenu" href="#business-lab">Business Lab</a></li>
+            <li><a class="topmenu" href="#business-lab">Lab</a></li>
             <li><a class="topmenu" href="#contact">Contacto</a></li>
           </ul>
         </nav>
@@ -1098,23 +1148,24 @@
         <div class="panel reveal-up">
           <h1 id="home-title">
             <span class="headline-sub"
-              >Developer Fullstack orientado a producto, cloud híbrida y automatización</span
+              >Developer Fullstack enfocado en integración de IA, automatización de flujos y cloud híbrida</span
             >
           </h1>
           <p class="lead">
-            Diseño e implemento soluciones digitales de punta a punta,
-            priorizando claridad funcional, rendimiento y sostenibilidad
-            operativa para cumplir objetivos de negocio medibles.
+            Me gusta convertir retos de negocio en productos digitales útiles y
+            bien construidos. Trabajo con APIs, servicios distribuidos y
+            observabilidad, aprendiendo todos los días para mejorar rendimiento
+            y resiliencia.
           </p>
           <div class="metrics" aria-label="Indicadores de experiencia">
             <div class="metric">
               <strong>+5K</strong> Alcance en iniciativa educativa
             </div>
             <div class="metric">
-              <strong>3+</strong> Proyectos con impacto documentado
+              <strong>3+</strong> Iniciativas end-to-end con impacto documentado
             </div>
             <div class="metric">
-              <strong>End-to-End</strong> Entrega técnica con foco en impacto
+              <strong>SLA + Calidad</strong> Entrega técnica orientada a continuidad
             </div>
           </div>
         </div>
@@ -1138,9 +1189,9 @@
               <h2>Disponibilidad</h2>
               <p class="muted">Bogotá, Colombia · Remoto/Híbrido</p>
               <p class="muted">
-                Disponible para proyectos y roles de developer fullstack,
-                articulando alcance funcional, implementación técnica y mejora
-                continua de producto.
+                Disponible para roles y proyectos fullstack donde pueda aportar
+                en integración de IA, automatización de flujos y arquitectura
+                cloud híbrida con foco en continuidad operativa.
               </p>
             </div>
           </div>
@@ -1152,18 +1203,19 @@
         <div class="panel reveal-up">
           <p>
             Soy Pablo Andrés Suárez (pan_dev), developer fullstack orientado a
-            producto. Transformo necesidades del negocio en soluciones web
-            implementables, priorizadas y medibles.
+            producto. Disfruto traducir objetivos del negocio en soluciones web
+            claras, con APIs, automatización e integración de IA priorizadas
+            por impacto real.
           </p>
           <p class="muted">
-            Objetivo profesional: liderar entregas digitales con foco en
-            impacto, calidad operativa, automatización y evolución continua de
-            arquitectura.
+            Mi objetivo profesional es seguir creciendo mientras construyo
+            entregas digitales confiables, con observabilidad y buena calidad
+            operativa en entornos cloud híbridos.
           </p>
           <h3 id="skills-title">Skills clave</h3>
           <p class="skills-note">
-            Capacidades priorizadas para construir, operar y escalar productos
-            digitales con criterio técnico y enfoque de negocio.
+            Estas son las capacidades que más uso para diseñar, operar y
+            escalar productos digitales con criterio técnico y foco en negocio.
           </p>
           <div id="skills" class="skills-grid" aria-labelledby="skills-title">
           <article class="skill reveal-up" data-skill="JavaScript">
@@ -1341,8 +1393,8 @@
               Contexto: modernización de servicios para Alcaldía de Sogamoso.
             </p>
             <p>
-              <strong>Rol:</strong> diseño de flujo digital, implementación
-              frontend y coordinación técnica con actores de negocio.
+              <strong>Rol:</strong> diseñé el flujo digital, implementé frontend
+              y coordiné decisiones técnicas con los equipos de negocio.
             </p>
             <p>
               <strong>Stack:</strong> JavaScript, APIs, analítica operativa y
@@ -1359,8 +1411,8 @@
               Contexto: soporte a operación crítica en ASIGMA/Telefónica.
             </p>
             <p>
-              <strong>Rol:</strong> gestión técnica de operación, seguimiento de
-              incidentes y mejora continua orientada a SLA.
+              <strong>Rol:</strong> acompañé la operación técnica diaria,
+              seguimiento de incidentes y mejoras continuas orientadas a SLA.
             </p>
             <p>
               <strong>Stack:</strong> monitoreo, documentación estructurada,
@@ -1378,8 +1430,8 @@
               Americano.
             </p>
             <p>
-              <strong>Rol:</strong> planificación de embudos, ejecución
-              de contenidos y optimización por métricas.
+              <strong>Rol:</strong> planifiqué embudos, ejecuté contenidos y
+              optimicé decisiones con base en métricas.
             </p>
             <p>
               <strong>Stack:</strong> diseño de producto, automatización de
@@ -1394,7 +1446,7 @@
 
       <section id="business-lab" aria-labelledby="lab-title">
         <h2 id="lab-title">
-          Business Lab · Portafolio de Microservicios en Cloud Híbrida
+          Lab · Portafolio de Microservicios en Cloud Híbrida
         </h2>
         <p class="muted">
           Simula decisiones de arquitectura y priorización en un entorno de
@@ -1552,15 +1604,15 @@
           aria-label="Lista de recomendaciones"
         >
           <blockquote class="recommendation">
-            Convierte requerimientos complejos en planes de ejecución claros,
-            medibles y orientados a impacto de negocio.
+            Convierte retos complejos en planes de ejecución claros, medibles
+            y aterrizados a impacto de negocio.
           </blockquote>
           <blockquote class="recommendation">
-            Integra frontend, backend y automatización IA con criterio técnico,
-            documentación y foco en continuidad operativa.
+            Integra frontend, backend y automatización con IA de forma
+            ordenada, documentada y con foco en continuidad operativa.
           </blockquote>
           <blockquote class="recommendation">
-            Lidera colaboración entre negocio y tecnología para acelerar
+            Facilita la colaboración entre negocio y tecnología para acelerar
             decisiones sin perder calidad de entrega.
           </blockquote>
         </div>
@@ -1572,29 +1624,38 @@
           <span><strong>Nombre:</strong> pan_dev</span>
           <span><strong>Ubicación:</strong> Bogotá, Colombia</span>
           <a href="mailto:palosuarez@gmail.com">palosuarez@gmail.com</a>
-          <div class="contact-actions" aria-label="Accesos directos de contacto">
+          <div class="contact-social" aria-label="Redes de contacto">
             <a
-              class="contact-cta contact-icon-btn whatsapp"
+              class="contact-cta"
               href="https://wa.me/573222061362?text=Hola%20pan_dev%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20tu%20perfil%20profesional."
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contactar por WhatsApp"
+              ><span class="contact-cta-icon" aria-hidden="true"
+                ><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M13.601 2.326A7.854 7.854 0 0 0 8.012 0a7.96 7.96 0 0 0-6.885 11.95L0 16l4.156-1.09a7.97 7.97 0 0 0 3.845.984h.003a7.97 7.97 0 0 0 7.998-7.95 7.9 7.9 0 0 0-2.401-5.618zm-5.59 12.23a6.62 6.62 0 0 1-3.374-.922l-.243-.146-2.466.647.658-2.4-.158-.247a6.56 6.56 0 0 1 1.011-8.331 6.67 6.67 0 0 1 4.573-1.82 6.64 6.64 0 0 1 4.716 1.96 6.58 6.58 0 0 1 1.955 4.666 6.62 6.62 0 0 1-6.672 6.593z"
+                  />
+                  <path
+                    d="M11.654 9.72c-.202-.1-1.194-.586-1.379-.654-.184-.066-.318-.1-.452.1s-.519.654-.636.788c-.116.133-.233.15-.435.05-.202-.1-.85-.311-1.619-.992-.598-.531-1.002-1.186-1.118-1.386-.117-.2-.012-.308.087-.408.09-.09.202-.233.3-.35.102-.116.136-.2.202-.333.068-.133.034-.25-.017-.35-.05-.1-.452-1.083-.619-1.483-.162-.388-.327-.335-.451-.34-.117-.005-.251-.006-.385-.006a.74.74 0 0 0-.536.25c-.184.2-.703.687-.703 1.675 0 .988.72 1.942.82 2.076.1.133 1.416 2.244 3.497 3.055.495.214.882.342 1.184.437.497.157.95.135 1.307.082.399-.06 1.194-.487 1.362-.958.167-.471.167-.875.117-.958-.05-.083-.185-.133-.386-.233z"
+                  />
+                </svg></span
+              ></a
             >
-              <svg viewBox="0 0 16 16" role="img" aria-hidden="true" fill="currentColor">
-                <path d="M13.601 2.326A7.85 7.85 0 0 0 8.01 0C3.74 0 .266 3.473.266 7.744c0 1.365.357 2.698 1.034 3.875L0 16l4.49-1.177a7.72 7.72 0 0 0 3.52.844h.003c4.27 0 7.743-3.474 7.743-7.745a7.69 7.69 0 0 0-2.155-5.596M8.013 14.36a6.44 6.44 0 0 1-3.278-.893l-.235-.14-2.665.698.711-2.598-.154-.266a6.46 6.46 0 0 1-.989-3.416c.001-3.57 2.905-6.473 6.475-6.473a6.45 6.45 0 0 1 4.597 1.91 6.43 6.43 0 0 1 1.896 4.586c-.002 3.57-2.906 6.473-6.473 6.473m3.548-4.85c-.194-.097-1.145-.566-1.323-.63-.177-.065-.306-.097-.435.097-.129.194-.5.63-.612.759-.113.13-.226.145-.42.049-.194-.097-.82-.302-1.56-.963-.576-.513-.964-1.146-1.078-1.34-.113-.194-.012-.3.084-.397.087-.086.194-.226.29-.339.096-.113.129-.194.194-.323.065-.129.032-.242-.016-.339-.048-.097-.435-1.049-.596-1.436-.157-.377-.316-.326-.435-.332l-.37-.006a.72.72 0 0 0-.516.242c-.177.194-.677.661-.677 1.614 0 .953.693 1.873.79 2.002.097.13 1.364 2.083 3.305 2.923.462.2.823.319 1.104.409.464.148.886.127 1.22.077.372-.055 1.145-.468 1.307-.92.161-.452.161-.84.113-.92-.048-.081-.177-.13-.371-.226" />
-              </svg>
-            </a>
             <a
-              class="contact-cta contact-icon-btn linkedin"
+              class="contact-cta linkedin"
               href="https://www.linkedin.com/in/pablo-andr%C3%A9s-su%C3%A1rez-2b71793b1/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Perfil de LinkedIn de Pablo Andrés Suárez"
+              ><span class="contact-cta-icon" aria-hidden="true"
+                ><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zM4.943 13.394V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248S2.4 3.225 2.4 3.934c0 .694.506 1.248 1.327 1.248zm9.651 8.212h-2.401V9.359c0-1.013-.364-1.705-1.274-1.705-.695 0-1.109.468-1.291.92-.067.162-.084.387-.084.613v4.207H5.943s.031-6.825 0-7.225h2.401v1.024c.319-.492.889-1.193 2.164-1.193 1.58 0 2.765 1.032 2.765 3.25z"
+                  />
+                </svg></span
+              ></a
             >
-              <svg viewBox="0 0 16 16" role="img" aria-hidden="true" fill="currentColor">
-                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175A1.16 1.16 0 0 1 0 14.854zM4.943 13.5V6.169H2.542V13.5zM3.743 5.167c.837 0 1.358-.554 1.358-1.248-.015-.71-.52-1.248-1.342-1.248-.822 0-1.358.538-1.358 1.248 0 .694.521 1.248 1.327 1.248zm1.94 8.333h2.401V9.407c0-.22.016-.44.081-.598.177-.439.58-.894 1.257-.894.887 0 1.241.675 1.241 1.663V13.5h2.401V9.3c0-2.25-1.2-3.297-2.8-3.297-1.291 0-1.867.71-2.19 1.21h.016V6.17H5.684c.03.694 0 7.331 0 7.331z" />
-              </svg>
-            </a>
           </div>
         </div>
       </section>
@@ -1633,8 +1694,8 @@
         </div>
         <div id="assistant-feed" class="assistant-feed" aria-live="polite">
           <p class="assistant-msg bot">
-            Hola, soy tu asistente. Te resumo perfil, skills, proyectos,
-            estrategia cloud híbrida y contacto.
+            Hola, soy tu asistente. Si quieres, te cuento mi perfil, skills,
+            proyectos, enfoque en IA, automatización y cómo contactarme.
           </p>
         </div>
         <div class="assistant-quick" aria-label="Preguntas rápidas">
@@ -1707,6 +1768,11 @@
           skillUserVotes: 'pan_dev_skill_user_votes_v1',
         };
 
+        const securityConfig = {
+          assistantRateLimitMs: 900,
+          maxAssistantMessages: 60,
+        };
+
         // =========================
         // UI references
         // =========================
@@ -1736,13 +1802,15 @@
         };
 
         const voteCounts = safeJsonParse(
-          localStorage.getItem(storageKeys.skillVoteCounts),
+          safeStorageGetItem(storageKeys.skillVoteCounts),
           {}
         );
         const userVotes = safeJsonParse(
-          localStorage.getItem(storageKeys.skillUserVotes),
+          safeStorageGetItem(storageKeys.skillUserVotes),
           {}
         );
+
+        let lastAssistantQuestionAt = 0;
 
         /**
          * Normaliza y sanitiza texto de entrada para evitar caracteres peligrosos
@@ -1762,6 +1830,22 @@
             return parsed && typeof parsed === 'object' ? parsed : fallback;
           } catch {
             return fallback;
+          }
+        }
+
+        function safeStorageGetItem(key) {
+          try {
+            return localStorage.getItem(key);
+          } catch {
+            return null;
+          }
+        }
+
+        function safeStorageSetItem(key, value) {
+          try {
+            localStorage.setItem(key, value);
+          } catch {
+            return;
           }
         }
 
@@ -1855,25 +1939,25 @@
           const text = String(question || '').toLowerCase();
 
           if (/hola|buenas|hello/.test(text)) {
-            return 'Hola. Te puedo contar perfil, skills, proyectos, arquitectura cloud híbrida y contacto.';
+            return 'Hola. Te puedo contar mi perfil, skills, proyectos, enfoque en IA y automatización, y formas de contacto.';
           }
           if (/perfil|sobre|quien|experiencia/.test(text)) {
-            return 'pan_dev es Developer Fullstack orientado a negocio, con integración de IA, automatización y ejecución técnica end-to-end.';
+            return 'Soy developer fullstack orientado a negocio. Trabajo de punta a punta y me enfoco en integrar IA y automatización con mejora continua.';
           }
           if (/skill|stack|tecnolog|prompt|ia/.test(text)) {
-            return 'Stack destacado: JavaScript, Python, React, APIs, integración de agentes IA, cloud híbrida, automatización de flujos y observabilidad.';
+            return 'Mi stack principal incluye JavaScript, Python, React y APIs. También trabajo en integración de agentes IA, cloud híbrida, automatización de flujos y observabilidad.';
           }
-          if (/proyecto|caso|trabajo|business lab|sprint/.test(text)) {
-            return 'Proyectos clave: plataforma gubernamental, operación de infraestructura y estrategia digital. En Business Lab evalúas microservicios en cloud híbrida con foco en riesgo y valor.';
+          if (/proyecto|caso|trabajo|lab|sprint/.test(text)) {
+            return 'He trabajado en una plataforma gubernamental, operación de infraestructura y estrategia digital. En el Lab puedes explorar decisiones de microservicios en cloud híbrida con foco en riesgo y valor.';
           }
           if (/contacto|whatsapp|correo|email/.test(text)) {
-            return 'Puedes contactar por correo o por el botón de Contacto directo en la sección Contacto.';
+            return 'Puedes contactar por correo o por los íconos de WhatsApp y LinkedIn en la sección Contacto.';
           }
           if (/disponibilidad|remoto|bogota|ubicacion/.test(text)) {
             return 'Disponibilidad actual: Bogotá, Colombia, con modalidad remota o híbrida.';
           }
 
-          return 'Puedo ayudarte con perfil, skills, proyectos, arquitectura cloud híbrida, disponibilidad y contacto.';
+          return 'Puedo ayudarte con perfil, skills, proyectos, IA, automatización, cloud híbrida, disponibilidad y contacto.';
         }
 
         function appendAssistantMessage(role, message) {
@@ -1884,6 +1968,11 @@
           item.className = `assistant-msg ${role}`;
           item.textContent = message;
           dom.assistantFeed.appendChild(item);
+
+          while (dom.assistantFeed.children.length > securityConfig.maxAssistantMessages) {
+            dom.assistantFeed.removeChild(dom.assistantFeed.firstElementChild);
+          }
+
           dom.assistantFeed.scrollTop = dom.assistantFeed.scrollHeight;
         }
 
@@ -1903,6 +1992,14 @@
           if (!question.length) {
             return;
           }
+
+          const now = Date.now();
+          if (now - lastAssistantQuestionAt < securityConfig.assistantRateLimitMs) {
+            appendAssistantMessage('bot', 'Espera un momento antes de enviar otra pregunta.');
+            return;
+          }
+
+          lastAssistantQuestionAt = now;
           appendAssistantMessage('user', question);
           appendAssistantMessage('bot', getAssistantReply(question));
         }
@@ -1928,13 +2025,6 @@
           dom.profileMedia.addEventListener('contextmenu', blockAction);
           dom.profileMedia.addEventListener('dragstart', blockAction);
 
-          try {
-            if (window.top !== window.self) {
-              window.top.location = window.self.location;
-            }
-          } catch {
-            window.self.location = window.location.href;
-          }
         }
 
         // =========================
@@ -1979,11 +2069,11 @@
               userVotes[skillName] = true;
               countEl.textContent = String(nextCount);
 
-              localStorage.setItem(
+              safeStorageSetItem(
                 storageKeys.skillVoteCounts,
                 JSON.stringify(voteCounts)
               );
-              localStorage.setItem(
+              safeStorageSetItem(
                 storageKeys.skillUserVotes,
                 JSON.stringify(userVotes)
               );
