@@ -1,0 +1,90 @@
+.sig-wrapper {
+  display: inline-block;
+}
+
+.sig-svg {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  overflow: visible;
+}
+
+/* TEXTO — se dibuja solo */
+.sig-text {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: sig-draw 2.5s ease forwards;
+  animation-delay: 2s;
+}
+
+@keyframes sig-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* NODOS */
+.sig-node {
+  opacity: 0;
+  animation: sig-pop 0.3s ease forwards;
+}
+
+@keyframes sig-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sig-node-1 {
+  animation-delay: 2.2s;
+}
+.sig-node-2 {
+  animation-delay: 3s;
+}
+.sig-node-3 {
+  animation-delay: 4s;
+}
+.sig-node-4 {
+  animation-delay: 4.5s;
+}
+
+/* LÍNEA */
+.sig-line {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: sig-draw 1s ease 4.5s forwards;
+}
+.sig-text {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: sig-draw 4s ease forwards;
+  animation-delay: 2s;
+}
+
+.sig-node-1 {
+  animation-delay: 2.5s;
+}
+.sig-node-2 {
+  animation-delay: 3.5s;
+}
+.sig-node-3 {
+  animation-delay: 5.5s;
+}
+.sig-node-4 {
+  animation-delay: 6s;
+}
+
+.sig-line {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: sig-draw 1.5s ease 6s forwards;
+}

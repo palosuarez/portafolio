@@ -1,0 +1,115 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gutter);
+  padding-top: var(--top-offset);
+  position: relative;
+}
+
+.hero-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  max-width: 680px;
+}
+
+.hero-name {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 6vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+
+.hero-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: fade-in 0.6s ease 6s forwards;
+}
+
+.hero-tag-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hero-actions {
+  opacity: 0;
+  animation: fade-in 0.8s ease 6s forwards;
+}
+
+.btn-primary {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.7rem 1.8rem;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: var(--r-sm);
+  letter-spacing: 0.06em;
+  transition: all 0.2s;
+  animation: btn-pulse 3s ease-in-out 6s infinite;
+}
+
+.btn-primary:hover {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+@keyframes btn-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 6px rgba(0, 240, 255, 0);
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}

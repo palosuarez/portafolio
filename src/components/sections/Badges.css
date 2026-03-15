@@ -1,0 +1,164 @@
+.badges {
+  padding: var(--space-3xl) var(--gutter);
+  border-top: 1px solid var(--border);
+}
+
+.badges-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.badges-header {
+  margin-bottom: var(--space-xl);
+}
+
+.badges-credly-link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  transition: opacity 0.2s;
+}
+
+.badges-credly-link:hover {
+  opacity: 0.7;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.badge-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.2s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.badge-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.badge-card:hover {
+  border-color: var(--border-2);
+  background: var(--bg-2);
+  transform: translateY(-2px);
+}
+
+.badge-card:hover::before {
+  opacity: 1;
+}
+
+.badge-card--progress {
+  border-color: rgba(0, 240, 255, 0.2);
+  background: rgba(0, 240, 255, 0.03);
+}
+
+.badge-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge-cat {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.badge-cat--cyan {
+  color: var(--accent);
+  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(0, 240, 255, 0.06);
+}
+.badge-cat--purple {
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.3);
+  background: rgba(167, 139, 250, 0.06);
+}
+.badge-cat--green {
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.06);
+}
+.badge-cat--gold {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.3);
+  background: rgba(251, 191, 36, 0.06);
+}
+
+.badge-progress-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: ci-pulse 2s ease-in-out infinite;
+}
+
+.badge-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(0, 55, 165, 0.15);
+  border: 1px solid rgba(0, 55, 165, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon-ibm {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #4d90fe;
+  letter-spacing: 0.05em;
+}
+
+.badge-name {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.badge-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge-issuer {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--muted);
+}
+
+.badge-date {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--accent);
+}

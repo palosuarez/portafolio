@@ -1,0 +1,9 @@
+﻿node_modules/
+dist/
+*.zip
+*.mem
+.hintrc
+.vscode/
+.DS_Store
+Thumbs.db
+.env

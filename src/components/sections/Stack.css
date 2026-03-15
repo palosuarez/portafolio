@@ -1,0 +1,126 @@
+.stack {
+  padding: var(--space-3xl) var(--gutter);
+  border-top: 1px solid var(--border);
+}
+
+.stack-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.stack-header {
+  margin-bottom: var(--space-xl);
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+
+.section-sub {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.stack-cell {
+  background: var(--bg-1);
+  padding: var(--space-lg);
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.stack-cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.stack-cell--cyan::before {
+  background: var(--accent);
+}
+.stack-cell--purple::before {
+  background: #a78bfa;
+}
+.stack-cell--green::before {
+  background: #34d399;
+}
+
+.stack-cell:hover {
+  background: var(--bg-2);
+}
+.stack-cell:hover::before {
+  opacity: 1;
+}
+
+.stack-cell-cat {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-xs);
+}
+
+.stack-cell--cyan .stack-cell-cat {
+  color: var(--accent);
+}
+.stack-cell--purple .stack-cell-cat {
+  color: #a78bfa;
+}
+.stack-cell--green .stack-cell-cat {
+  color: #34d399;
+}
+
+.stack-cell-name {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: var(--space-md);
+}
+
+.stack-cell-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stack-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-2);
+  color: var(--muted);
+}

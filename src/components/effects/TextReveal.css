@@ -1,0 +1,10 @@
+.tr-container {
+  display: inline-flex;
+  overflow: visible;
+}
+
+.tr-letter {
+  display: inline-block;
+  will-change: clip-path, filter, transform;
+  color: #ffffff;
+}

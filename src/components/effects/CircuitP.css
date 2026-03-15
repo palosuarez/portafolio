@@ -1,0 +1,210 @@
+.circuit-p-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.circuit-p-svg {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* LINEAS — se dibujan solas */
+.cp-line {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: draw 0.6s ease forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Timing escalonado por línea */
+.cp-l1 {
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  animation-delay: 0.1s;
+  animation-duration: 0.7s;
+}
+.cp-l2 {
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  animation-delay: 0.7s;
+  animation-duration: 0.4s;
+}
+.cp-l3 {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation-delay: 1s;
+  animation-duration: 0.4s;
+}
+.cp-l4 {
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  animation-delay: 1.3s;
+  animation-duration: 0.4s;
+}
+.cp-l5 {
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+  animation-delay: 1.6s;
+  animation-duration: 0.25s;
+}
+.cp-l6 {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation-delay: 1.8s;
+  animation-duration: 0.25s;
+}
+.cp-l7 {
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+  animation-delay: 1.6s;
+  animation-duration: 0.25s;
+}
+.cp-l8 {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation-delay: 1.8s;
+  animation-duration: 0.25s;
+}
+.cp-l9 {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation-delay: 0.5s;
+  animation-duration: 0.25s;
+}
+.cp-l10 {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation-delay: 0.3s;
+  animation-duration: 0.25s;
+}
+.cp-l11 {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation-delay: 0.4s;
+  animation-duration: 0.25s;
+}
+
+/* NODOS — aparecen después de la línea */
+.cp-node {
+  opacity: 0;
+  animation: pop 0.2s ease forwards;
+}
+.cp-ring {
+  opacity: 0;
+  animation: pop 0.3s ease forwards;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: center;
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cp-n1 {
+  animation-delay: 0.1s;
+}
+.cp-n2 {
+  animation-delay: 0.8s;
+}
+.cp-n3 {
+  animation-delay: 1.4s;
+}
+.cp-n4 {
+  animation-delay: 1.4s;
+}
+.cp-n5 {
+  animation-delay: 0.8s;
+}
+
+.cp-r1 {
+  animation-delay: 0.9s;
+}
+.cp-r2 {
+  animation-delay: 1.5s;
+}
+.cp-r3 {
+  animation-delay: 0.9s;
+}
+
+.cp-nb1 {
+  animation-delay: 1.7s;
+}
+.cp-nb2 {
+  animation-delay: 2s;
+}
+.cp-nb3 {
+  animation-delay: 1.7s;
+}
+.cp-nb4 {
+  animation-delay: 2s;
+}
+.cp-nb5 {
+  animation-delay: 0.5s;
+}
+.cp-nb6 {
+  animation-delay: 0.6s;
+}
+.cp-nb7 {
+  animation-delay: 0.4s;
+}
+
+/* PUNTO CENTRAL PULSANTE */
+.cp-pulse {
+  opacity: 0;
+  animation: pop 0.3s ease 1.6s forwards;
+}
+
+.cp-pulse-ring {
+  opacity: 0;
+  transform-origin: 150px 120px;
+  animation:
+    pop 0.3s ease 1.6s forwards,
+    pulse-ring 2.5s ease-in-out 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    r: 5;
+    opacity: 0.8;
+  }
+  100% {
+    r: 20;
+    opacity: 0;
+  }
+}
+
+/* LABEL */
+.circuit-p-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fade-in 0.5s ease 2.2s forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 0.6;
+  }
+}

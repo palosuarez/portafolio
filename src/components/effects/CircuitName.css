@@ -1,0 +1,267 @@
+.cn-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.cn-svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  overflow: visible;
+}
+
+.cn-svg2 {
+  max-width: 220px;
+  margin-left: 2px;
+}
+
+/* PATHS — se dibujan solos */
+.cn-path {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: cn-draw 0.8s ease forwards;
+}
+
+@keyframes cn-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Timing por letra */
+.cn-p1 {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation-delay: 1s;
+  animation-duration: 0.5s;
+}
+.cn-p2 {
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  animation-delay: 2s;
+  animation-duration: 0.5s;
+}
+
+.cn-a1 {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation-delay: 3s;
+  animation-duration: 0.5s;
+}
+.cn-a2 {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation-delay: 4s;
+  animation-duration: 0.2s;
+}
+
+.cn-b1 {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation-delay: 5s;
+  animation-duration: 0.4s;
+}
+.cn-b2 {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation-delay: 6s;
+  animation-duration: 0.5s;
+}
+
+.cn-l1 {
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+  animation-delay: 7s;
+  animation-duration: 0.4s;
+}
+
+.cn-o1 {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation-delay: 8s;
+  animation-duration: 0.5s;
+}
+
+.cn-sep {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation-delay: 9s;
+  animation-duration: 0.2s;
+}
+
+.cn-s1 {
+  stroke-dasharray: 280;
+  stroke-dashoffset: 280;
+  animation-delay: 10s;
+  animation-duration: 0.7s;
+}
+
+.cn-u1 {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation-delay: 11s;
+  animation-duration: 0.5s;
+}
+
+.cn-aa1 {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation-delay: 12s;
+  animation-duration: 0.5s;
+}
+.cn-aa2 {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation-delay: 13s;
+  animation-duration: 0.2s;
+}
+.cn-aa3 {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation-delay: 14.2s;
+  animation-duration: 0.2s;
+}
+
+.cn-r1 {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation-delay: 15s;
+  animation-duration: 0.4s;
+}
+.cn-r2 {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation-delay: 16s;
+  animation-duration: 0.3s;
+}
+
+.cn-e1 {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation-delay: 17s;
+  animation-duration: 0.6s;
+}
+
+.cn-z1 {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation-delay: 18s;
+  animation-duration: 0.5s;
+}
+
+/* NODOS */
+.cn-node {
+  opacity: 0;
+  animation: cn-pop 0.25s ease forwards;
+}
+
+.cn-ring {
+  opacity: 0;
+  animation: cn-pop 0.3s ease forwards;
+}
+
+@keyframes cn-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cn-nd1 {
+  animation-delay: 0s;
+}
+.cn-nd2 {
+  animation-delay: 0.5s;
+}
+.cn-nd3 {
+  animation-delay: 0.9s;
+}
+.cn-nd4 {
+  animation-delay: 1.4s;
+}
+.cn-nd5 {
+  animation-delay: 1.5s;
+}
+.cn-nd6 {
+  animation-delay: 1.9s;
+}
+.cn-nd7 {
+  animation-delay: 2.3s;
+}
+.cn-nd8 {
+  animation-delay: 2.6s;
+}
+.cn-nd9 {
+  animation-delay: 3.3s;
+}
+.cn-nd10 {
+  animation-delay: 3.9s;
+}
+.cn-nd11 {
+  animation-delay: 3.9s;
+}
+.cn-nd12 {
+  animation-delay: 3.9s;
+}
+.cn-nd13 {
+  animation-delay: 4.3s;
+}
+.cn-nd14 {
+  animation-delay: 4.8s;
+}
+.cn-nd15 {
+  animation-delay: 4.9s;
+}
+.cn-nd16 {
+  animation-delay: 5.3s;
+}
+.cn-nd17 {
+  animation-delay: 5.4s;
+}
+.cn-nd18 {
+  animation-delay: 5.5s;
+}
+.cn-nd19 {
+  animation-delay: 6s;
+}
+.cn-nd20 {
+  animation-delay: 6s;
+}
+.cn-nd21 {
+  animation-delay: 6.1s;
+}
+.cn-nd22 {
+  animation-delay: 6.3s;
+}
+.cn-nd23 {
+  animation-delay: 6.5s;
+}
+
+.cn-ring {
+  animation-delay: 0.8s;
+}
+.cn-ring2 {
+  animation-delay: 2.2s;
+}
+.cn-ring3 {
+  animation-delay: 3.1s;
+}
+.cn-ring4 {
+  animation-delay: 3.1s;
+}
+.cn-ring5 {
+  animation-delay: 4.3s;
+}
+.cn-wrapper {
+  animation: fade-in 0.1s ease 2s both;
+}

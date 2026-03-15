@@ -1,0 +1,96 @@
+.ci-strip {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  z-index: 99;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.8rem;
+  background: rgba(0, 240, 255, 0.04);
+  border-right: 1px solid rgba(0, 240, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  border-radius: 0 0 4px 0;
+}
+
+.ci-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: ci-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ci-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.8);
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: none;
+  }
+}
+
+.ci-status {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  font-size: 0.58rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ci-sep {
+  width: 1px;
+  height: 12px;
+  background: rgba(0, 240, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.ci-ticker {
+  width: 100px;
+  height: 22px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ci-ticker-track {
+  display: flex;
+  flex-direction: column;
+  animation: ticker-v 7s linear infinite;
+}
+
+@keyframes ticker-v {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.ci-badge {
+  display: block;
+  height: 22px;
+  line-height: 22px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.ci-badge-green {
+  color: var(--accent);
+}
+.ci-strip {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.ci-strip--visible {
+  opacity: 1;
+}

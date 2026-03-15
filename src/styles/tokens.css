@@ -1,0 +1,42 @@
+:root {
+  --bg-0: #0d0d12;
+  --bg-1: #13131a;
+  --bg-2: #1c1c26;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-2: rgba(255, 255, 255, 0.13);
+
+  --accent: #00f0ff;
+  --accent-g: #00f0ff;
+  --accent-r: #ff4d6d;
+
+  --text: #ededed;
+  --muted: #666666;
+  --muted-2: #999999;
+
+  --font-serif: 'Cormorant', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --nav-h: 60px;
+  --strip-h: 32px;
+  --top-offset: 92px;
+
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  /* ESPACIADO ÁUREO */
+  --space-xs: 0.5rem;
+  --space-sm: 0.8rem;
+  --space-md: 1.3rem;
+  --space-lg: 2.1rem;
+  --space-xl: 3.4rem;
+  --space-2xl: 5.5rem;
+  --space-3xl: 8.9rem;
+
+  /* CONTENEDOR */
+  --max-w: 1200px;
+  --gutter: 2.5rem;
+
+  /* BREAKPOINTS como referencia */
+  /* sm: 640px | md: 768px | lg: 1024px | xl: 1280px */
+}
