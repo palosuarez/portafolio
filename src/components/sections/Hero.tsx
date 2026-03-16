@@ -22,8 +22,8 @@ export function Hero() {
             FULL STACK DEVELOPER · BOGOTÁ, CO
           </div>
           <div className="hero-actions">
-            <a className="btn-primary" href="#stack">
-              Explorar →
+            <a className="btn-primary" href="#contacto">
+              Contacto →
             </a>
           </div>
         </div>

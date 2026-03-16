@@ -31,12 +31,6 @@
   font-weight: 500;
 }
 
-.about-signature {
-  margin-top: var(--space-xl);
-  transform: scale(0.7);
-  transform-origin: left center;
-}
-
 .timeline {
   display: flex;
   flex-direction: column;
@@ -107,4 +101,18 @@
   font-size: 0.82rem;
   color: var(--muted);
   line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .about-signature {
+    transform: scale(0.6);
+  }
+
+  .timeline-item {
+    padding-bottom: var(--space-lg);
+  }
 }

@@ -196,3 +196,18 @@
   background: rgba(0, 240, 255, 0.06);
   border-color: var(--accent);
 }
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .contact-right {
+    position: static;
+  }
+
+  .contact-email {
+    font-size: 0.88rem;
+    word-break: break-all;
+  }
+}

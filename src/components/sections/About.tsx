@@ -1,5 +1,4 @@
 import React from 'react';
-import { CircuitSignature } from '../effects/CircuitSignature';
 import './About.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
@@ -74,10 +73,6 @@ export function About() {
               fullstack donde la integración de IA y la calidad operativa sean
               prioridad.
             </p>
-
-            <div className="about-signature">
-              <CircuitSignature />
-            </div>
           </div>
 
           <div className="about-right">

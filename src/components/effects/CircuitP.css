@@ -1,18 +1,15 @@
 .circuit-p-wrapper {
-  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .circuit-p-svg {
   width: 100%;
-  max-width: 320px;
-  height: auto;
-}
-
-/* LINEAS — se dibujan solas */
+  height: 100%;
+} /* LINEAS — se dibujan solas */
 .cp-line {
   stroke-dasharray: 600;
   stroke-dashoffset: 600;

@@ -15,7 +15,12 @@ interface NavProps {
 export function Nav({ onLogoClick }: NavProps) {
   return (
     <nav className="nav">
-      <a className="nav-logo" href="#home" onClick={onLogoClick}>
+      <a
+        className="nav-logo"
+        href="#home"
+        onClick={onLogoClick}
+        aria-label="pan_dev — ir al inicio"
+      >
         <div className="nav-logo-icon">
           <CircuitP />
         </div>
@@ -23,13 +28,12 @@ export function Nav({ onLogoClick }: NavProps) {
       <ul className="nav-links">
         {links.map((link) => (
           <li key={link.label}>
-            <a href={link.href}>{link.label}</a>
+            <a href={link.href} aria-label={link.label}>
+              {link.label}
+            </a>
           </li>
         ))}
       </ul>
-      <a className="nav-cta" href="#contacto">
-        Contacto
-      </a>
     </nav>
   );
 }

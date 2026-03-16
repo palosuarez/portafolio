@@ -162,3 +162,29 @@
   font-size: 0.6rem;
   color: var(--accent);
 }
+@media (max-width: 1024px) {
+  .badges-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .badge-card {
+    padding: var(--space-md);
+  }
+
+  .badge-name {
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .badges-grid {
+    grid-template-columns: 1fr;
+  }
+}

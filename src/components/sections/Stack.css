@@ -124,3 +124,19 @@
   border: 1px solid var(--border-2);
   color: var(--muted);
 }
+@media (max-width: 1024px) {
+  .stack-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stack-grid {
+    grid-template-columns: 1fr;
+    border-radius: var(--r-md);
+  }
+
+  .stack-cell {
+    padding: var(--space-md);
+  }
+}
