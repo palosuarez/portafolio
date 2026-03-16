@@ -1,8 +1,74 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 188 246" width="188" height="246">
-	<defs>
-		<image  width="188" height="246" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALwAAAD2CAMAAABbVB2TAAAAAXNSR0IB2cksfwAAAelQTFRFAAAAAAADAAAGAAACAAAEAJf/AP//AInrAAABAAkgAv//AAQUAAILACBIAD+XAFHGACVlAAslABA4Dv//B///AAYUAAAHAAEHAAQQAFG1ANj/ACBaABQ4Af//AAccAAMOACBlAEilACtlADF8BP//AHD/ACtwAA4xAAcUAEi1AAELABArAFrYAFGlAAYcAOv/ALX/AKX/AMb/AGXYABRIAAcXACBRAHDYACtaAA4lF///l///////xv//if//Uf//FP//fP//HP//IP//Cf//K///AD+JAAYXAHz/AFrGAFrrAIn/ADiJAA4rAAEJAAIJABc4AHzYAAMQAAIOAAYgABc/AAEGABAxAAklADiXBv//OP//AAIHAAMUABQ/EP//AGXrABdIAFqlACVaAAEOAFq1AD+lABAlAEiXAAcQAAMLAAAJAHDrAAQXAAsrAAEDAAIGABxRABxIAAEEACBwAAMJADGJAEiJABQxACVwC///ADFwA///Jf//ACVRAFGXAFr/AAkrABw/AAEQAAQgACt8AD98AAkc6///Wv//AGXGAA4gAAYQADh8AGX/AAIQZf//Mf//ADhwAAcgAGWlAEjGAAsgAHzrABw4ACA/AAIUAAQOAAsxABdRAAMXAAkUADilABxaAAQc/ACBWwAAC1tJREFUeJztnQ1QFNcdwP/vdoHl5MvysYjyIakoiPUDZAYkaoygVQcUkYqS8WNG29oxWjU2jUlNomPGGNGmNdMx1mj8SCdiG2wgrUSSGsEGi/iBoESt+AGegBVUPo+ju3sHghy7+w7udnfm/Wb263i7+7t3771d7r37LwINg5QW6A9EXimIvFIQeaUg8kpB5JVCJfIIoXYb9hp4EXxoxGmgdiPufnjyTJtTM+4ZpBUYZNZ2asc8OI68G+J51IF3Bil0Xuixec0DPZRTdihvVGtOhyHvj+q4uQ9qr7GhePYB0zLICxmeneKe5KEZFqGH3o2P+A9JvjwdfCeoCvQNEIzQbV/QQ6NtUyN3LL15HWpcTUNuCEdnQXgLg5wf6MRKJhOKUAW3HFlzH0v+J6icteRReL+qOQKh4CFurmsv7/m3MehGINywtpfwZiOuj0Al3AZtnHCuHUc+tjjoNrdg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"/>
-	</defs>
-	<style>
-	</style>
-	<use id="Background" href="#img1" x="0" y="0"/>
+<svg viewBox="0 0 320 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neon" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="8" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      @keyframes flicker {
+        0%, 92%, 100% { opacity: 1; }
+        93% { opacity: 0.5; }
+        94% { opacity: 1; }
+        96% { opacity: 0.3; }
+        97% { opacity: 1; }
+      }
+      .nl { animation: flicker 5s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Líneas principales -->
+  <g class="nl" stroke="#00f0ff" fill="none" stroke-linecap="round" filter="url(#neon)">
+    <line x1="80" y1="40"  x2="80"  y2="380" stroke-width="1.5"/>
+    <line x1="80" y1="40"  x2="220" y2="40"  stroke-width="1.5"/>
+    <line x1="220" y1="40" x2="220" y2="200" stroke-width="1.5"/>
+    <line x1="80" y1="200" x2="220" y2="200" stroke-width="1.5"/>
+
+    <!-- Branches -->
+    <line x1="220" y1="40"  x2="290" y2="40"  stroke-width="0.8"/>
+    <line x1="290" y1="40"  x2="290" y2="100" stroke-width="0.8"/>
+    <line x1="220" y1="200" x2="290" y2="200" stroke-width="0.8"/>
+    <line x1="290" y1="200" x2="290" y2="260" stroke-width="0.8"/>
+    <line x1="80"  y1="300" x2="20"  y2="300" stroke-width="0.8"/>
+    <line x1="80"  y1="380" x2="20"  y2="380" stroke-width="0.8"/>
+    <line x1="80"  y1="120" x2="20"  y2="120" stroke-width="0.8"/>
+  </g>
+
+  <!-- Nodos principales -->
+  <g class="nl" fill="#00f0ff" filter="url(#neon)">
+    <circle cx="80"  cy="40"  r="4"/>
+    <circle cx="220" cy="40"  r="4"/>
+    <circle cx="220" cy="200" r="4"/>
+    <circle cx="80"  cy="200" r="4"/>
+    <circle cx="80"  cy="380" r="4"/>
+  </g>
+
+  <!-- Anillos -->
+  <g class="nl" stroke="#00f0ff" fill="none" stroke-width="0.8" filter="url(#neon)">
+    <circle cx="220" cy="40"  r="9"/>
+    <circle cx="220" cy="200" r="9"/>
+    <circle cx="80"  cy="380" r="9"/>
+  </g>
+
+  <!-- Nodos branch -->
+  <g class="nl" fill="#00f0ff" filter="url(#neon)">
+    <circle cx="290" cy="40"  r="3"/>
+    <circle cx="290" cy="100" r="3"/>
+    <circle cx="290" cy="200" r="3"/>
+    <circle cx="290" cy="260" r="3"/>
+    <circle cx="20"  cy="120" r="3"/>
+    <circle cx="20"  cy="300" r="3"/>
+    <circle cx="20"  cy="380" r="3"/>
+  </g>
+
+  <!-- Punto central pulsante -->
+  <circle class="nl" cx="150" cy="120" r="5" fill="#00f0ff" filter="url(#neon)"/>
+  <circle cx="150" cy="120" r="5" fill="none" stroke="#00f0ff" stroke-width="1" filter="url(#neon)" opacity="0.6">
+    <animate attributeName="r" values="5;20;5" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
 </svg>
