@@ -15,7 +15,8 @@ function App() {
   const [heroKey, setHeroKey] = useState(0);
 
   useEffect(() => {
-    document.title = 'Pablo Suárez | Software Developer';
+    document.title =
+      'Pablo Suárez | Ingeniero de Software Fullstack · IBM Developer · IBM Generative AI Engineering | Pablo Andrés Suárez Sandoval · pan_dev';
   }, []);
 
   return (

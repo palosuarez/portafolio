@@ -13,13 +13,13 @@ export function Hero() {
           </h1>
           <p className="hero-sub">
             <TextReveal
-              text="Code that ships. Ideas that scale."
+              text="Full Stack Software Developer · Generative AI Engineering · IBM Certified"
               delay={1500}
             />
           </p>
           <div className="hero-tag">
             <span className="hero-tag-dot" />
-            FULL STACK DEVELOPER · BOGOTÁ, CO
+            PABLO ANDRÉS SUÁREZ SANDOVAL · PAN_DEV · BOGOTÁ, CO
           </div>
           <div className="hero-actions">
             <a className="btn-primary" href="#contacto">

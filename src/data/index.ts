@@ -156,10 +156,28 @@ export const badges: Badge[] = [
     id: 'ibm-fullstack',
     name: 'IBM Full Stack Software Developer',
     issuer: 'IBM · Coursera',
-    date: 'En progreso',
+    date: '10 abr 2026',
     category: 'backend',
-    credlyUrl: 'https://www.credly.com/users/pablo-andres-suarez-sandoval',
-    inProgress: true,
+    credlyUrl:
+      'https://www.credly.com/badges/51def97f-8bc8-43d6-9142-93e99d31d694/public_url',
+  },
+  {
+    id: 'fullstack-capstone',
+    name: 'Full Stack Software Developer Capstone',
+    issuer: 'IBM · Coursera',
+    date: '10 abr 2026',
+    category: 'backend',
+    credlyUrl:
+      'https://www.credly.com/badges/5c6bd295-7428-4599-b04a-b2e10a48fad3/public_url',
+  },
+  {
+    id: 'genai-engineering-capstone',
+    name: 'Generative AI Engineering Capstone',
+    issuer: 'IBM · Coursera',
+    date: '10 abr 2026',
+    category: 'ai',
+    credlyUrl:
+      'https://www.credly.com/badges/daa4ae60-f2d9-43ca-9d01-0ec22159e705/public_url',
   },
 ];
 

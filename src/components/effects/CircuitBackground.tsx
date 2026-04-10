@@ -1,21 +1,44 @@
 export function CircuitBackground() {
+  const nodes = [
+    { cx: 220, cy: 120 },
+    { cx: 480, cy: 120 },
+    { cx: 780, cy: 120 },
+    { cx: 1100, cy: 120 },
+    { cx: 160, cy: 280 },
+    { cx: 440, cy: 280 },
+    { cx: 700, cy: 280 },
+    { cx: 960, cy: 280 },
+    { cx: 1200, cy: 280 },
+    { cx: 300, cy: 450 },
+    { cx: 600, cy: 450 },
+    { cx: 880, cy: 450 },
+    { cx: 1160, cy: 450 },
+    { cx: 200, cy: 620 },
+    { cx: 520, cy: 620 },
+    { cx: 800, cy: 620 },
+    { cx: 1080, cy: 620 },
+    { cx: 360, cy: 800 },
+    { cx: 680, cy: 800 },
+    { cx: 1000, cy: 800 },
+    { cx: 1300, cy: 800 },
+  ];
+
+  const ringNodes = [
+    { cx: 220, cy: 120, r: 6 },
+    { cx: 780, cy: 280, r: 6 },
+    { cx: 600, cy: 450, r: 6 },
+    { cx: 1160, cy: 620, r: 6 },
+    { cx: 360, cy: 800, r: 6 },
+  ];
+
   return (
     <svg
-      style={{
-        position: 'fixed',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: 0,
-        pointerEvents: 'none',
-        opacity: 0.06,
-      }}
+      className="circuit-bg-static"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid slice"
       viewBox="0 0 1440 900"
     >
-      <g stroke="#00f0ff" strokeWidth="0.8" fill="none">
-        {/* TRAZOS HORIZONTALES */}
+      <g className="circuit-bg-static-lines" stroke="#00f0ff" strokeWidth="0.8" fill="none">
         <line x1="0" y1="120" x2="220" y2="120" />
         <line x1="260" y1="120" x2="480" y2="120" />
         <line x1="520" y1="120" x2="780" y2="120" />
@@ -47,7 +70,6 @@ export function CircuitBackground() {
         <line x1="1040" y1="800" x2="1300" y2="800" />
         <line x1="1340" y1="800" x2="1440" y2="800" />
 
-        {/* TRAZOS VERTICALES */}
         <line x1="220" y1="0" x2="220" y2="120" />
         <line x1="220" y1="160" x2="220" y2="280" />
         <line x1="480" y1="120" x2="480" y2="280" />
@@ -72,35 +94,29 @@ export function CircuitBackground() {
         <line x1="1080" y1="620" x2="1080" y2="800" />
         <line x1="1300" y1="800" x2="1300" y2="900" />
 
-        {/* NODOS SOLIDOS */}
-        <circle cx="220" cy="120" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="480" cy="120" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="780" cy="120" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="1100" cy="120" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="160" cy="280" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="440" cy="280" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="700" cy="280" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="960" cy="280" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="1200" cy="280" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="300" cy="450" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="600" cy="450" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="880" cy="450" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="1160" cy="450" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="200" cy="620" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="520" cy="620" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="800" cy="620" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="1080" cy="620" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="360" cy="800" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="680" cy="800" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="1000" cy="800" r="3" fill="#00f0ff" stroke="none" />
-        <circle cx="1300" cy="800" r="3" fill="#00f0ff" stroke="none" />
+        {nodes.map((node) => (
+          <circle
+            key={`node-${node.cx}-${node.cy}`}
+            cx={node.cx}
+            cy={node.cy}
+            r="3"
+            fill="#00f0ff"
+            stroke="none"
+            className="circuit-bg-static-node"
+          />
+        ))}
 
-        {/* NODOS GRANDES */}
-        <circle cx="220" cy="120" r="6" fill="none" strokeWidth="0.8" />
-        <circle cx="780" cy="280" r="6" fill="none" strokeWidth="0.8" />
-        <circle cx="600" cy="450" r="6" fill="none" strokeWidth="0.8" />
-        <circle cx="1160" cy="620" r="6" fill="none" strokeWidth="0.8" />
-        <circle cx="360" cy="800" r="6" fill="none" strokeWidth="0.8" />
+        {ringNodes.map((node) => (
+          <circle
+            key={`ring-${node.cx}-${node.cy}`}
+            cx={node.cx}
+            cy={node.cy}
+            r={node.r}
+            fill="none"
+            strokeWidth="0.8"
+            className="circuit-bg-static-ring"
+          />
+        ))}
       </g>
     </svg>
   );

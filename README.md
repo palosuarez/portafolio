@@ -1,6 +1,6 @@
-<div align="center">
+# Senior Portfolio · Pablo Andrés Suárez
 
-```
+```text
 ██████╗  █████╗ ███╗   ██╗    ██████╗ ███████╗██╗   ██╗
 ██╔══██╗██╔══██╗████╗  ██║    ██╔══██╗██╔════╝██║   ██║
 ██████╔╝███████║██╔██╗ ██║    ██║  ██║█████╗  ██║   ██║
@@ -9,17 +9,14 @@
 ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═════╝ ╚══════╝  ╚═══╝
 ```
 
-**Senior Portfolio · Pablo Andrés Suárez**
-
 [![Deploy](https://github.com/palosuarez/portafolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/palosuarez/portafolio/actions/workflows/deploy.yml)
+[![CI Fullstack](https://github.com/palosuarez/portafolio/actions/workflows/ci-fullstack.yml/badge.svg)](https://github.com/palosuarez/portafolio/actions/workflows/ci-fullstack.yml)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white&labelColor=0d0d0d)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white&labelColor=0d0d0d)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white&labelColor=0d0d0d)
 ![License](https://img.shields.io/badge/license-MIT-00e5a0?labelColor=0d0d0d)
 
 [**→ Ver en producción**](https://palosuarez.github.io/portafolio/)
-
-</div>
 
 ---
 
@@ -47,7 +44,7 @@ Stack editorial oscuro con tipografía serif inesperada, efectos de reveal por C
 
 ## Arquitectura
 
-```
+```text
 src/
 ├── components/
 │   ├── effects/
@@ -96,7 +93,7 @@ src/
 
 El componente central del sitio. Implementado en CSS puro sin dependencias externas.
 
-```
+```text
 Cada letra → span individual
 Animación → clip-path: inset(0 100% 0 0) → inset(0 0% 0 0)
 Timing   → 65ms de delay escalonado entre letras
@@ -122,6 +119,34 @@ Pipeline: `checkout` → `node 20` → `npm install` → `npm run build` → `gh
 
 El sitio se actualiza solo. Cero intervención manual post-push.
 
+Flujos en GitHub Actions:
+
+- `Deploy Portfolio` → despliegue a GitHub Pages
+- `CI Fullstack` → validación frontend + backend + smoke test de API
+
+Orden recomendado:
+
+1. CI Fullstack en PR/push
+2. Deploy en `main` si el build de frontend está correcto
+
+### Flujo visual
+
+```mermaid
+flowchart TD
+  A[Push o PR] --> B[CI Fullstack]
+  B --> B1[Build Frontend]
+  B --> B2[Build Backend]
+  B --> B3[Smoke Test API]
+  B3 -->|OK| C[Merge a main]
+  C --> D[Deploy Portfolio]
+  D --> E[GitHub Pages]
+
+  F[Formulario React] --> G[POST /api/contact]
+  G --> H[Validacion + Anti-bot]
+  H --> I[Persistencia JSON]
+  H --> J[SMTP opcional]
+```
+
 ---
 
 ## Correr localmente
@@ -130,11 +155,38 @@ El sitio se actualiza solo. Cero intervención manual post-push.
 git clone https://github.com/palosuarez/portafolio.git
 cd portafolio
 npm install
+cp .env.example .env
 npm run dev
 # → http://localhost:5173
 ```
 
 **Requisitos:** Node.js 20+ · npm 9+
+
+### Backend local (MVP contacto)
+
+```bash
+# instalar backend
+npm --prefix backend install
+cp backend/.env.example backend/.env
+
+# levantar API local
+npm run dev:api
+# → http://127.0.0.1:8787
+```
+
+Endpoints:
+
+- `GET /health`
+- `POST /api/contact`
+
+Persistencia local:
+
+- `backend/data/messages.json`
+
+Copia por correo (opcional):
+
+- Configura `MAIL_ENABLED=true` en `backend/.env`
+- Define `SMTP_*`, `MAIL_FROM` y `MAIL_TO` (actualmente destino sugerido: `palosuarez@gmail.com`)
 
 ---
 
@@ -165,6 +217,4 @@ Full Stack Developer · Bogotá ·
 
 ---
 
-<div align="center">
-<sub>Construido sin templates · Diseñado con intención · Deployado con CI/CD</sub>
-</div>
+Construido sin templates · Diseñado con intención · Deployado con CI/CD.

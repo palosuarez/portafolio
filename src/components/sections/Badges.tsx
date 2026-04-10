@@ -1,82 +1,14 @@
 import React from 'react';
 import './Badges.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-
-const badges = [
-  {
-    id: 'ai-essentials',
-    name: 'Artificial Intelligence Essentials V2',
-    cat: 'IA',
-    date: 'Feb 2026',
-  },
-  {
-    id: 'gen-ai',
-    name: 'Generative AI Essentials',
-    cat: 'IA',
-    date: 'Feb 2026',
-  },
-  {
-    id: 'prompt-eng',
-    name: 'Generative AI: Prompt Engineering',
-    cat: 'IA',
-    date: 'Feb 2026',
-  },
-  {
-    id: 'python-ds',
-    name: 'Python for Data Science and AI',
-    cat: 'IA',
-    date: 'Mar 2026',
-  },
-  {
-    id: 'python-project',
-    name: 'Python Project for AI & App Development',
-    cat: 'IA',
-    date: 'Mar 2026',
-  },
-  {
-    id: 'software-eng',
-    name: 'Software Engineering Essentials',
-    cat: 'DEV',
-    date: 'Feb 2026',
-  },
-  {
-    id: 'node',
-    name: 'Node and Express Essentials',
-    cat: 'DEV',
-    date: 'Mar 2026',
-  },
-  {
-    id: 'react',
-    name: 'Front-end Development with React V2',
-    cat: 'DEV',
-    date: 'Mar 2026',
-  },
-  {
-    id: 'git',
-    name: 'Git and GitHub Essentials',
-    cat: 'DEV',
-    date: 'Mar 2026',
-  },
-  {
-    id: 'cloud',
-    name: 'Introduction to Cloud Computing',
-    cat: 'CLOUD',
-    date: 'Feb 2026',
-  },
-  {
-    id: 'fullstack',
-    name: 'IBM Full Stack Software Developer',
-    cat: 'CERT',
-    date: 'En progreso',
-    inProgress: true,
-  },
-];
+import { badges } from '../../data';
 
 const catColor: Record<string, string> = {
-  IA: 'cyan',
-  DEV: 'purple',
-  CLOUD: 'green',
-  CERT: 'gold',
+  ai: 'cyan',
+  frontend: 'purple',
+  backend: 'purple',
+  devops: 'green',
+  cloud: 'green',
 };
 
 const CREDLY = 'https://credly.com/users/pablo-andres-suarez-sandoval';
@@ -98,7 +30,7 @@ export function Badges() {
             en Credly.
           </h2>
           <p className="section-sub">
-            10 badges activos + certificado profesional en progreso.{' '}
+            {badges.length} badges activos + certificación profesional completada.{' '}
             <a
               href={CREDLY}
               target="_blank"
@@ -114,14 +46,16 @@ export function Badges() {
           {badges.map((b) => (
             <a
               key={b.id}
-              href={CREDLY}
+              href={b.credlyUrl}
               target="_blank"
               rel="noopener"
               className={`badge-card ${b.inProgress ? 'badge-card--progress' : ''}`}
             >
               <div className="badge-card-top">
-                <span className={`badge-cat badge-cat--${catColor[b.cat]}`}>
-                  {b.cat}
+                <span
+                  className={`badge-cat badge-cat--${catColor[b.category] ?? 'gold'}`}
+                >
+                  {b.category.toUpperCase()}
                 </span>
                 {b.inProgress && <span className="badge-progress-dot" />}
               </div>
@@ -130,7 +64,7 @@ export function Badges() {
               </div>
               <div className="badge-name">{b.name}</div>
               <div className="badge-meta">
-                <span className="badge-issuer">IBM · Coursera</span>
+                <span className="badge-issuer">{b.issuer}</span>
                 <span className="badge-date">{b.date}</span>
               </div>
             </a>
