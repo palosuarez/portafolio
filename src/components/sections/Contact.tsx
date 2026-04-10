@@ -128,9 +128,10 @@ export function Contact() {
       return;
     }
 
-    const controller = new AbortController();
+    const controller =
+      typeof AbortController !== 'undefined' ? new AbortController() : null;
     const timeoutId = window.setTimeout(() => {
-      controller.abort();
+      controller?.abort();
     }, REQUEST_TIMEOUT_MS);
 
     try {
@@ -139,7 +140,7 @@ export function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        signal: controller.signal,
+        signal: controller?.signal,
         body: JSON.stringify({
           name: formValues.name,
           email: formValues.email,
@@ -178,7 +179,10 @@ export function Contact() {
       });
       setFormStartedAt(Date.now());
     } catch (error) {
-      if (error instanceof DOMException && error.name === 'AbortError') {
+      if (
+        (error instanceof DOMException && error.name === 'AbortError') ||
+        (error instanceof Error && error.name === 'AbortError')
+      ) {
         setSubmitError(
           `La API tardó demasiado en responder (${REQUEST_TIMEOUT_MS / 1000}s). Reintentá en unos segundos.`,
         );
