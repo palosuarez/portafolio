@@ -2,12 +2,12 @@ import { CircuitP } from '../effects/CircuitP';
 import './Nav.css';
 
 const links = [
-  { label: 'Inicio', href: '#home', highlight: true },
-  { label: 'Stack', href: '#stack', optionalMobile: true },
-  { label: 'Proyectos', href: '#proyectos', optionalMobile: true },
-  { label: 'Badges', href: '#badges', optionalMobile: true },
-  { label: '// SOBRE MÍ', href: '#sobre-mi', highlight: true },
-  { label: 'Contacto', href: '#contacto', highlight: true },
+  { label: 'inicio', href: '#home' },
+  { label: 'stack', href: '#stack', optionalMobile: true },
+  { label: 'proyectos', href: '#proyectos', optionalMobile: true },
+  { label: 'badges', href: '#badges', optionalMobile: true },
+  { label: '// sobre mí', href: '#sobre-mi' },
+  { label: 'contacto', href: '#contacto', glow: true },
 ];
 
 interface NavProps {
@@ -36,7 +36,7 @@ export function Nav({ onLogoClick }: NavProps) {
             <a
               href={link.href}
               aria-label={link.label}
-              className={link.highlight ? 'nav-link--highlight' : ''}
+              className={`nav-link ${link.glow ? 'nav-link--contact' : ''}`}
             >
               {link.label}
             </a>
