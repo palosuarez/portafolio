@@ -58,6 +58,7 @@ const env = {
   SMTP_PASS: process.env.SMTP_PASS ?? '',
   MAIL_FROM: process.env.MAIL_FROM ?? '',
   MAIL_TO: process.env.MAIL_TO ?? 'palosuarez@gmail.com',
+  MAIL_TO_BACKUP: process.env.MAIL_TO_BACKUP ?? '',
 };
 
 if (env.REQUIRE_TURNSTILE && !env.TURNSTILE_SECRET) {
@@ -99,6 +100,7 @@ const mailer = new ContactMailer({
   SMTP_PASS: env.SMTP_PASS,
   MAIL_FROM: env.MAIL_FROM,
   MAIL_TO: env.MAIL_TO,
+  MAIL_TO_BACKUP: env.MAIL_TO_BACKUP,
 });
 
 if (env.MAIL_ENABLED && !mailer.isReady()) {

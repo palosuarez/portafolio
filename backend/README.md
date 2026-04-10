@@ -98,8 +98,14 @@ Variables clave en `.env`:
 - `SMTP_PASS=<app-password>`
 - `MAIL_FROM="Portfolio Bot <palosuarez@gmail.com>"`
 - `MAIL_TO=palosuarez@gmail.com`
+- `MAIL_TO_BACKUP=correo-respaldo@dominio.com` (opcional)
 
 Para Gmail, usa App Password (no tu clave normal).
+
+Notas de envío:
+
+- `MAIL_TO` acepta uno o más correos separados por coma.
+- `MAIL_TO_BACKUP` se envía como copia oculta (BCC) para respaldo.
 
 ## Persistencia
 

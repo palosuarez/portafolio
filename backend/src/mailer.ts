@@ -10,17 +10,26 @@ export interface MailerEnv {
   SMTP_PASS: string;
   MAIL_FROM: string;
   MAIL_TO: string;
+  MAIL_TO_BACKUP?: string;
 }
 
 export class ContactMailer {
   private readonly enabled: boolean;
-  private readonly mailTo: string;
+  private readonly mailTo: string[];
+  private readonly mailToBackup: string[];
   private readonly mailFrom: string;
   private transporter: nodemailer.Transporter | null;
 
   constructor(env: MailerEnv) {
     this.enabled = env.MAIL_ENABLED;
-    this.mailTo = env.MAIL_TO;
+    this.mailTo = env.MAIL_TO
+      .split(',')
+      .map((value) => value.trim())
+      .filter(Boolean);
+    this.mailToBackup = (env.MAIL_TO_BACKUP ?? '')
+      .split(',')
+      .map((value) => value.trim())
+      .filter(Boolean);
     this.mailFrom = env.MAIL_FROM;
 
     if (
@@ -30,7 +39,7 @@ export class ContactMailer {
       env.SMTP_USER &&
       env.SMTP_PASS &&
       env.MAIL_FROM &&
-      env.MAIL_TO
+      this.mailTo.length > 0
     ) {
       this.transporter = nodemailer.createTransport({
         host: env.SMTP_HOST,
@@ -55,9 +64,14 @@ export class ContactMailer {
       return false;
     }
 
+    const uniqueBackupRecipients = this.mailToBackup.filter(
+      (email) => !this.mailTo.includes(email),
+    );
+
     await this.transporter.sendMail({
       from: this.mailFrom,
       to: this.mailTo,
+      bcc: uniqueBackupRecipients.length > 0 ? uniqueBackupRecipients : undefined,
       replyTo: record.email,
       subject: `Nuevo lead portfolio: ${record.name}`,
       text: [
