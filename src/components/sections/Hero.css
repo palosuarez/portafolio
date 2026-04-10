@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   max-width: 680px;
 }
 
@@ -72,39 +72,6 @@
   border-radius: 50%;
   background: var(--accent);
   animation: pulse 2s ease-in-out infinite;
-}
-
-.hero-actions {
-  opacity: 1;
-}
-
-.btn-primary {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  padding: 0.7rem 1.8rem;
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  border-radius: var(--r-sm);
-  letter-spacing: 0.06em;
-  transition: all 0.2s;
-  animation: btn-pulse 3s ease-in-out infinite;
-}
-
-.btn-primary:hover {
-  background: rgba(0, 240, 255, 0.08);
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
-
-@keyframes btn-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0);
-  }
-  50% {
-    box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
-  }
 }
 
 @keyframes pulse {

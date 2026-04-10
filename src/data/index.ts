@@ -183,25 +183,26 @@ export const badges: Badge[] = [
 
 export const experience: Experience[] = [
   {
-    period: 'Ago 2023 – Ago 2025',
-    role: 'Especialista Digital & Automatización con IA',
-    company: 'Colegio Superior Americano · Bogotá',
-    stack: ['React', 'LLM Agents', 'CMS', 'SEO', 'Analytics'],
+    period: 'Ago 2023 – Ago 2024',
+    role: 'Community Manager',
+    company: 'Colegio Superior Americano · Bogotá · Presencial',
+    stack: ['Adobe Creative Suite', 'Multimedia', 'SEO', 'Analytics'],
     highlights: [
-      'Pipelines de IA Generativa con agentes LLM para automatización de contenido institucional',
-      'Estrategia omnicanal que escaló comunidad a +5.000 seguidores activos',
-      'Gestión ecosistema web: CMS, SEO y analítica con ciclos de optimización basados en datos',
+      'Diseño e implementación de estrategia de comunicaciones digitales institucionales',
+      'Gestión integral de redes sociales y sitio web con calendario editorial y campañas',
+      'Producción multimedia con Adobe Creative Suite y seguimiento de engagement',
     ],
-    current: true,
+    current: false,
   },
   {
-    period: 'Feb 2020 – Ene 2022',
-    role: 'Coordinador Infraestructura TI – Remote Hands',
-    company: 'ASIGMA Telecomunicaciones · Zona Centro-Sur',
-    stack: ['Data Centers', 'Redes', 'Fibra Óptica', 'Monitoreo'],
+    period: 'Feb 2021 – Ago 2022',
+    role: 'Coordinador de mantenimiento',
+    company: 'ASIGMA SAS · Área metropolitana de Bogotá D.C. · Presencial',
+    stack: ['Infraestructura crítica', 'UPS', 'Rectificadores', 'Data Centers'],
     highlights: [
-      'Mantenimiento de infraestructura crítica para Telefónica con disponibilidad 24/7',
-      'Operación de Data Centers: provisioning de servidores y gestión de redes bajo estándares de misión crítica',
+      'Coordinación de mantenimiento preventivo, correctivo y trabajos especiales para proyecto TELEFÓNICA',
+      'Gestión de sistemas de energía crítica: UPS, bancos de baterías, motogeneradores y clima de precisión',
+      'Logística nacional y soporte técnico para clientes como ATC, Claro y ETB',
     ],
   },
   {

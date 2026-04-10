@@ -98,20 +98,18 @@
   }
 
   .nav-links {
-    gap: 0.55rem;
-    overflow-x: auto;
+    gap: 0.42rem;
+    overflow: visible;
     max-width: calc(100vw - 82px);
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .nav-links::-webkit-scrollbar {
-    display: none;
   }
 
   .nav-links a {
     font-size: 0.6rem;
     letter-spacing: 0.01em;
+  }
+
+  .nav-item--optional {
+    display: none;
   }
 
   .nav-link--highlight {

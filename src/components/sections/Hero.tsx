@@ -26,11 +26,6 @@ export function Hero() {
             <span className="hero-tag-dot" />
             PABLO ANDRÉS SUÁREZ SANDOVAL · PAN_DEV · BOGOTÁ, CO
           </div>
-          <div className="hero-actions">
-            <a className="btn-primary" href="#contacto">
-              Contacto →
-            </a>
-          </div>
         </div>
       </div>
     </section>

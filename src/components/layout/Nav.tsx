@@ -5,8 +5,8 @@ const links = [
   { label: 'Inicio', href: '#home', highlight: true },
   { label: 'Stack', href: '#stack' },
   { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Badges', href: '#badges' },
-  { label: 'Pablo', href: '#sobre-mi' },
+  { label: 'Badges', href: '#badges', optionalMobile: true },
+  { label: 'Pablo', href: '#sobre-mi', optionalMobile: true },
   { label: 'Contacto', href: '#contacto', highlight: true },
 ];
 
@@ -29,7 +29,10 @@ export function Nav({ onLogoClick }: NavProps) {
       </a>
       <ul className="nav-links">
         {links.map((link) => (
-          <li key={link.label}>
+          <li
+            key={link.label}
+            className={link.optionalMobile ? 'nav-item--optional' : ''}
+          >
             <a
               href={link.href}
               aria-label={link.label}

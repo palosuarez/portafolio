@@ -4,31 +4,24 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const timeline = [
   {
-    period: 'Ago 2023 → Ago 2025',
-    role: 'Especialista Digital & Automatización IA',
-    org: 'Colegio Superior Americano · Bogotá',
-    desc: 'Pipelines de agentes LLM para automatizar línea gráfica, publicación y corrección de estilo. Gestión de redes sociales e imagen corporativa. +5K comunidad activa.',
-    current: true,
-  },
-  {
-    period: 'Feb 2020 → Ene 2022',
-    role: 'Coordinador Infraestructura TI',
-    org: 'ASIGMA Telecomunicaciones',
-    desc: 'Data Centers, fibra óptica y redes para Telefónica. Operación crítica 24/7 con SLA enterprise.',
+    period: 'Ago 2023 → Ago 2024',
+    role: 'Community Manager',
+    org: 'Colegio Superior Americano · Bogotá · Presencial',
+    desc: 'Diseñé e implementé la estrategia de comunicaciones digitales de la institución: gestión integral de redes sociales y sitio web, contenido multimedia con Adobe Creative Suite, calendario editorial, métricas de engagement y campañas.',
     current: false,
   },
   {
-    period: 'Feb 2021 → Dic 2021',
-    role: 'Profesional de Apoyo',
-    org: 'Secretaría Distrital de Movilidad · Bogotá',
-    desc: 'Plataformas digitales y gestión documental en entorno gubernamental.',
+    period: 'Feb 2021 → Ago 2022',
+    role: 'Coordinador de mantenimiento',
+    org: 'ASIGMA SAS · Área metropolitana de Bogotá D.C. · Presencial',
+    desc: 'Coordiné mantenimiento preventivo/correctivo y trabajos especiales para proyecto TELEFÓNICA en zona centro-sur. Gestión de energía crítica (UPS, rectificadores, bancos de baterías, motogeneradores, clima de precisión) y logística nacional con soporte a ATC, Claro y ETB.',
     current: false,
   },
   {
-    period: 'Mar 2017 → Oct 2019',
-    role: 'Contratista TICs y Comunicaciones',
-    org: 'Alcaldía de Sogamoso · Boyacá',
-    desc: 'Arquitectura digital institucional. Datos abiertos, streaming y participación ciudadana. Sello de Excelencia MinTIC — pioneros en Boyacá.',
+    period: 'Trayectoria técnica',
+    role: 'Infraestructura + Desarrollo Full Stack',
+    org: 'Educativo · Gubernamental · Telecomunicaciones',
+    desc: 'Experiencia transversal construyendo soluciones donde convergen operación crítica, producto digital y calidad de ejecución para objetivos de negocio.',
     current: false,
   },
 ];
@@ -54,24 +47,34 @@ export function About() {
         <div className="about-grid">
           <div className="about-left">
             <p className="about-text">
-              Soy <strong>Pablo Suárez</strong> — developer fullstack con
-              background en infraestructura TI, gobierno digital y
-              automatización con IA. No solo escribo código: entiendo el
-              negocio, el SLA y el día dos.
+              <strong>Pablo Suárez</strong> · Full Stack Developer · IBM
+              Certified.
             </p>
             <p className="about-text">
-              Construyo con <strong>Node.js, TypeScript, Docker y APIs</strong>{' '}
-              como piso mínimo. Encima agrego IA, observabilidad y diseño cuando
-              el problema lo justifica.
+              Empecé en salas de servidores y telecomunicaciones: infraestructura
+              que no perdona errores. Con el tiempo entendí que el problema real
+              no era solo técnico: era la falta de comunicación entre sistemas,
+              datos tardíos y decisiones sin visibilidad.
             </p>
             <p className="about-text">
-              Actualmente en{' '}
+              Eso me llevó al desarrollo end-to-end. Hoy construyo sistemas
+              completos desde arquitectura hasta interfaz, con foco en datos en
+              tiempo real y pipelines que operan bajo presión.
+            </p>
+            <p className="about-text">
+              Soy <strong>IBM Certified Full Stack Software Developer</strong>,
+              estudio{' '}
               <strong>
                 Ingeniería de Software en Politécnico Grancolombiano
               </strong>
-              , aplicando en tiempo real lo que construyo. Disponible para roles
-              fullstack donde la integración de IA y la calidad operativa sean
-              prioridad.
+              y acumulo ~8 años de experiencia técnica en infraestructura,
+              desarrollo de producto y comunicación digital.
+            </p>
+            <p className="about-text">
+              Stack principal: <strong>Node.js · TypeScript · React · Docker ·
+              Kubernetes · OpenShift · Python · Django · C# · Linux · CI/CD</strong>.
+              <br />
+              Filosofía: <strong>"Del caos al sistema"</strong>.
             </p>
           </div>
 
