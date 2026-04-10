@@ -188,6 +188,18 @@ Copia por correo (opcional):
 - Configura `MAIL_ENABLED=true` en `backend/.env`
 - Define `SMTP_*`, `MAIL_FROM` y `MAIL_TO` (actualmente destino sugerido: `palosuarez@gmail.com`)
 
+### Producción (GitHub Pages + API pública)
+
+Para que el formulario funcione online, necesitas una URL pública del backend (Render/Railway/Fly/Cloudflare Worker).
+
+1. Despliega el backend y obtén una URL, por ejemplo: `https://tu-api-publica.com`
+2. En el backend de producción, define `ALLOWED_ORIGINS=https://palosuarez.github.io`
+3. En GitHub del repo: `Settings > Secrets and variables > Actions > Variables`
+4. Crea la variable: `VITE_API_BASE_URL=https://tu-api-publica.com`
+5. Haz push a `main` para que el workflow `Deploy Portfolio` reconstruya con esa variable
+
+Sin `VITE_API_BASE_URL`, el formulario en GitHub Pages no puede enviar mensajes.
+
 ---
 
 ## Roadmap

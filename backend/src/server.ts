@@ -29,6 +29,10 @@ const env = {
   IP_WINDOW_MS: Number(process.env.IP_WINDOW_MS ?? 60000),
   EMAIL_WINDOW_MAX: Number(process.env.EMAIL_WINDOW_MAX ?? 4),
   EMAIL_WINDOW_MS: Number(process.env.EMAIL_WINDOW_MS ?? 600000),
+  CONTACT_RATE_LIMIT_MAX: Number(process.env.CONTACT_RATE_LIMIT_MAX ?? 6),
+  CONTACT_RATE_LIMIT_WINDOW_MS: Number(
+    process.env.CONTACT_RATE_LIMIT_WINDOW_MS ?? 60000,
+  ),
   REQUIRE_TURNSTILE: (process.env.REQUIRE_TURNSTILE ?? 'false').toLowerCase() === 'true',
   TURNSTILE_SECRET: process.env.TURNSTILE_SECRET ?? '',
   MAIL_ENABLED: (process.env.MAIL_ENABLED ?? 'false').toLowerCase() === 'true',
@@ -179,8 +183,8 @@ app.get('/health', async () => {
 app.post('/api/contact', {
   config: {
     rateLimit: {
-      max: 6,
-      timeWindow: '1 minute',
+      max: env.CONTACT_RATE_LIMIT_MAX,
+      timeWindow: env.CONTACT_RATE_LIMIT_WINDOW_MS,
     },
   },
 }, async (request, reply) => {

@@ -12,10 +12,15 @@ export function Hero() {
             <TextReveal text="Suárez" delay={800} />
           </h1>
           <p className="hero-sub">
-            <TextReveal
-              text="Full Stack Software Developer · Generative AI Engineering · IBM Certified"
-              delay={1500}
-            />
+            <span className="hero-sub-line">
+              <TextReveal text="Full Stack Software Developer ·" delay={1500} />
+            </span>
+            <span className="hero-sub-line">
+              <TextReveal text="Generative AI Engineering ·" delay={3000} />
+            </span>
+            <span className="hero-sub-line">
+              <TextReveal text="IBM Certified" delay={4500} />
+            </span>
           </p>
           <div className="hero-tag">
             <span className="hero-tag-dot" />

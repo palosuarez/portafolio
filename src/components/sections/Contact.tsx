@@ -4,13 +4,30 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8787';
+const resolveApiBaseUrl = () => {
+  const fromEnv = (import.meta.env.VITE_API_BASE_URL ?? '').trim();
+  if (fromEnv) {
+    return fromEnv.replace(/\/$/, '');
+  }
+
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    const isLocalHost = host === 'localhost' || host === '127.0.0.1';
+    if (isLocalHost) {
+      return 'http://127.0.0.1:8787';
+    }
+  }
+
+  return '';
+};
+
+const API_BASE_URL = resolveApiBaseUrl();
 
 export function Contact() {
   const ref = useScrollReveal();
 
   const [formState, setFormState] = useState<FormState>('idle');
+  const [submitError, setSubmitError] = useState<string>('');
   const [formStartedAt, setFormStartedAt] = useState<number>(() => Date.now());
   const [formValues, setFormValues] = useState({
     name: '',
@@ -26,15 +43,47 @@ export function Contact() {
     }
 
     if (formState === 'error') {
-      return 'No se pudo enviar. Intentá de nuevo o escribime directo por email.';
+      return submitError || 'No se pudo enviar. Intentá de nuevo o escribime directo por email.';
     }
 
     if (formState === 'loading') {
       return 'Enviando mensaje...';
     }
 
+    if (!API_BASE_URL) {
+      return 'Formulario en modo público sin API configurada. Definí VITE_API_BASE_URL en el deploy.';
+    }
+
     return 'Tu información se envía por API segura local.';
-  }, [formState]);
+  }, [formState, submitError]);
+
+  const mapBackendError = (errorCode: string) => {
+    const errors: Record<string, string> = {
+      INVALID_ORIGIN:
+        'Origen bloqueado por seguridad. Abrí el frontend desde localhost o 127.0.0.1 y reiniciá la API.',
+      BOT_SUSPECTED:
+        'Envío demasiado rápido. Esperá 2-3 segundos y volvé a intentar.',
+      RATE_LIMIT_IP:
+        'Demasiados intentos desde tu IP. Esperá un momento e intentá de nuevo.',
+      RATE_LIMIT_EMAIL:
+        'Ese email alcanzó el límite temporal de pruebas. Esperá unos minutos o usa otro correo.',
+      MISSING_TURNSTILE_TOKEN:
+        'Falta validación anti-bot. Revisá la configuración de seguridad.',
+      TURNSTILE_VALIDATION_FAILED:
+        'Falló la validación anti-bot. Reintentá en unos segundos.',
+      INVALID_PAYLOAD:
+        'Hay campos inválidos. Revisá nombre, email y mensaje.',
+      UNSUPPORTED_MEDIA_TYPE:
+        'Formato de envío inválido. Recargá la página e intentá de nuevo.',
+      INTERNAL_ERROR:
+        'Error interno del servidor. Reintentá en unos segundos.',
+    };
+
+    return (
+      errors[errorCode] ||
+      'No se pudo enviar. Intentá de nuevo o escribime directo por email.'
+    );
+  };
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -44,6 +93,7 @@ export function Contact() {
 
     if (formState === 'success' || formState === 'error') {
       setFormState('idle');
+      setSubmitError('');
     }
   };
 
@@ -55,6 +105,15 @@ export function Contact() {
     }
 
     setFormState('loading');
+    setSubmitError('');
+
+    if (!API_BASE_URL) {
+      setSubmitError(
+        'No hay API pública configurada para este deploy. Definí VITE_API_BASE_URL en GitHub Actions.',
+      );
+      setFormState('error');
+      return;
+    }
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/contact`, {
@@ -74,7 +133,20 @@ export function Contact() {
       });
 
       if (!response.ok) {
-        throw new Error('CONTACT_SUBMIT_FAILED');
+        let backendError = 'CONTACT_SUBMIT_FAILED';
+
+        try {
+          const data = (await response.json()) as { error?: string };
+          if (data?.error) {
+            backendError = data.error;
+          }
+        } catch {
+          backendError = 'CONTACT_SUBMIT_FAILED';
+        }
+
+        setSubmitError(mapBackendError(backendError));
+        setFormState('error');
+        return;
       }
 
       setFormState('success');
@@ -87,6 +159,9 @@ export function Contact() {
       });
       setFormStartedAt(Date.now());
     } catch {
+      setSubmitError(
+        'No hay conexión con la API. Verificá que backend esté corriendo en http://127.0.0.1:8787.',
+      );
       setFormState('error');
     }
   };

@@ -1,10 +1,22 @@
 .tr-container {
-  display: inline-flex;
+  display: inline;
   overflow: visible;
 }
 
 .tr-letter {
   display: inline-block;
-  will-change: clip-path, filter, transform;
+  will-change: clip-path, filter, transform, opacity, text-shadow;
   color: #ffffff;
+  transform-origin: center bottom;
+}
+
+.tr-letter--space {
+  white-space: pre;
+}
+
+.tr-letter--preflash {
+  text-shadow:
+    0 0 16px rgba(0, 240, 255, 0.8),
+    0 0 30px rgba(0, 240, 255, 0.44);
+  filter: blur(2px);
 }
