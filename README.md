@@ -1,4 +1,4 @@
-# Senior Portfolio · Pablo Andrés Suárez
+# Portfolio · Pablo Andrés Suárez
 
 ```text
 ██████╗  █████╗ ███╗   ██╗    ██████╗ ███████╗██╗   ██╗
@@ -38,7 +38,7 @@ Stack editorial oscuro con tipografía serif inesperada, efectos de reveal por C
 | Animaciones | CSS keyframes + clip-path — sin GSAP, sin Framer Motion en efectos core |
 | Fuentes     | DM Serif Display · DM Sans · JetBrains Mono (Google Fonts)              |
 | Deploy      | GitHub Actions → GitHub Pages                                           |
-| CI          | Workflow propio · build en ~22s                                         |
+| CI          | Workflows GitHub Actions · build y validación fullstack                 |
 
 ---
 
@@ -104,7 +104,7 @@ Extras   → filter: blur() durante movimiento
 
 ---
 
-## CI/CD
+## Workflows
 
 ```yaml
 # Push a main → build → deploy automático
@@ -115,7 +115,7 @@ on:
 # Build: ~22s · Deploy total: ~42s
 ```
 
-Pipeline: `checkout` → `node 20` → `npm install` → `npm run build` → `gh-pages deploy`
+Pipeline frontend: `checkout` → `node 20` → `npm install` → `npm run build` → `gh-pages deploy`
 
 El sitio se actualiza solo. Cero intervención manual post-push.
 
@@ -123,6 +123,11 @@ Flujos en GitHub Actions:
 
 - `Deploy Portfolio` → despliegue a GitHub Pages
 - `CI Fullstack` → validación frontend + backend + smoke test de API
+
+Regla de seguridad en deploy:
+
+- `Deploy Portfolio` falla explícitamente si falta `VITE_API_BASE_URL`
+- La variable puede venir desde `Actions Variables` o `Actions Secrets`
 
 Orden recomendado:
 
