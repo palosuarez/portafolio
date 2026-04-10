@@ -11,8 +11,14 @@ import { ContactMailer } from './mailer.js';
 const env = {
   PORT: Number(process.env.PORT ?? 8787),
   HOST: process.env.HOST ?? '127.0.0.1',
-  CORS_ORIGIN: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
-  ALLOWED_ORIGINS: (process.env.ALLOWED_ORIGINS ?? process.env.CORS_ORIGIN ?? 'http://localhost:5173')
+  CORS_ORIGIN:
+    process.env.CORS_ORIGIN ??
+    'http://localhost:5173,http://127.0.0.1:5173',
+  ALLOWED_ORIGINS: (
+    process.env.ALLOWED_ORIGINS ??
+    process.env.CORS_ORIGIN ??
+    'http://localhost:5173,http://127.0.0.1:5173'
+  )
     .split(',')
     .map((value) => value.trim())
     .filter(Boolean),
