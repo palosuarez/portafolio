@@ -1,0 +1,58 @@
+name: CI Fullstack
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  frontend-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install frontend deps
+        run: npm ci
+
+      - name: Build frontend
+        run: npm run build
+
+  backend-build-and-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+
+      - name: Install backend deps
+        run: npm --prefix backend ci
+
+      - name: Build backend
+        run: npm run build:api
+
+      - name: Start backend
+        run: npm run start:api &
+
+      - name: Wait for API
+        run: sleep 3
+
+      - name: Health check
+        run: curl -fsS http://127.0.0.1:8787/health
+
+      - name: Contact smoke test
+        run: |
+          node -e "const now=Date.now()-10000;fetch('http://127.0.0.1:8787/api/contact',{method:'POST',headers:{'content-type':'application/json','origin':'http://localhost:5173'},body:JSON.stringify({name:'CI Bot',email:'ci-bot@example.com',message:'Mensaje de prueba automatizada para validar flujo backend en CI Fullstack.',source:'ci-fullstack',website:'',formStartedAt:now})}).then(async r=>{if(!r.ok){console.error(await r.text());process.exit(1)};console.log(await r.text())}).catch(e=>{console.error(e);process.exit(1)})"
