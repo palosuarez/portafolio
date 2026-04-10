@@ -29,6 +29,24 @@ npm run dev:api
 
 API: `http://127.0.0.1:8787`
 
+## Deploy en Render (backend público)
+
+Este repo incluye `render.yaml` en la raíz para evitar configuración manual incorrecta.
+
+Si lo configuras manualmente en Render:
+
+- Root Directory: `backend`
+- Build Command: `npm install && npm run build`
+- Start Command: `npm run start`
+
+Variables mínimas recomendadas:
+
+- `HOST=0.0.0.0`
+- `ALLOWED_ORIGINS=https://palosuarez.github.io`
+- `CORS_ORIGIN=https://palosuarez.github.io`
+
+No uses `node server.js` como start command, porque el backend compila a `dist/server.js`.
+
 ## Endpoints
 
 - `GET /health`

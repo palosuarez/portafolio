@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: pan-dev-portfolio-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: ALLOWED_ORIGINS
+        value: https://palosuarez.github.io
+      - key: CORS_ORIGIN
+        value: https://palosuarez.github.io
+      - key: REQUIRE_BROWSER_ORIGIN
+        value: "true"
+      - key: REQUIRE_TURNSTILE
+        value: "false"
