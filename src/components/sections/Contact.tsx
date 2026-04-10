@@ -67,7 +67,7 @@ export function Contact() {
       return 'Formulario en modo público sin API configurada. Definí VITE_API_BASE_URL en el deploy.';
     }
 
-    return 'Tu información se envía por API segura local.';
+    return `Tu información se envía por API: ${API_BASE_URL}`;
   }, [formState, submitError]);
 
   const mapBackendError = (errorCode: string) => {
@@ -130,12 +130,10 @@ export function Contact() {
 
     const controller =
       typeof AbortController !== 'undefined' ? new AbortController() : null;
-    const timeoutId = window.setTimeout(() => {
-      controller?.abort();
-    }, REQUEST_TIMEOUT_MS);
+    let watchdogId: number | null = null;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/contact`, {
+      const requestPromise = fetch(`${API_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -151,6 +149,15 @@ export function Contact() {
           formStartedAt,
         }),
       });
+
+      const timeoutPromise = new Promise<Response>((_, reject) => {
+        watchdogId = window.setTimeout(() => {
+          controller?.abort();
+          reject(new Error('REQUEST_TIMEOUT'));
+        }, REQUEST_TIMEOUT_MS);
+      });
+
+      const response = await Promise.race([requestPromise, timeoutPromise]);
 
       if (!response.ok) {
         let backendError = 'CONTACT_SUBMIT_FAILED';
@@ -179,6 +186,14 @@ export function Contact() {
       });
       setFormStartedAt(Date.now());
     } catch (error) {
+      if (error instanceof Error && error.message === 'REQUEST_TIMEOUT') {
+        setSubmitError(
+          `La API no respondió a tiempo (${REQUEST_TIMEOUT_MS / 1000}s). Verificá la URL configurada y reintentá.`,
+        );
+        setFormState('error');
+        return;
+      }
+
       if (
         (error instanceof DOMException && error.name === 'AbortError') ||
         (error instanceof Error && error.name === 'AbortError')
@@ -193,7 +208,9 @@ export function Contact() {
       setSubmitError(buildConnectionErrorMessage());
       setFormState('error');
     } finally {
-      window.clearTimeout(timeoutId);
+      if (watchdogId !== null) {
+        window.clearTimeout(watchdogId);
+      }
     }
   };
 
