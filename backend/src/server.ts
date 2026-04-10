@@ -8,6 +8,19 @@ import { z } from 'zod';
 import { ContactStore } from './store.js';
 import { ContactMailer } from './mailer.js';
 
+const normalizeOrigin = (value: string) => {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  try {
+    return new URL(trimmed).origin;
+  } catch {
+    return trimmed.replace(/\/$/, '');
+  }
+};
+
 const env = {
   PORT: Number(process.env.PORT ?? 8787),
   HOST:
@@ -22,7 +35,7 @@ const env = {
     'http://localhost:5173,http://127.0.0.1:5173'
   )
     .split(',')
-    .map((value) => value.trim())
+    .map((value) => normalizeOrigin(value))
     .filter(Boolean),
   DATA_DIR: process.env.DATA_DIR ?? './data',
   REQUIRE_BROWSER_ORIGIN: (process.env.REQUIRE_BROWSER_ORIGIN ?? 'true').toLowerCase() === 'true',
@@ -65,7 +78,7 @@ await app.register(cors, {
       return;
     }
 
-    cb(null, env.ALLOWED_ORIGINS.includes(origin));
+    cb(null, env.ALLOWED_ORIGINS.includes(normalizeOrigin(origin)));
   },
   methods: ['GET', 'POST'],
   allowedHeaders: ['content-type'],
@@ -197,7 +210,7 @@ app.post('/api/contact', {
     });
   }
 
-  const origin = request.headers.origin ?? '';
+  const origin = normalizeOrigin(request.headers.origin ?? '');
   if (env.REQUIRE_BROWSER_ORIGIN && !env.ALLOWED_ORIGINS.includes(origin)) {
     return reply.code(403).send({
       ok: false,
