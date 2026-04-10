@@ -23,6 +23,18 @@ const resolveApiBaseUrl = () => {
 
 const API_BASE_URL = resolveApiBaseUrl();
 
+const buildConnectionErrorMessage = () => {
+  if (!API_BASE_URL) {
+    return 'No hay API pública configurada para este deploy. Definí VITE_API_BASE_URL en GitHub Actions.';
+  }
+
+  if (API_BASE_URL.includes('127.0.0.1') || API_BASE_URL.includes('localhost')) {
+    return `No hay conexión con la API local (${API_BASE_URL}). Verificá que el backend esté corriendo.`;
+  }
+
+  return `No hay conexión con la API pública (${API_BASE_URL}). Verificá CORS/ALLOWED_ORIGINS y estado del servicio.`;
+};
+
 export function Contact() {
   const ref = useScrollReveal();
 
@@ -159,9 +171,7 @@ export function Contact() {
       });
       setFormStartedAt(Date.now());
     } catch {
-      setSubmitError(
-        'No hay conexión con la API. Verificá que backend esté corriendo en http://127.0.0.1:8787.',
-      );
+      setSubmitError(buildConnectionErrorMessage());
       setFormState('error');
     }
   };
