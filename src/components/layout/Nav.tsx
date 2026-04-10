@@ -3,10 +3,10 @@ import './Nav.css';
 
 const links = [
   { label: 'Inicio', href: '#home', highlight: true },
-  { label: 'Stack', href: '#stack' },
-  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Stack', href: '#stack', optionalMobile: true },
+  { label: 'Proyectos', href: '#proyectos', optionalMobile: true },
   { label: 'Badges', href: '#badges', optionalMobile: true },
-  { label: 'Pablo', href: '#sobre-mi', optionalMobile: true },
+  { label: '// SOBRE MÍ', href: '#sobre-mi', highlight: true },
   { label: 'Contacto', href: '#contacto', highlight: true },
 ];
 

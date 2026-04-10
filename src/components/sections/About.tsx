@@ -26,6 +26,14 @@ const timeline = [
   },
 ];
 
+const quickFacts = [
+  'IBM Certified Full Stack Software Developer',
+  '~8 años de experiencia técnica',
+  'Bogotá, Distrito Capital, Colombia',
+  'Ingeniería de Software · Politécnico Grancolombiano',
+  'Sectores: educativo, gubernamental y telecomunicaciones',
+];
+
 export function About() {
   const ref = useScrollReveal();
   return (
@@ -46,6 +54,13 @@ export function About() {
 
         <div className="about-grid">
           <div className="about-left">
+            <div className="about-facts" aria-label="Resumen rápido de perfil">
+              {quickFacts.map((fact) => (
+                <span key={fact} className="about-fact-pill">
+                  {fact}
+                </span>
+              ))}
+            </div>
             <p className="about-text">
               <strong>Pablo Suárez</strong> · Full Stack Developer · IBM
               Certified.
