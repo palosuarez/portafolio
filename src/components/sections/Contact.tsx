@@ -22,6 +22,7 @@ const resolveApiBaseUrl = () => {
 };
 
 const API_BASE_URL = resolveApiBaseUrl();
+const REQUEST_TIMEOUT_MS = 15000;
 
 const buildConnectionErrorMessage = () => {
   if (!API_BASE_URL) {
@@ -127,12 +128,18 @@ export function Contact() {
       return;
     }
 
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => {
+      controller.abort();
+    }, REQUEST_TIMEOUT_MS);
+
     try {
       const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        signal: controller.signal,
         body: JSON.stringify({
           name: formValues.name,
           email: formValues.email,
@@ -170,9 +177,19 @@ export function Contact() {
         website: '',
       });
       setFormStartedAt(Date.now());
-    } catch {
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') {
+        setSubmitError(
+          `La API tardó demasiado en responder (${REQUEST_TIMEOUT_MS / 1000}s). Reintentá en unos segundos.`,
+        );
+        setFormState('error');
+        return;
+      }
+
       setSubmitError(buildConnectionErrorMessage());
       setFormState('error');
+    } finally {
+      window.clearTimeout(timeoutId);
     }
   };
 
