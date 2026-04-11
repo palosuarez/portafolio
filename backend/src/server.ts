@@ -308,11 +308,9 @@ app.post('/api/contact', {
 
   await store.add(record);
 
-  try {
-    await mailer.sendContactCopy(record);
-  } catch (error) {
+  void mailer.sendContactCopy(record).catch((error) => {
     request.log.error({ error }, 'Failed to send contact copy email');
-  }
+  });
 
   return reply.code(201).send({
     ok: true,
