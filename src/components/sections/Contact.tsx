@@ -22,7 +22,8 @@ const resolveApiBaseUrl = () => {
 };
 
 const API_BASE_URL = resolveApiBaseUrl();
-const REQUEST_TIMEOUT_MS = 15000;
+const REQUEST_TIMEOUT_MS = 30000;
+const MAX_SUBMIT_ATTEMPTS = 2;
 
 const buildConnectionErrorMessage = () => {
   if (!API_BASE_URL) {
@@ -60,7 +61,7 @@ export function Contact() {
     }
 
     if (formState === 'loading') {
-      return 'Enviando mensaje...';
+      return 'Enviando mensaje... (el primer intento puede tardar unos segundos)';
     }
 
     if (!API_BASE_URL) {
@@ -128,36 +129,67 @@ export function Contact() {
       return;
     }
 
-    const controller =
-      typeof AbortController !== 'undefined' ? new AbortController() : null;
-    let watchdogId: number | null = null;
+    const sendAttempt = async () => {
+      const controller =
+        typeof AbortController !== 'undefined' ? new AbortController() : null;
+      let watchdogId: number | null = null;
+
+      try {
+        const requestPromise = fetch(`${API_BASE_URL}/api/contact`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          signal: controller?.signal,
+          body: JSON.stringify({
+            name: formValues.name,
+            email: formValues.email,
+            message: formValues.message,
+            source: 'portfolio-web',
+            company: formValues.company || undefined,
+            website: formValues.website,
+            formStartedAt,
+          }),
+        });
+
+        const timeoutPromise = new Promise<Response>((_, reject) => {
+          watchdogId = window.setTimeout(() => {
+            controller?.abort();
+            reject(new Error('REQUEST_TIMEOUT'));
+          }, REQUEST_TIMEOUT_MS);
+        });
+
+        const response = await Promise.race([requestPromise, timeoutPromise]);
+        return response;
+      } finally {
+        if (watchdogId !== null) {
+          window.clearTimeout(watchdogId);
+        }
+      }
+    };
 
     try {
-      const requestPromise = fetch(`${API_BASE_URL}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        signal: controller?.signal,
-        body: JSON.stringify({
-          name: formValues.name,
-          email: formValues.email,
-          message: formValues.message,
-          source: 'portfolio-web',
-          company: formValues.company || undefined,
-          website: formValues.website,
-          formStartedAt,
-        }),
-      });
+      let response: Response | null = null;
 
-      const timeoutPromise = new Promise<Response>((_, reject) => {
-        watchdogId = window.setTimeout(() => {
-          controller?.abort();
-          reject(new Error('REQUEST_TIMEOUT'));
-        }, REQUEST_TIMEOUT_MS);
-      });
+      for (let attempt = 1; attempt <= MAX_SUBMIT_ATTEMPTS; attempt += 1) {
+        try {
+          response = await sendAttempt();
+          break;
+        } catch (error) {
+          const isTimeout =
+            (error instanceof Error && error.message === 'REQUEST_TIMEOUT') ||
+            (error instanceof DOMException && error.name === 'AbortError') ||
+            (error instanceof Error && error.name === 'AbortError');
 
-      const response = await Promise.race([requestPromise, timeoutPromise]);
+          if (!isTimeout || attempt === MAX_SUBMIT_ATTEMPTS) {
+            throw error;
+          }
+        }
+      }
+
+      if (!response) {
+        throw new Error('REQUEST_TIMEOUT');
+      }
 
       if (!response.ok) {
         let backendError = 'CONTACT_SUBMIT_FAILED';
@@ -188,7 +220,7 @@ export function Contact() {
     } catch (error) {
       if (error instanceof Error && error.message === 'REQUEST_TIMEOUT') {
         setSubmitError(
-          `La API no respondió a tiempo (${REQUEST_TIMEOUT_MS / 1000}s). Verificá la URL configurada y reintentá.`,
+          `Tiempo de espera agotado al contactar la API (${REQUEST_TIMEOUT_MS / 1000}s). Intenta nuevamente en unos segundos.`,
         );
         setFormState('error');
         return;
@@ -199,7 +231,7 @@ export function Contact() {
         (error instanceof Error && error.name === 'AbortError')
       ) {
         setSubmitError(
-          `La API tardó demasiado en responder (${REQUEST_TIMEOUT_MS / 1000}s). Reintentá en unos segundos.`,
+          `Tiempo de espera agotado al contactar la API (${REQUEST_TIMEOUT_MS / 1000}s). Intenta nuevamente en unos segundos.`,
         );
         setFormState('error');
         return;
@@ -207,10 +239,6 @@ export function Contact() {
 
       setSubmitError(buildConnectionErrorMessage());
       setFormState('error');
-    } finally {
-      if (watchdogId !== null) {
-        window.clearTimeout(watchdogId);
-      }
     }
   };
 
