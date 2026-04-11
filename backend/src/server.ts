@@ -107,6 +107,28 @@ if (env.MAIL_ENABLED && !mailer.isReady()) {
   app.log.warn('MAIL_ENABLED=true but SMTP is not fully configured. Email copy is disabled.');
 }
 
+if (env.MAIL_ENABLED) {
+  app.log.info({ smtp: mailer.getConfigSummary() }, 'SMTP configuration loaded');
+
+  if (mailer.isReady()) {
+    void mailer.verifyConnection().then((result) => {
+      if (result.ok) {
+        app.log.info('SMTP connection verified successfully');
+        return;
+      }
+
+      app.log.warn(
+        {
+          reason: result.reason,
+          errorCode: result.errorCode,
+          errorMessage: result.errorMessage,
+        },
+        'SMTP verification failed',
+      );
+    });
+  }
+}
+
 const suspiciousUserAgents = [
   'curl',
   'wget',

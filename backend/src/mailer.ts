@@ -13,11 +13,22 @@ export interface MailerEnv {
   MAIL_TO_BACKUP?: string;
 }
 
+type MailerCheckResult = {
+  ok: boolean;
+  reason?: string;
+  errorCode?: string;
+  errorMessage?: string;
+};
+
 export class ContactMailer {
   private readonly enabled: boolean;
   private readonly mailTo: string[];
   private readonly mailToBackup: string[];
   private readonly mailFrom: string;
+  private readonly smtpHost: string;
+  private readonly smtpPort: number;
+  private readonly smtpSecure: boolean;
+  private readonly smtpUser: string;
   private transporter: nodemailer.Transporter | null;
 
   constructor(env: MailerEnv) {
@@ -31,6 +42,10 @@ export class ContactMailer {
       .map((value) => value.trim())
       .filter(Boolean);
     this.mailFrom = env.MAIL_FROM;
+    this.smtpHost = env.SMTP_HOST;
+    this.smtpPort = env.SMTP_PORT;
+    this.smtpSecure = env.SMTP_SECURE;
+    this.smtpUser = env.SMTP_USER;
 
     if (
       this.enabled &&
@@ -45,6 +60,9 @@ export class ContactMailer {
         host: env.SMTP_HOST,
         port: env.SMTP_PORT,
         secure: env.SMTP_SECURE,
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 15000,
         auth: {
           user: env.SMTP_USER,
           pass: env.SMTP_PASS,
@@ -57,6 +75,51 @@ export class ContactMailer {
 
   isReady() {
     return this.enabled && this.transporter !== null;
+  }
+
+  getConfigSummary() {
+    return {
+      enabled: this.enabled,
+      ready: this.isReady(),
+      smtpHost: this.smtpHost,
+      smtpPort: this.smtpPort,
+      smtpSecure: this.smtpSecure,
+      smtpUser: this.smtpUser,
+      mailFrom: this.mailFrom,
+      mailToCount: this.mailTo.length,
+      mailToBackupCount: this.mailToBackup.length,
+    };
+  }
+
+  async verifyConnection(): Promise<MailerCheckResult> {
+    if (!this.enabled) {
+      return { ok: false, reason: 'MAIL_DISABLED' };
+    }
+
+    if (!this.transporter) {
+      return { ok: false, reason: 'MAIL_NOT_CONFIGURED' };
+    }
+
+    try {
+      await this.transporter.verify();
+      return { ok: true };
+    } catch (error) {
+      if (error instanceof Error) {
+        const maybeCode = 'code' in error ? String((error as { code?: unknown }).code ?? '') : '';
+        return {
+          ok: false,
+          reason: 'MAIL_VERIFY_FAILED',
+          errorCode: maybeCode || undefined,
+          errorMessage: error.message,
+        };
+      }
+
+      return {
+        ok: false,
+        reason: 'MAIL_VERIFY_FAILED',
+        errorMessage: 'Unknown mail verification error',
+      };
+    }
   }
 
   async sendContactCopy(record: ContactRecord) {
