@@ -7,19 +7,12 @@ import path from 'node:path';
 import { z } from 'zod';
 import { ContactStore } from './store.js';
 import { ContactMailer } from './mailer.js';
-
-const normalizeOrigin = (value: string) => {
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return '';
-  }
-
-  try {
-    return new URL(trimmed).origin;
-  } catch {
-    return trimmed.replace(/\/$/, '');
-  }
-};
+// Importación única y limpia
+import {
+  normalizeOrigin,
+  normalizeText,
+  consumeWindow,
+} from './utils/security.js';
 
 const env = {
   PORT: Number(process.env.PORT ?? 8787),
@@ -27,8 +20,7 @@ const env = {
     process.env.HOST ??
     (process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1'),
   CORS_ORIGIN:
-    process.env.CORS_ORIGIN ??
-    'http://localhost:5173,http://127.0.0.1:5173',
+    process.env.CORS_ORIGIN ?? 'http://localhost:5173,http://127.0.0.1:5173',
   ALLOWED_ORIGINS: (
     process.env.ALLOWED_ORIGINS ??
     process.env.CORS_ORIGIN ??
@@ -38,7 +30,8 @@ const env = {
     .map((value) => normalizeOrigin(value))
     .filter(Boolean),
   DATA_DIR: process.env.DATA_DIR ?? './data',
-  REQUIRE_BROWSER_ORIGIN: (process.env.REQUIRE_BROWSER_ORIGIN ?? 'true').toLowerCase() === 'true',
+  REQUIRE_BROWSER_ORIGIN:
+    (process.env.REQUIRE_BROWSER_ORIGIN ?? 'true').toLowerCase() === 'true',
   MIN_FORM_FILL_MS: Number(process.env.MIN_FORM_FILL_MS ?? 2500),
   IP_WINDOW_MAX: Number(process.env.IP_WINDOW_MAX ?? 8),
   IP_WINDOW_MS: Number(process.env.IP_WINDOW_MS ?? 60000),
@@ -46,9 +39,10 @@ const env = {
   EMAIL_WINDOW_MS: Number(process.env.EMAIL_WINDOW_MS ?? 600000),
   CONTACT_RATE_LIMIT_MAX: Number(process.env.CONTACT_RATE_LIMIT_MAX ?? 6),
   CONTACT_RATE_LIMIT_WINDOW_MS: Number(
-    process.env.CONTACT_RATE_LIMIT_WINDOW_MS ?? 60000,
+    process.env.CONTACT_RATE_LIMIT_WINDOW_MS ?? 60000
   ),
-  REQUIRE_TURNSTILE: (process.env.REQUIRE_TURNSTILE ?? 'false').toLowerCase() === 'true',
+  REQUIRE_TURNSTILE:
+    (process.env.REQUIRE_TURNSTILE ?? 'false').toLowerCase() === 'true',
   TURNSTILE_SECRET: process.env.TURNSTILE_SECRET ?? '',
   MAIL_ENABLED: (process.env.MAIL_ENABLED ?? 'false').toLowerCase() === 'true',
   SMTP_HOST: process.env.SMTP_HOST ?? '',
@@ -61,35 +55,29 @@ const env = {
   MAIL_TO_BACKUP: process.env.MAIL_TO_BACKUP ?? '',
 };
 
+// Validación de arranque
 if (env.REQUIRE_TURNSTILE && !env.TURNSTILE_SECRET) {
   throw new Error('REQUIRE_TURNSTILE=true but TURNSTILE_SECRET is missing');
 }
 
 const app = Fastify({ logger: true });
 
-await app.register(helmet, {
-  global: true,
-  contentSecurityPolicy: false,
-});
-
+// Middlewares
+await app.register(helmet, { global: true, contentSecurityPolicy: false });
 await app.register(cors, {
   origin: (origin, cb) => {
     if (!origin) {
       cb(null, !env.REQUIRE_BROWSER_ORIGIN);
       return;
     }
-
     cb(null, env.ALLOWED_ORIGINS.includes(normalizeOrigin(origin)));
   },
   methods: ['GET', 'POST'],
   allowedHeaders: ['content-type'],
 });
+await app.register(rateLimit, { max: 50, timeWindow: '1 minute' });
 
-await app.register(rateLimit, {
-  max: 50,
-  timeWindow: '1 minute',
-});
-
+// Services
 const store = new ContactStore(path.resolve(process.cwd(), env.DATA_DIR));
 const mailer = new ContactMailer({
   MAIL_ENABLED: env.MAIL_ENABLED,
@@ -103,43 +91,27 @@ const mailer = new ContactMailer({
   MAIL_TO_BACKUP: env.MAIL_TO_BACKUP,
 });
 
-if (env.MAIL_ENABLED && !mailer.isReady()) {
-  app.log.warn('MAIL_ENABLED=true but SMTP is not fully configured. Email copy is disabled.');
-}
-
+// SMTP Verification Log
 if (env.MAIL_ENABLED) {
-  app.log.info({ smtp: mailer.getConfigSummary() }, 'SMTP configuration loaded');
-
   if (mailer.isReady()) {
     void mailer.verifyConnection().then((result) => {
-      if (result.ok) {
-        app.log.info('SMTP connection verified successfully');
-        return;
-      }
-
-      app.log.warn(
-        {
-          reason: result.reason,
-          errorCode: result.errorCode,
-          errorMessage: result.errorMessage,
-        },
-        'SMTP verification failed',
-      );
+      if (result.ok) app.log.info('SMTP connection verified successfully');
+      else app.log.warn({ reason: result.reason }, 'SMTP verification failed');
     });
+  } else {
+    app.log.warn('MAIL_ENABLED=true but SMTP is not fully configured.');
   }
 }
 
+// Schemas & Constants
 const suspiciousUserAgents = [
   'curl',
   'wget',
   'python-requests',
-  'httpclient',
-  'scrapy',
   'bot',
   'spider',
   'crawler',
 ];
-
 const ipCounters = new Map<string, { count: number; resetAt: number }>();
 const emailCounters = new Map<string, { count: number; resetAt: number }>();
 
@@ -154,104 +126,49 @@ const contactSchema = z.object({
   turnstileToken: z.string().trim().min(10).max(4000).optional(),
 });
 
-const normalizeText = (value: string, max: number) =>
-  Array.from(value)
-    .map((char) => {
-      const code = char.charCodeAt(0);
-      return code < 32 || code === 127 ? ' ' : char;
-    })
-    .join('')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, max);
-
-const consumeWindow = (
-  map: Map<string, { count: number; resetAt: number }>,
-  key: string,
-  max: number,
-  windowMs: number,
-) => {
-  const now = Date.now();
-  const current = map.get(key);
-
-  if (!current || current.resetAt <= now) {
-    map.set(key, { count: 1, resetAt: now + windowMs });
-    return false;
-  }
-
-  current.count += 1;
-  map.set(key, current);
-  return current.count > max;
-};
-
+// Helpers internos
 const verifyTurnstile = async (token: string, remoteIp: string) => {
-  if (!env.TURNSTILE_SECRET) {
+  if (!env.TURNSTILE_SECRET) return false;
+  try {
+    const response = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: env.TURNSTILE_SECRET,
+          response: token,
+          // remoteip: remoteIp,// Lo dejamos comentado para evitar fallos de red en la nube
+        }),
+      }
+    );
+    const data = (await response.json()) as { success?: boolean };
+    return data.success === true;
+  } catch {
     return false;
   }
-
-  const body = new URLSearchParams({
-    secret: env.TURNSTILE_SECRET,
-    response: token,
-    remoteip: remoteIp,
-  });
-
-  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    method: 'POST',
-    body,
-    headers: {
-      'content-type': 'application/x-www-form-urlencoded',
-    },
-  });
-
-  if (!response.ok) {
-    return false;
-  }
-
-  const data = (await response.json()) as { success?: boolean };
-  return data.success === true;
 };
 
-app.get('/health', async () => {
-  return {
-    ok: true,
-    service: 'portfolio-backend-local',
-    timestamp: new Date().toISOString(),
-  };
-});
+// Routes
+app.get('/health', async () => ({
+  ok: true,
+  service: 'portfolio-backend-local',
+  timestamp: new Date().toISOString(),
+}));
 
-app.post('/api/contact', {
-  config: {
-    rateLimit: {
-      max: env.CONTACT_RATE_LIMIT_MAX,
-      timeWindow: env.CONTACT_RATE_LIMIT_WINDOW_MS,
-    },
-  },
-}, async (request, reply) => {
+app.post('/api/contact', async (request, reply) => {
+  // 1. Basic Validations
   if (!request.headers['content-type']?.includes('application/json')) {
-    return reply.code(415).send({
-      ok: false,
-      error: 'UNSUPPORTED_MEDIA_TYPE',
-    });
+    return reply.code(415).send({ ok: false, error: 'UNSUPPORTED_MEDIA_TYPE' });
   }
 
   const origin = normalizeOrigin(request.headers.origin ?? '');
   if (env.REQUIRE_BROWSER_ORIGIN && !env.ALLOWED_ORIGINS.includes(origin)) {
-    return reply.code(403).send({
-      ok: false,
-      error: 'INVALID_ORIGIN',
-    });
+    return reply.code(403).send({ ok: false, error: 'INVALID_ORIGIN' });
   }
 
-  const ua = (request.headers['user-agent'] ?? '').toLowerCase();
-  if (suspiciousUserAgents.some((value) => ua.includes(value))) {
-    return reply.code(403).send({
-      ok: false,
-      error: 'BLOCKED_USER_AGENT',
-    });
-  }
-
+  // 2. Payload Validation
   const parsed = contactSchema.safeParse(request.body);
-
   if (!parsed.success) {
     return reply.code(400).send({
       ok: false,
@@ -262,58 +179,44 @@ app.post('/api/contact', {
 
   const { website, turnstileToken, formStartedAt, ...payload } = parsed.data;
 
-  if (website && website.length > 0) {
-    request.log.warn({ ip: request.ip }, 'Spam blocked by honeypot');
-    return reply.code(202).send({ ok: true });
-  }
+  // 3. Security Checks (Honeypot, Bot Speed, Rate Limits)
+  if (website) return reply.code(202).send({ ok: true }); // Honeypot silent fail
 
   if (formStartedAt && Date.now() - formStartedAt < env.MIN_FORM_FILL_MS) {
-    return reply.code(429).send({
-      ok: false,
-      error: 'BOT_SUSPECTED',
-    });
+    return reply.code(429).send({ ok: false, error: 'BOT_SUSPECTED' });
   }
 
-  const ipLimited = consumeWindow(ipCounters, request.ip, env.IP_WINDOW_MAX, env.IP_WINDOW_MS);
-  if (ipLimited) {
-    return reply.code(429).send({
-      ok: false,
-      error: 'RATE_LIMIT_IP',
-    });
+  if (
+    consumeWindow(ipCounters, request.ip, env.IP_WINDOW_MAX, env.IP_WINDOW_MS)
+  ) {
+    return reply.code(429).send({ ok: false, error: 'RATE_LIMIT_IP' });
   }
 
   const normalizedEmail = normalizeText(payload.email, 180).toLowerCase();
-  const emailLimited = consumeWindow(
-    emailCounters,
-    normalizedEmail,
-    env.EMAIL_WINDOW_MAX,
-    env.EMAIL_WINDOW_MS,
-  );
-
-  if (emailLimited) {
-    return reply.code(429).send({
-      ok: false,
-      error: 'RATE_LIMIT_EMAIL',
-    });
+  if (
+    consumeWindow(
+      emailCounters,
+      normalizedEmail,
+      env.EMAIL_WINDOW_MAX,
+      env.EMAIL_WINDOW_MS
+    )
+  ) {
+    return reply.code(429).send({ ok: false, error: 'RATE_LIMIT_EMAIL' });
   }
 
+  // 4. Turnstile
   if (env.REQUIRE_TURNSTILE) {
-    if (!turnstileToken) {
-      return reply.code(403).send({
-        ok: false,
-        error: 'MISSING_TURNSTILE_TOKEN',
-      });
-    }
-
-    const verified = await verifyTurnstile(turnstileToken, request.ip);
-    if (!verified) {
-      return reply.code(403).send({
-        ok: false,
-        error: 'TURNSTILE_VALIDATION_FAILED',
-      });
+    if (
+      !turnstileToken ||
+      !(await verifyTurnstile(turnstileToken, request.ip))
+    ) {
+      return reply
+        .code(403)
+        .send({ ok: false, error: 'TURNSTILE_VALIDATION_FAILED' });
     }
   }
 
+  // 5. Persistence & Mail
   const record = {
     id: randomUUID(),
     name: normalizeText(payload.name, 120),
@@ -329,32 +232,24 @@ app.post('/api/contact', {
   };
 
   await store.add(record);
+  void mailer.sendContactCopy(record).catch((err) => app.log.error(err));
 
-  void mailer.sendContactCopy(record).catch((error) => {
-    request.log.error({ error }, 'Failed to send contact copy email');
-  });
-
-  return reply.code(201).send({
-    ok: true,
-    messageId: record.id,
-    requestId: request.id,
-  });
+  return reply.code(201).send({ ok: true, messageId: record.id });
 });
 
+// Error Handler
 app.setErrorHandler((error, request, reply) => {
-  request.log.error(error);
-  reply.code(500).send({
-    ok: false,
-    error: 'INTERNAL_ERROR',
-    requestId: request.id,
-  });
+  app.log.error(error);
+  reply
+    .code(500)
+    .send({ ok: false, error: 'INTERNAL_ERROR', requestId: request.id });
 });
 
 const start = async () => {
   try {
     await app.listen({ port: env.PORT, host: env.HOST });
-  } catch (error) {
-    app.log.error(error);
+  } catch (err) {
+    app.log.error(err);
     process.exit(1);
   }
 };

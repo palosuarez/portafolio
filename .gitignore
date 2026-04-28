@@ -27,4 +27,3 @@ pnpm-debug.log*
 Thumbs.db
 
 # Local docs that should not be published
-docs/DEFENSA_STACK_E2E_ENTREVISTA.md
