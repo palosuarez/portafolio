@@ -26,15 +26,17 @@ export function TextReveal({ text, className = '', delay = 0 }: Props) {
       letter.style.opacity = '0';
       letter.style.textShadow = '0 0 0 rgba(0, 240, 255, 0)';
 
-      timers.push(window.setTimeout(
-        () => {
-          letter.classList.add('tr-letter--preflash');
-        },
-        Math.max(0, t - 120)
-      ));
+      timers.push(
+        window.setTimeout(
+          () => {
+            letter.classList.add('tr-letter--preflash');
+          },
+          Math.max(0, t - 120)
+        )
+      );
 
-      timers.push(window.setTimeout(
-        () => {
+      timers.push(
+        window.setTimeout(() => {
           letter.classList.remove('tr-letter--preflash');
           letter.style.transition =
             'clip-path 0.62s cubic-bezier(0.16, 1, 0.3, 1), filter 0.62s ease, transform 0.62s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, text-shadow 0.62s ease';
@@ -44,18 +46,16 @@ export function TextReveal({ text, className = '', delay = 0 }: Props) {
           letter.style.opacity = '1';
           letter.style.textShadow =
             '0 0 12px rgba(0, 240, 255, 0.36), 0 0 22px rgba(0, 240, 255, 0.2)';
-        },
-        t
-      ));
+        }, t)
+      );
 
-      timers.push(window.setTimeout(
-        () => {
+      timers.push(
+        window.setTimeout(() => {
           letter.style.transition = 'text-shadow 1s ease';
           letter.style.textShadow =
             '0 0 4px rgba(0, 240, 255, 0.24), 0 0 10px rgba(0, 240, 255, 0.12)';
-        },
-        t + 540
-      ));
+        }, t + 540)
+      );
     });
 
     return () => {

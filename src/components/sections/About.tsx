@@ -66,10 +66,10 @@ export function About() {
               Certified.
             </p>
             <p className="about-text">
-              Empecé en salas de servidores y telecomunicaciones: infraestructura
-              que no perdona errores. Con el tiempo entendí que el problema real
-              no era solo técnico: era la falta de comunicación entre sistemas,
-              datos tardíos y decisiones sin visibilidad.
+              Empecé en salas de servidores y telecomunicaciones:
+              infraestructura que no perdona errores. Con el tiempo entendí que
+              el problema real no era solo técnico: era la falta de comunicación
+              entre sistemas, datos tardíos y decisiones sin visibilidad.
             </p>
             <p className="about-text">
               Eso me llevó al desarrollo end-to-end. Hoy construyo sistemas
@@ -86,8 +86,12 @@ export function About() {
               desarrollo de producto y comunicación digital.
             </p>
             <p className="about-text">
-              Stack principal: <strong>Node.js · TypeScript · React · Docker ·
-              Kubernetes · OpenShift · Python · Django · C# · Linux · CI/CD</strong>.
+              Stack principal:{' '}
+              <strong>
+                Node.js · TypeScript · React · Docker · Kubernetes · OpenShift ·
+                Python · Django · C# · Linux · CI/CD
+              </strong>
+              .
               <br />
               Filosofía: <strong>"Del caos al sistema"</strong>.
             </p>

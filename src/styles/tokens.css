@@ -17,13 +17,32 @@
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --nav-h: 60px;
+  --nav-h: 52px;
   --strip-h: 32px;
-  --top-offset: 92px;
+  --top-offset: 84px;
 
   --r-sm: 4px;
   --r-md: 8px;
   --r-lg: 12px;
+
+  /* BAUHAUS STRUCTURAL */
+  --radius: 0px;
+  --border-struct: 1px solid var(--accent);
+  --border-inner: 1px solid var(--border-2);
+  --label-size: 0.65rem;
+  --col-label-w: 140px;
+
+  /* BAUHAUS PRIMARIES — Kandinsky trinity */
+  --accent-y: #e8c547;
+
+  /* BAUHAUS GEOMETRY */
+  --geo-sm: 8px;
+  --geo-md: 36px;
+  --geo-lg: 88px;
+
+  /* ESCALA TIPOGRÁFICA BAUHAUS */
+  --heading-hero: clamp(2.8rem, 6vw, 5.5rem);
+  --heading-section: clamp(1.3rem, 2vw, 1.8rem);
   /* ESPACIADO ÁUREO */
   --space-xs: 0.5rem;
   --space-sm: 0.8rem;

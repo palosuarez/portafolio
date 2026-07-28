@@ -1,43 +1,54 @@
 import React from 'react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { SectionHeader } from '../layout/SectionHeader';
 import './Stack.css';
 
-const stack = [
+const blocks = [
   {
-    category: 'FRONTEND',
-    name: 'React 18 · Vite',
-    tags: ['TypeScript', 'Framer Motion', 'D3.js', 'CSS vars'],
-    color: 'purple',
+    num: '01',
+    title: 'NÚCLEO',
+    subtitle: 'Integración de Sistemas',
+    priority: 'PRIORIDAD',
+    items: [
+      'APIs REST y servicios externos',
+      'Wrappers sobre sistemas legacy sin API',
+      'Automatización de flujos operativos',
+      'Arquitectura de microservicios',
+      'Bases de datos · SQL + NoSQL',
+      'WhatsApp Business API + IA',
+      'Channel managers · OTAs hoteleras',
+      'Pasarelas de pago · Wompi · PayU',
+      'Infraestructura de datos y telecomunicaciones',
+    ],
+    featured: true,
   },
   {
-    category: 'BACKEND',
-    name: 'Node.js · Fastify',
-    tags: ['TypeScript', 'REST APIs', 'OpenAPI', 'JWT'],
-    color: 'cyan',
+    num: '02',
+    title: 'STACK',
+    subtitle: 'de soporte',
+    priority: 'SOPORTE',
+    items: [
+      'React · Vite · TypeScript',
+      'Node.js · Fastify',
+      'Python',
+      'Docker · CI/CD',
+      'PostgreSQL · MongoDB',
+      'Redis · pgvector',
+    ],
+    featured: false,
   },
   {
-    category: 'IA & LLM',
-    name: 'Anthropic · Python',
-    tags: ['Claude API', 'RAG', 'Prompt Eng.', 'Agentes LLM'],
-    color: 'cyan',
-  },
-  {
-    category: 'DEVOPS',
-    name: 'Docker · CI/CD',
-    tags: ['Docker Compose', 'GitHub Actions', 'Railway', 'IBM Cloud'],
-    color: 'green',
-  },
-  {
-    category: 'DATOS',
-    name: 'PostgreSQL · Redis',
-    tags: ['pgvector', 'Redis cache', 'MongoDB', 'Prisma ORM'],
-    color: 'purple',
-  },
-  {
-    category: 'OBSERVABILIDAD',
-    name: 'Pino · OpenTelemetry',
-    tags: ['Structured logs', 'Tracing', '/health', 'SLA tracking'],
-    color: 'green',
+    num: '03',
+    title: 'FORMACIÓN',
+    subtitle: '',
+    priority: 'BASE',
+    items: [
+      'IBM Full Stack Developer',
+      'IBM Generative AI Engineering',
+      'Politécnico Grancolombiano',
+      'Ing. de Software · en curso',
+    ],
+    featured: false,
   },
 ];
 
@@ -46,39 +57,44 @@ export function Stack() {
 
   return (
     <section
-      className="stack reveal"
+      className="skills reveal"
       id="stack"
       ref={ref as React.RefObject<HTMLElement>}
     >
-      <div className="stack-inner">
-        <div className="stack-header">
-          <span className="section-tag">// STACK TÉCNICO</span>
-          <h2 className="section-title">
-            Herramientas que uso
-            <br />
-            en producción.
-          </h2>
-          <p className="section-sub">
-            No es un listado de cosas que "conozco".
-            <br />
-            Es lo que efectivamente corre en mis sistemas.
-          </p>
-        </div>
+      <div className="skills-inner">
+        <SectionHeader
+          num="01"
+          title="SKILLS"
+          subtitle="El stack al servicio del problema — no al revés."
+        />
 
-        <div className="stack-grid">
-          {stack.map((item) => (
+        <div className="skills-grid">
+          {blocks.map((block) => (
             <div
-              className={`stack-cell stack-cell--${item.color}`}
-              key={item.category}
+              className={`skills-block ${block.featured ? 'skills-block--featured' : ''}`}
+              key={block.num}
             >
-              <div className="stack-cell-cat">{item.category}</div>
-              <div className="stack-cell-name">{item.name}</div>
-              <div className="stack-cell-tags">
-                {item.tags.map((tag) => (
-                  <span className="stack-tag" key={tag}>
-                    {tag}
-                  </span>
+              {/* Geometric accent — Bauhaus circle marker */}
+              <span className="skills-block-geo" aria-hidden="true" />
+
+              <div className="skills-block-head">
+                <span className="skills-block-num">{block.num}</span>
+                <span className="skills-block-title">{block.title}</span>
+                {block.subtitle && (
+                  <span className="skills-block-sub">{block.subtitle}</span>
+                )}
+              </div>
+
+              <div className="skills-block-rule" />
+
+              <ul className="skills-block-list">
+                {block.items.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
+              </ul>
+
+              <div className="skills-block-footer">
+                <span className="skills-block-priority">{block.priority}</span>
               </div>
             </div>
           ))}

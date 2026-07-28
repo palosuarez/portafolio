@@ -30,7 +30,8 @@ export function Badges() {
             en Credly.
           </h2>
           <p className="section-sub">
-            {badges.length} badges activos + certificación profesional completada.{' '}
+            {badges.length} badges activos + certificación profesional
+            completada.{' '}
             <a
               href={CREDLY}
               target="_blank"

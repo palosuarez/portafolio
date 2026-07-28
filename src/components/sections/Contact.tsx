@@ -2,6 +2,7 @@ import React, { useMemo, useState, useRef } from 'react';
 import './Contact.css';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
+import { SectionHeader } from '../layout/SectionHeader';
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
 
@@ -109,14 +110,11 @@ export function Contact() {
       ref={ref as React.RefObject<HTMLElement>}
     >
       <div className="contact-inner">
-        <div className="contact-header">
-          <span className="section-tag">// CONTACTO</span>
-          <h2 className="section-title">
-            Hablemos de
-            <br />
-            tu próximo sistema.
-          </h2>
-        </div>
+        <SectionHeader
+          num="04"
+          title="CONTACTO"
+          subtitle="¿Tienes un sistema sin integrar? Hablemos."
+        />
 
         <div className="contact-grid">
           <div className="contact-left">
@@ -129,10 +127,7 @@ export function Contact() {
           <div className="contact-right">
             <div className="contact-form">
               <div className="contact-form-header">
-                <span className="t-dot t-red" />
-                <span className="t-dot t-yellow" />
-                <span className="t-dot t-green" />
-                <span className="contact-form-title">mensaje.ts</span>
+                <span className="contact-form-title">— mensaje.ts</span>
               </div>
 
               <form className="contact-form-body" onSubmit={handleSubmit}>

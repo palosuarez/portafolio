@@ -1,0 +1,54 @@
+.shdr {
+  margin-bottom: var(--space-2xl);
+}
+
+.shdr-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+/* Section number — Bauhaus coordinate in red primary */
+.shdr-num {
+  font-family: var(--font-mono);
+  font-size: var(--label-size);
+  color: var(--accent-r);
+  letter-spacing: 0.14em;
+  flex-shrink: 0;
+}
+
+/* Hairline rule — the grid made visible */
+.shdr-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border-2);
+}
+
+/* Geometric accent dot — cyan */
+.shdr-dot {
+  width: var(--geo-sm);
+  height: var(--geo-sm);
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Section title — DM Sans 700, Bauhaus industrial */
+.shdr-title {
+  font-family: var(--font-sans);
+  font-size: var(--heading-section);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.shdr-sub {
+  margin-top: var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--muted-2);
+  line-height: 1.65;
+  max-width: 560px;
+}

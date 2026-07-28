@@ -1,0 +1,132 @@
+.cs {
+  padding: var(--space-3xl) var(--gutter);
+  border-top: var(--border-struct);
+}
+
+.cs-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+/* Outer frame — full Bauhaus rectangle */
+.cs-grid {
+  border: var(--border-struct);
+}
+
+/* Each row: label column | content column */
+.cs-row {
+  display: grid;
+  grid-template-columns: var(--col-label-w) 1fr;
+}
+
+.cs-row + .cs-row {
+  border-top: var(--border-inner);
+}
+
+/* Label column — architectural annotation */
+.cs-label {
+  padding: var(--space-lg) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--label-size);
+  color: var(--accent-r);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-right: var(--border-inner);
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--space-lg);
+}
+
+/* Content column */
+.cs-content {
+  padding: var(--space-lg) var(--space-xl);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--muted-2);
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cs-lead {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+/* Stack tags — no border-radius, Bauhaus rectangular */
+.cs-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.cs-tag {
+  font-family: var(--font-mono);
+  font-size: var(--label-size);
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: var(--border-struct);
+  padding: 0.3rem 0.75rem;
+}
+
+/* Engineering quote — cian left rule */
+.cs-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: var(--space-md);
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Result placeholder — visually marked as pending */
+.cs-content--placeholder p {
+  font-style: italic;
+  color: var(--muted);
+  opacity: 0.55;
+  font-size: 0.85rem;
+}
+
+/* Roadmap list */
+.cs-roadmap {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.cs-roadmap li {
+  padding-left: var(--space-md);
+  position: relative;
+  color: var(--muted-2);
+}
+
+.cs-roadmap li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  top: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .cs-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-label {
+    border-right: none;
+    border-bottom: var(--border-inner);
+    padding-bottom: var(--space-sm);
+  }
+
+  .cs-content {
+    padding: var(--space-md);
+  }
+}
